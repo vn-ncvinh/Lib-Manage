@@ -2,8 +2,7 @@ from object import books
 from object import account
 from object import borrow
 import flask
-from flask import request, jsonify
-
+from flask import request
 
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
@@ -15,7 +14,6 @@ page404 = "<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested UR
 def home():
     return '''<h1>Lib Manage</h1>
 <p>API for Libmanage.</p>'''
-
 
 @app.route('/api/login', methods=['POST'])
 def login():

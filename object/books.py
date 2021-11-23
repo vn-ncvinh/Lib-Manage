@@ -1,6 +1,5 @@
 from config import db
 from object import account
-import hashlib
 import json
 from process import tabletojson
 
