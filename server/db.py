@@ -5,5 +5,7 @@ try:
                                         database='thuvien',
                                         user='ncvinh',
                                         password='vinh2000')
+    cursor = connection.cursor(buffered=True)
 except Error as e:
     print("Error while connecting to MySQL", e)
+

@@ -1,0 +1,35 @@
+import json
+import hashlib
+from server import db
+
+page404 = "<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>"
+
+def strtomd5(str):
+    return hashlib.md5(str.encode('utf-8')).hexdigest().upper()
+
+def strtojson(str):
+    return json.loads(str)
+
+def tabletojson(cols, rows):
+    result='{"status":"OK", "data":['
+    for row in rows:
+        result = result + '{'
+        for col in cols:
+            result = result + '"'+str(col[0])+'": "'+str(row[cols.index(col)])+'",'
+        result = result[:(len(result)-1)]
+        result = result + '},'
+    if(result[len(result)-1]==','):
+        result = result[:(len(result)-1)]
+    result = result + ']}'
+    # print(result)
+    return strtojson(result)
+
+def log(content, effect):
+    db.cursor.execute('INSERT INTO log (Content, Effect, Time) values ("'+content+'","'+effect+'", current_date())')
+    db.connection.commit()
+
+def error(message):
+    return strtojson('{"status":"ERROR", "data":[{"message":"'+message+'"}]}')
+
+def ok(message):
+    return strtojson('{"status":"OK", "data":[{"message":"'+message+'"}]}')
