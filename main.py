@@ -185,6 +185,29 @@ def deluser():
     else:
         return process.page404
 
+@app.route('/api/users/disable', methods=['POST', 'GET'])
+def disableuser():
+    if 'token' in request.args and 'StudentID' in request.args:
+        token = request.args['token']
+        StudentID = request.args['StudentID']
+        if (account.checktoken(token)):
+            return account.disableuser(token,StudentID)
+        else:
+            return process.error("Incorrect Token!")
+    else:
+        return process.page404
+
+@app.route('/api/users/active', methods=['POST', 'GET'])
+def activeuser():
+    if 'token' in request.args and 'StudentID' in request.args:
+        token = request.args['token']
+        StudentID = request.args['StudentID']
+        if (account.checktoken(token)):
+            return account.activeuser(token,StudentID)
+        else:
+            return process.error("Incorrect Token!")
+    else:
+        return process.page404
 
 
 if __name__ == '__main__':

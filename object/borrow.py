@@ -21,7 +21,9 @@ def borrowbook(token, documentsID):
         rows = cursor.fetchall()
         cursor.execute("DESCRIBE borrow")
         cols = cursor.fetchall()
+        process.log(account.tokentoStudentID(token), str(rows[0][0]), "Borrow Document")
         return process.tabletojson(cols, rows)
+
     else:
         return process.error("An unknown error!")
 
@@ -38,6 +40,7 @@ def cancel(token, borrowID):
         rows = cursor.fetchall()
         cursor.execute("DESCRIBE borrow")
         cols = cursor.fetchall()
+        process.log(account.tokentoStudentID(token), str(borrowID), "Cancel Borrow")
         return process.tabletojson(cols, rows)
     else:
         return process.error("An unknown error!")
@@ -61,6 +64,7 @@ def confirm(token, borrowID):
             rows = cursor.fetchall()
             cursor.execute("DESCRIBE borrow")
             cols = cursor.fetchall()
+            process.log(account.tokentoStudentID(token), str(borrowID), "Confirm Borrow")
             return process.tabletojson(cols, rows)
     else:
         return process.error("You are not authorized to perform this action!")
@@ -79,6 +83,7 @@ def returndocument(token, documentID):
             rows = cursor.fetchall()
             cursor.execute("DESCRIBE borrow")
             cols = cursor.fetchall()
+            process.log(account.tokentoStudentID(token), str(borrowID), "Return Document")
             return process.tabletojson(cols, rows)
         else:
             return process.error("An unknown error!")

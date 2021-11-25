@@ -24,8 +24,8 @@ def tabletojson(cols, rows):
     # print(result)
     return strtojson(result)
 
-def log(content, effect):
-    db.cursor.execute('INSERT INTO log (Content, Effect, Time) values ("'+content+'","'+effect+'", current_date())')
+def log(source, destination, content):
+    db.cursor.execute('INSERT INTO log (Source, Content, Destination, Time) values ("'+source+'","'+content+'","'+destination+'", current_date())')
     db.connection.commit()
 
 def error(message):
