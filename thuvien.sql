@@ -34,7 +34,7 @@ CREATE TABLE `borrow` (
   KEY `DocumentID` (`DocumentID`),
   CONSTRAINT `borrow_ibfk_1` FOREIGN KEY (`StudentID`) REFERENCES `users` (`StudentID`),
   CONSTRAINT `borrow_ibfk_2` FOREIGN KEY (`DocumentID`) REFERENCES `document` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,9 +43,42 @@ CREATE TABLE `borrow` (
 
 LOCK TABLES `borrow` WRITE;
 /*!40000 ALTER TABLE `borrow` DISABLE KEYS */;
-INSERT INTO `borrow` VALUES (1,'AT150265','100001','return',NULL,'2021-11-25'),(2,'AT150265','100002','cancel',NULL,NULL),(3,'AT150265','100022','cancel',NULL,NULL),(4,'AT150265','100023','cancel',NULL,NULL),(5,'AT150265','100011','cancel',NULL,NULL),(6,'AT150265','100012','cancel',NULL,NULL),(7,'AT150265','100013','cancel',NULL,NULL),(8,'AT150265','100001','cancel',NULL,NULL),(9,'AT150265','100001','return','2021-11-25','2021-11-25'),(10,'AT150265','100011','return','2021-11-25','2021-11-25'),(11,'AT150265','100011','return','2021-11-25','2021-11-25'),(13,'AT150267','100011','cancel',NULL,NULL);
+INSERT INTO `borrow` VALUES (1,'AT150265','100001','return','2021-11-25','2021-11-25'),(2,'AT150265','100002','cancel',NULL,NULL),(3,'AT150265','100022','cancel',NULL,NULL),(4,'AT150265','100023','cancel',NULL,NULL),(5,'AT150265','100011','cancel',NULL,NULL),(6,'AT150265','100012','cancel',NULL,NULL),(7,'AT150265','100013','cancel',NULL,NULL),(8,'AT150265','100001','cancel',NULL,NULL),(9,'AT150265','100001','return','2021-11-25','2021-11-25'),(10,'AT150265','100011','return','2021-11-25','2021-11-25'),(11,'AT150265','100011','return','2021-11-25','2021-11-25'),(14,'AT150265','100011','cancel',NULL,NULL),(15,'AT150265','100011','return','2021-11-25','2021-11-25'),(16,'AT150265','100022','cancel',NULL,NULL),(17,'AT150265','100023','cancel',NULL,NULL);
 /*!40000 ALTER TABLE `borrow` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `borrowtrend`
+--
+
+DROP TABLE IF EXISTS `borrowtrend`;
+/*!50001 DROP VIEW IF EXISTS `borrowtrend`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `borrowtrend` AS SELECT 
+ 1 AS `ID`,
+ 1 AS `Name`,
+ 1 AS `Author`,
+ 1 AS `Description`,
+ 1 AS `Quantity`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `borrowtrendspecialization`
+--
+
+DROP TABLE IF EXISTS `borrowtrendspecialization`;
+/*!50001 DROP VIEW IF EXISTS `borrowtrendspecialization`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `borrowtrendspecialization` AS SELECT 
+ 1 AS `ID`,
+ 1 AS `Name`,
+ 1 AS `Author`,
+ 1 AS `Description`,
+ 1 AS `Quantity`,
+ 1 AS `Specialization`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `category`
@@ -193,11 +226,12 @@ DROP TABLE IF EXISTS `log`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `log` (
   `ID` int NOT NULL AUTO_INCREMENT,
+  `Source` varchar(45) DEFAULT NULL,
   `Content` varchar(100) DEFAULT NULL,
-  `Effect` varchar(45) DEFAULT NULL,
+  `Destination` varchar(45) DEFAULT NULL,
   `Time` date DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -206,7 +240,7 @@ CREATE TABLE `log` (
 
 LOCK TABLES `log` WRITE;
 /*!40000 ALTER TABLE `log` DISABLE KEYS */;
-INSERT INTO `log` VALUES (1,'Test','test','2021-11-25'),(2,'Delete User','AT150202','2021-11-25'),(3,'Delete User','AT150201','2021-11-25');
+INSERT INTO `log` VALUES (1,'AT250265','Test','test','2021-11-25'),(2,'AT250265','Delete User','AT150202','2021-11-25'),(3,'AT250265','Delete User','AT150201','2021-11-25'),(4,'AT150265','Login Success!','App','2021-11-25'),(5,'AT150265','Cancel Borrow','14','2021-11-25'),(6,'AT150265','Borrow Document','15','2021-11-25'),(7,'AT150265','Confirm Borrow','15','2021-11-25'),(8,'AT150265','Return Document','15','2021-11-25'),(9,'AT150265','Delete User','AT150267','2021-11-25'),(14,'AT150265','Delete User','AT1502068','2021-11-25'),(15,'AT150201','Create User','AT150201','2021-11-25'),(16,'AT150265','Delete User','AT150201','2021-11-25'),(17,'AT150201','Create User','AT150201','2021-11-25'),(18,'AT150265','Delete User','AT150201','2021-11-25'),(19,'AT150265','Disable User','AT150265','2021-11-25'),(20,'AT150266','Disable User','AT150265','2021-11-25'),(21,'AT150265','Disable User','AT150266','2021-11-25'),(22,'AT150265','Disable User','AT150266','2021-11-25'),(23,'AT150265','Borrow Document','16','2021-11-25'),(24,'AT150265','Borrow Document','17','2021-11-25'),(25,'AT150265','Cancel Borrow','16','2021-11-25'),(26,'AT150265','Cancel Borrow','17','2021-11-25');
 /*!40000 ALTER TABLE `log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -238,7 +272,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('AT1502068','6974D3169F28A7C2491A7E56F7DFBEE2','Nguyễn Công Vinh','1','ATTT','AT15B',0,'rpjxouy8RY2qoYog6XNU','2025-11-25','active'),('AT150265','C231C34126D7D5DE3589108C387F1957','Nguyễn Công Vĩnh',NULL,'ATTT','AT15B',1,'ge5hVuNgksZDmuo6bA3P','2021-11-30','active'),('AT150266','BE5E9C7BEB5BE86F35ABDD606036B22B','Nguyễn Văn Vỹ','1','ATTT','AT15B',0,'spq9fjizYQCYgMzpXUmk','2025-11-25','active'),('AT150267','A663B63F854DCB0B94174617DE136091','Nguyễn Thị Vy','1','ATTT','AT15B',0,'pLCU0vrggreuxOajQZAV','2025-11-25','disable');
+INSERT INTO `users` VALUES ('AT150265','C231C34126D7D5DE3589108C387F1957','Nguyễn Công Vĩnh',NULL,'ATTT','AT15B',1,'ge5hVuNgksZDmuo6bA3P','2021-11-30','active'),('AT150266','BE5E9C7BEB5BE86F35ABDD606036B22B','Nguyễn Văn Vỹ','1','ATTT','AT15B',1,'spq9fjizYQCYgMzpXUmk','2025-11-25','active');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -280,6 +314,42 @@ SET @saved_cs_client     = @@character_set_client;
  1 AS `Expiry`,
  1 AS `Status`*/;
 SET character_set_client = @saved_cs_client;
+
+--
+-- Final view structure for view `borrowtrend`
+--
+
+/*!50001 DROP VIEW IF EXISTS `borrowtrend`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`ncvinh`@`%` SQL SECURITY DEFINER */
+/*!50001 VIEW `borrowtrend` AS select `documents`.`ID` AS `ID`,`documents`.`Name` AS `Name`,`documents`.`Author` AS `Author`,`documents`.`Description` AS `Description`,count(`borrow`.`DocumentID`) AS `Quantity` from (((`documents` join `document`) join `borrow`) join `users`) where ((`document`.`ID` = `borrow`.`DocumentID`) and (`document`.`DocumentsID` = `documents`.`ID`) and ((`borrow`.`status` = 'borrowed') or (`borrow`.`status` = 'return')) and (`borrow`.`StudentID` = `users`.`StudentID`)) group by `documents`.`ID` order by `Quantity` desc */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `borrowtrendspecialization`
+--
+
+/*!50001 DROP VIEW IF EXISTS `borrowtrendspecialization`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`ncvinh`@`%` SQL SECURITY DEFINER */
+/*!50001 VIEW `borrowtrendspecialization` AS select `documents`.`ID` AS `ID`,`documents`.`Name` AS `Name`,`documents`.`Author` AS `Author`,`documents`.`Description` AS `Description`,count(`borrow`.`DocumentID`) AS `Quantity`,`users`.`Specialization` AS `Specialization` from (((`documents` join `document`) join `borrow`) join `users`) where ((`document`.`ID` = `borrow`.`DocumentID`) and (`document`.`DocumentsID` = `documents`.`ID`) and ((`borrow`.`status` = 'borrowed') or (`borrow`.`status` = 'return')) and (`borrow`.`StudentID` = `users`.`StudentID`)) group by `documents`.`ID`,`users`.`Specialization` order by `Quantity` desc */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
 -- Final view structure for view `category_quantity`
@@ -362,4 +432,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-25  2:47:55
+-- Dump completed on 2021-11-25 10:32:44
