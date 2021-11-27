@@ -4,6 +4,19 @@ from server import db
 
 page404 = "<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.</p>"
 
+def sqli(str):
+    # print(str)
+    if ' ' in str.upper() or "'" in str.upper() or '"' in str.upper() or ' OR ' in str.upper() or '=' in str.upper():
+        return True
+    
+    return False
+
+def checksqli(arr):
+    for arg in arr:
+        if sqli(arr[arg]):
+            return True
+    return False
+
 def strtomd5(str):
     return hashlib.md5(str.encode('utf-8')).hexdigest().upper()
 

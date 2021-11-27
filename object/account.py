@@ -20,17 +20,17 @@ def tokentoStudentID(token):
     return row[0]
 
 def login(user, passwd):
-    cursor.execute("select * from users where StudentID='" + user +"'")
     passwdmd5 = process.strtomd5(user+passwd)
-    print(passwdmd5)
+    cursor.execute("select * from users where StudentID='" + user +"' and password = '"+passwdmd5+"'")
+    # print(passwdmd5)
     rows = cursor.fetchall()
     if(len(rows)>0):
-        if rows[0][1] == passwdmd5:
-            cursor.execute("select * from users_without_password where StudentID='" + user +"'")
-            cursor.execute("DESCRIBE users")
-            cols = cursor.fetchall()
-            process.log(user, "App", "Login Success!")
-            return process.tabletojson(cols, rows)
+        cursor.execute("select * from users_without_password where StudentID='" + user +"'")
+        cursor.execute("DESCRIBE users")
+        cols = cursor.fetchall()
+        process.log(user, "App", "Login Success!")
+        return process.tabletojson(cols, rows)
+            
     else:
         return process.error("Student ID or Password incorrect!")
     

@@ -53,6 +53,21 @@ def viewall(token):
     cols = cursor.fetchall()
     return process.tabletojson(cols, rows)
 
+def allofStudent(token, StudentID):
+    if(account.tokenadmin(token)):
+        cursor.execute('select * from users where StudentID = "'+StudentID+'"')
+        rows = cursor.fetchall()
+        if(len(rows)>0):
+            cursor.execute('select * from borrow where StudentID = "'+StudentID+'"')
+            rows = cursor.fetchall()
+            cursor.execute("DESCRIBE borrow")
+            cols = cursor.fetchall()
+            return process.tabletojson(cols, rows)
+        else:
+            return process.error("Student ID does not exist!")
+    else:
+        return process.error("You are not authorized to perform this action!")
+
 def confirm(token, borrowID):
     if(account.tokenadmin(token)):
         cursor.execute('select * from borrow where ID = "'+borrowID+'"')

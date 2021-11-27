@@ -20,8 +20,14 @@ def home():
 
 # Login API
 
+
+            
+
 @app.route('/api/login', methods=['POST', 'GET'])
 def login():
+    if process.checksqli(request.args):
+        return process.error("SQL Injection!")
+    
     if 'username' in request.args and 'password' in request.args:
         username = request.args['username']
         password = request.args['password']
@@ -34,6 +40,9 @@ def login():
 
 @app.route('/api/books/all', methods=['POST','GET'])
 def allbooks():
+    if process.checksqli(request.args):
+        return process.error("SQL Injection!")
+    
     if 'token' in request.args:
         token = request.args['token']
         if account.checktoken(token):
@@ -41,11 +50,14 @@ def allbooks():
         else:
             return process.error("Incorrect Token!")
     else:
-        return process.error
+        return process.page404
 
 
 @app.route('/api/books/search', methods=['POST', 'GET'])
 def searchbooks():
+    if process.checksqli(request.args):
+        return process.error("SQL Injection!")
+    
     if 'token' in request.args:
         token = request.args['token']
         if (account.checktoken(token)):
@@ -65,6 +77,9 @@ def searchbooks():
 
 @app.route('/api/books/category', methods=['POST', 'GET'])
 def getcategory():
+    if process.checksqli(request.args):
+        return process.error("SQL Injection!")
+    
     if 'token' in request.args:
         token = request.args['token']
         if (account.checktoken(token)):
@@ -79,6 +94,9 @@ def getcategory():
 
 @app.route('/api/borrow/request', methods=['POST', 'GET'])
 def borrowbook():
+    if process.checksqli(request.args):
+        return process.error("SQL Injection!")
+    
     if 'token' in request.args and 'documentsid' in request.args:
         token = request.args['token']
         documentsid = request.args['documentsid']
@@ -91,6 +109,9 @@ def borrowbook():
 
 @app.route('/api/borrow/cancel', methods=['POST', 'GET'])
 def cancel():
+    if process.checksqli(request.args):
+        return process.error("SQL Injection!")
+    
     if 'token' in request.args and 'borrowID' in request.args:
         token = request.args['token']
         borrowID = request.args['borrowID']
@@ -103,6 +124,9 @@ def cancel():
 
 @app.route('/api/borrow/all', methods=['POST', 'GET'])
 def allborrow():
+    if process.checksqli(request.args):
+        return process.error("SQL Injection!")
+    
     if 'token' in request.args:
         token = request.args['token']
         if (account.checktoken(token)):
@@ -112,9 +136,28 @@ def allborrow():
     else:
         return process.page404
 
+@app.route('/api/borrow/searchbyStudentID', methods=['POST', 'GET'])
+def allofStudent():
+    if process.checksqli(request.args):
+        return process.error("SQL Injection!")
+    
+    if 'token' in request.args and 'StudentID' in request.args:
+        token = request.args['token']
+        StudentID = request.args['StudentID']
+        if (account.checktoken(token)):
+            return borrow.allofStudent(token, StudentID)
+        else:
+            return process.error("Incorrect Token!")
+    else:
+        return process.page404
+
+
 
 @app.route('/api/borrow/confirm', methods=['POST', 'GET'])
 def confirm():
+    if process.checksqli(request.args):
+        return process.error("SQL Injection!")
+    
     if 'token' in request.args and 'borrowID' in request.args:
         token = request.args['token']
         borrowID = request.args['borrowID']
@@ -127,6 +170,9 @@ def confirm():
 
 @app.route('/api/borrow/return', methods=['POST', 'GET'])
 def returndocument():
+    if process.checksqli(request.args):
+        return process.error("SQL Injection!")
+    
     if 'token' in request.args and 'documentID' in request.args:
         token = request.args['token']
         documentID = request.args['documentID']
@@ -143,6 +189,9 @@ def returndocument():
 
 @app.route('/api/users/all', methods=['POST', 'GET'])
 def alluser():
+    if process.checksqli(request.args):
+        return process.error("SQL Injection!")
+    
     if 'token' in request.args:
         token = request.args['token']
         if (account.checktoken(token)):
@@ -154,6 +203,9 @@ def alluser():
 
 @app.route('/api/users/create', methods=['POST', 'GET'])
 def createuser():
+    if process.checksqli(request.args):
+        return process.error("SQL Injection!")
+    
     if 'token' in request.args and 'StudentID' in request.args and 'Password' in request.args and 'Fullname' in request.args and 'Specialization' in request.args and 'Class' in request.args and 'Admin' in request.args:
         token = request.args['token']
         StudentID = request.args['StudentID']
@@ -175,6 +227,9 @@ def createuser():
 
 @app.route('/api/users/del', methods=['POST', 'GET'])
 def deluser():
+    if process.checksqli(request.args):
+        return process.error("SQL Injection!")
+    
     if 'token' in request.args and 'StudentID' in request.args:
         token = request.args['token']
         StudentID = request.args['StudentID']
@@ -187,6 +242,9 @@ def deluser():
 
 @app.route('/api/users/disable', methods=['POST', 'GET'])
 def disableuser():
+    if process.checksqli(request.args):
+        return process.error("SQL Injection!")
+    
     if 'token' in request.args and 'StudentID' in request.args:
         token = request.args['token']
         StudentID = request.args['StudentID']
@@ -199,6 +257,9 @@ def disableuser():
 
 @app.route('/api/users/active', methods=['POST', 'GET'])
 def activeuser():
+    if process.checksqli(request.args):
+        return process.error("SQL Injection!")
+    
     if 'token' in request.args and 'StudentID' in request.args:
         token = request.args['token']
         StudentID = request.args['StudentID']
