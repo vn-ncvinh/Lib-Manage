@@ -36,4 +36,3 @@ def getcategory(token):
     cursor.execute("DESCRIBE category_quantity")
     cols=cursor.fetchall()
     return process.tabletojson(cols,rows)
-

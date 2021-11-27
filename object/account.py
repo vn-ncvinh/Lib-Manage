@@ -43,6 +43,20 @@ def tokenadmin(token):
     else:
         return False
 
+def changetoken(token):
+    newtoken = ''.join(random.choices(string.ascii_letters + string.digits, k=20))
+    cursor.execute("select * from users where token='"+token+"'")
+    rows = cursor.fetchall()
+    if(len(rows)>0):
+        query = "update users set token = '"+newtoken+"' where token = '"+token+"'"
+        cursor.execute(query)
+        db.connection.commit()
+        process.log(tokentoStudentID(token), tokentoStudentID(token), "Change Token" )
+        return process.ok("The token has been changed!")
+    else:
+        return process.error("An unknown error!")
+
+
 def viewall(token):
     if(tokenadmin(token)):
         cursor.execute('select * from users_hide')

@@ -28,10 +28,11 @@ def borrowbook(token, documentsID):
         return process.error("An unknown error!")
 
 def cancel(token, borrowID):
-    cursor.execute('select * from borrow where ID = "'+borrowID+'"')
-    row = cursor.fetchone()
-    if(row[3]=='wait'):
-        documentID = row[2]
+    cursor.execute('select * from borrow where ID = "'+borrowID+'" and status = "wait"')
+    rows = cursor.fetchall()
+
+    if(len(rows)>0):
+        documentID = rows[0][2]
         cursor.execute('update document set status = "available" where id = "'+documentID+'"')
         db.connection.commit()
         cursor.execute('update borrow set status = "cancel" where id = "'+borrowID+'"')
@@ -70,9 +71,9 @@ def allofStudent(token, StudentID):
 
 def confirm(token, borrowID):
     if(account.tokenadmin(token)):
-        cursor.execute('select * from borrow where ID = "'+borrowID+'"')
-        row = cursor.fetchone()
-        if(row[3]=='wait'):
+        cursor.execute('select * from borrow where ID = "'+borrowID+'" and status = "wait"')
+        rows = cursor.fetchall()
+        if(len(rows)>0):
             cursor.execute('update borrow set status = "borrowed", BorrowDate = current_date() where id = "'+borrowID+'"')
             db.connection.commit()
             cursor.execute('select * from borrow where ID = "'+borrowID+'"')
@@ -81,6 +82,7 @@ def confirm(token, borrowID):
             cols = cursor.fetchall()
             process.log(account.tokentoStudentID(token), str(borrowID), "Confirm Borrow")
             return process.tabletojson(cols, rows)
+        
     else:
         return process.error("You are not authorized to perform this action!")
 
