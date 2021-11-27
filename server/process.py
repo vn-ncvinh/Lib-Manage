@@ -6,9 +6,10 @@ page404 = "<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested UR
 
 def sqli(str):
     # print(str)
-    if ' ' in str.upper() or "'" in str.upper() or '"' in str.upper() or ' OR ' in str.upper() or '=' in str.upper():
-        return True
-    
+    detection = ["'" , '"' , ' OR ' , '=', 'SELECT ', 'FROM ', 'WHERE ', 'DROP ', 'DELETE ', 'UPDATE ']
+    for detect in detection:
+        if detect in str.upper():
+            return True
     return False
 
 def checksqli(arr):
