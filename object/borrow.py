@@ -4,7 +4,7 @@ from server import process
 
 cursor = db.cursor
 
-def borrowbook(token, documentsID):
+def borrowbook(token, documentsID, BorrowingTime):
     cursor.execute('select * from documents_quantity where ID = "'+documentsID+'"')
     row = cursor.fetchone()
     # print(row)
@@ -15,7 +15,7 @@ def borrowbook(token, documentsID):
         StudentID = account.tokentoStudentID(token)
         cursor.execute('update document set status = "not available" where id = "'+documentID+'"')
         db.connection.commit()
-        cursor.execute('INSERT INTO borrow (StudentID, DocumentID) VALUES ("'+StudentID+'", "'+documentID+'");')
+        cursor.execute('INSERT INTO borrow (StudentID, DocumentID, BorrowingTime) VALUES ("'+StudentID+'", "'+documentID+'", '+BorrowingTime+');')
         db.connection.commit()
         cursor.execute('select * from borrow where StudentID = "'+StudentID+'" and DocumentID = "'+documentID+'" and status = "wait"')
         rows = cursor.fetchall()
@@ -28,7 +28,8 @@ def borrowbook(token, documentsID):
         return process.error("An unknown error!")
 
 def cancel(token, borrowID):
-    cursor.execute('select * from borrow where ID = "'+borrowID+'" and status = "wait"')
+    StudentID = account.tokentoStudentID(token)
+    cursor.execute('select * from borrow where ID = "'+borrowID+'" and StudentID = "'+StudentID+'" and status = "wait"')
     rows = cursor.fetchall()
 
     if(len(rows)>0):

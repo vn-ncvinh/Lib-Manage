@@ -97,11 +97,12 @@ def borrowbook():
     if process.checksqli(request.args):
         return process.error("SQL Injection!")
     
-    if 'token' in request.args and 'documentsid' in request.args:
+    if 'token' in request.args and 'documentsid' in request.args and 'BorrowingTime' in request.args:
         token = request.args['token']
         documentsid = request.args['documentsid']
+        BorrowingTime = request.args['BorrowingTime']
         if (account.checktoken(token)):
-            return borrow.borrowbook(token,documentsid)
+            return borrow.borrowbook(token,documentsid,BorrowingTime)
         else:
             return process.error("Incorrect Token!")
     else:

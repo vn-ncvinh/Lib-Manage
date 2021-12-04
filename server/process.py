@@ -6,7 +6,7 @@ page404 = "<title>404 Not Found</title>\n<h1>Not Found</h1>\n<p>The requested UR
 
 def sqli(str):
     # print(str)
-    detection = ["'" , '"' , ' OR ' , '=', 'SELECT ', 'FROM ', 'WHERE ', 'DROP ', 'DELETE ', 'UPDATE ']
+    detection = ['OR ', 'SELECT ', 'FROM ', 'WHERE ', 'DROP ', 'DELETE ', 'UPDATE ', 'AND ']
     for detect in detection:
         if detect in str.upper():
             return True

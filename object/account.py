@@ -25,8 +25,9 @@ def login(user, passwd):
     # print(passwdmd5)
     rows = cursor.fetchall()
     if(len(rows)>0):
-        cursor.execute("select * from users_without_password where StudentID='" + user +"'")
-        cursor.execute("DESCRIBE users")
+        cursor.execute("select * from users_hide_password where StudentID='" + user +"'")
+        rows = cursor.fetchall()
+        cursor.execute("DESCRIBE users_hide_password")
         cols = cursor.fetchall()
         process.log(user, "App", "Login Success!")
         return process.tabletojson(cols, rows)

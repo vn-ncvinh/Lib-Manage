@@ -34,7 +34,7 @@ CREATE TABLE `borrow` (
   KEY `DocumentID` (`DocumentID`),
   CONSTRAINT `borrow_ibfk_1` FOREIGN KEY (`StudentID`) REFERENCES `users` (`StudentID`),
   CONSTRAINT `borrow_ibfk_2` FOREIGN KEY (`DocumentID`) REFERENCES `document` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,7 +43,7 @@ CREATE TABLE `borrow` (
 
 LOCK TABLES `borrow` WRITE;
 /*!40000 ALTER TABLE `borrow` DISABLE KEYS */;
-INSERT INTO `borrow` VALUES (1,'AT150265','100001','return','2021-11-25','2021-11-25'),(2,'AT150265','100002','cancel',NULL,NULL),(3,'AT150265','100022','cancel',NULL,NULL),(4,'AT150265','100023','cancel',NULL,NULL),(5,'AT150265','100011','cancel',NULL,NULL),(6,'AT150265','100012','cancel',NULL,NULL),(7,'AT150265','100013','cancel',NULL,NULL),(8,'AT150265','100001','cancel',NULL,NULL),(9,'AT150265','100001','return','2021-11-25','2021-11-25'),(10,'AT150265','100011','return','2021-11-25','2021-11-25'),(11,'AT150265','100011','return','2021-11-25','2021-11-25'),(14,'AT150265','100011','cancel',NULL,NULL),(15,'AT150265','100011','return','2021-11-25','2021-11-25'),(16,'AT150265','100022','cancel',NULL,NULL),(17,'AT150265','100023','cancel',NULL,NULL);
+INSERT INTO `borrow` VALUES (1,'AT150265','100001','return','2021-11-25','2021-11-25'),(2,'AT150265','100002','cancel',NULL,NULL),(3,'AT150265','100022','cancel',NULL,NULL),(4,'AT150265','100023','cancel',NULL,NULL),(5,'AT150265','100011','cancel',NULL,NULL),(6,'AT150265','100012','cancel',NULL,NULL),(7,'AT150265','100013','cancel',NULL,NULL),(8,'AT150265','100001','cancel',NULL,NULL),(9,'AT150265','100001','return','2021-11-25','2021-11-25'),(10,'AT150265','100011','return','2021-11-25','2021-11-25'),(11,'AT150265','100011','return','2021-11-25','2021-11-25'),(14,'AT150265','100011','cancel',NULL,NULL),(15,'AT150265','100011','return','2021-11-25','2021-11-25'),(16,'AT150265','100022','cancel',NULL,NULL),(17,'AT150265','100023','cancel',NULL,NULL),(18,'AT150265','100022','cancel',NULL,NULL),(19,'AT150265','100023','cancel',NULL,NULL),(20,'AT150265','100024','cancel',NULL,NULL),(21,'AT150265','100025','cancel',NULL,NULL);
 /*!40000 ALTER TABLE `borrow` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -231,7 +231,7 @@ CREATE TABLE `log` (
   `Destination` varchar(45) DEFAULT NULL,
   `Time` date DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=71 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -240,7 +240,7 @@ CREATE TABLE `log` (
 
 LOCK TABLES `log` WRITE;
 /*!40000 ALTER TABLE `log` DISABLE KEYS */;
-INSERT INTO `log` VALUES (1,'AT250265','Test','test','2021-11-25'),(2,'AT250265','Delete User','AT150202','2021-11-25'),(3,'AT250265','Delete User','AT150201','2021-11-25'),(4,'AT150265','Login Success!','App','2021-11-25'),(5,'AT150265','Cancel Borrow','14','2021-11-25'),(6,'AT150265','Borrow Document','15','2021-11-25'),(7,'AT150265','Confirm Borrow','15','2021-11-25'),(8,'AT150265','Return Document','15','2021-11-25'),(9,'AT150265','Delete User','AT150267','2021-11-25'),(14,'AT150265','Delete User','AT1502068','2021-11-25'),(15,'AT150201','Create User','AT150201','2021-11-25'),(16,'AT150265','Delete User','AT150201','2021-11-25'),(17,'AT150201','Create User','AT150201','2021-11-25'),(18,'AT150265','Delete User','AT150201','2021-11-25'),(19,'AT150265','Disable User','AT150265','2021-11-25'),(20,'AT150266','Disable User','AT150265','2021-11-25'),(21,'AT150265','Disable User','AT150266','2021-11-25'),(22,'AT150265','Disable User','AT150266','2021-11-25'),(23,'AT150265','Borrow Document','16','2021-11-25'),(24,'AT150265','Borrow Document','17','2021-11-25'),(25,'AT150265','Cancel Borrow','16','2021-11-25'),(26,'AT150265','Cancel Borrow','17','2021-11-25');
+INSERT INTO `log` VALUES (1,'AT250265','Test','test','2021-11-25'),(2,'AT250265','Delete User','AT150202','2021-11-25'),(3,'AT250265','Delete User','AT150201','2021-11-25'),(4,'AT150265','Login Success!','App','2021-11-25'),(5,'AT150265','Cancel Borrow','14','2021-11-25'),(6,'AT150265','Borrow Document','15','2021-11-25'),(7,'AT150265','Confirm Borrow','15','2021-11-25'),(8,'AT150265','Return Document','15','2021-11-25'),(9,'AT150265','Delete User','AT150267','2021-11-25'),(14,'AT150265','Delete User','AT1502068','2021-11-25'),(15,'AT150201','Create User','AT150201','2021-11-25'),(16,'AT150265','Delete User','AT150201','2021-11-25'),(17,'AT150201','Create User','AT150201','2021-11-25'),(18,'AT150265','Delete User','AT150201','2021-11-25'),(19,'AT150265','Disable User','AT150265','2021-11-25'),(20,'AT150266','Disable User','AT150265','2021-11-25'),(21,'AT150265','Disable User','AT150266','2021-11-25'),(22,'AT150265','Disable User','AT150266','2021-11-25'),(23,'AT150265','Borrow Document','16','2021-11-25'),(24,'AT150265','Borrow Document','17','2021-11-25'),(25,'AT150265','Cancel Borrow','16','2021-11-25'),(26,'AT150265','Cancel Borrow','17','2021-11-25'),(27,'AT150265','Login Success!','App','2021-11-27'),(28,'AT150265','Login Success!','App','2021-11-27'),(29,'AT150265','Login Success!','App','2021-11-27'),(30,'AT150265','Login Success!','App','2021-11-27'),(31,'AT150265','Login Success!','App','2021-11-27'),(32,'AT150265','Login Success!','App','2021-11-27'),(33,'AT150265','Login Success!','App','2021-11-27'),(34,'AT150265','Login Success!','App','2021-11-27'),(35,'AT150265','Login Success!','App','2021-11-27'),(36,'AT150265','Login Success!','App','2021-11-27'),(37,'AT150265','Login Success!','App','2021-11-27'),(38,'AT150265','Login Success!','App','2021-11-27'),(39,'AT150265','Login Success!','App','2021-11-27'),(40,'AT150265','Login Success!','App','2021-11-27'),(41,'AT150265','Login Success!','App','2021-11-27'),(42,'AT150265','Login Success!','App','2021-11-27'),(43,'AT150265','Login Success!','App','2021-11-27'),(44,'AT150265\' OR 1=1 OR \'1','Login Success!','App','2021-11-27'),(45,'AT150265\' OR 1=1 OR \'1','Login Success!','App','2021-11-27'),(46,'AT150265','Login Success!','App','2021-11-27'),(47,'AT150265','Login Success!','App','2021-11-27'),(48,'AT150265\' OR 1=1 OR \'1','Login Success!','App','2021-11-27'),(49,'AT150265','Login Success!','App','2021-11-27'),(50,'AT150265','Borrow Document','18','2021-11-27'),(51,'AT150265','Borrow Document','19','2021-11-27'),(52,'AT150265','Login Success!','App','2021-11-27'),(53,'AT150265','Borrow Document','20','2021-11-27'),(54,'AT150265','Login Success!','App','2021-11-27'),(55,'AT150265','Login Success!','App','2021-11-27'),(56,'AT150265','Login Success!','App','2021-11-27'),(57,'AT150265','Login Success!','App','2021-11-27'),(58,'AT150265','Borrow Document','21','2021-11-27'),(59,'AT150265','Login Success!','App','2021-11-27'),(60,'AT150265','Login Success!','App','2021-11-27'),(61,'AT150265','Login Success!','App','2021-11-27'),(62,'AT150265','Login Success!','App','2021-11-27'),(63,'AT150265','Cancel Borrow','18','2021-11-27'),(64,'AT150265','Cancel Borrow','19','2021-11-27'),(65,'AT150265','Cancel Borrow','20','2021-11-27'),(66,'AT150265','Cancel Borrow','21','2021-11-27'),(67,'AT150265','Login Success!','App','2021-11-27'),(68,'AT150265','Login Success!','App','2021-11-27'),(69,'AT150265','Login Success!','App','2021-11-27'),(70,'AT150265','Login Success!','App','2021-11-27');
 /*!40000 ALTER TABLE `log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -296,14 +296,14 @@ SET @saved_cs_client     = @@character_set_client;
 SET character_set_client = @saved_cs_client;
 
 --
--- Temporary view structure for view `users_without_password`
+-- Temporary view structure for view `users_hide_password`
 --
 
-DROP TABLE IF EXISTS `users_without_password`;
-/*!50001 DROP VIEW IF EXISTS `users_without_password`*/;
+DROP TABLE IF EXISTS `users_hide_password`;
+/*!50001 DROP VIEW IF EXISTS `users_hide_password`*/;
 SET @saved_cs_client     = @@character_set_client;
 /*!50503 SET character_set_client = utf8mb4 */;
-/*!50001 CREATE VIEW `users_without_password` AS SELECT 
+/*!50001 CREATE VIEW `users_hide_password` AS SELECT 
  1 AS `StudentID`,
  1 AS `FullName`,
  1 AS `PhoneNumber`,
@@ -406,10 +406,10 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
--- Final view structure for view `users_without_password`
+-- Final view structure for view `users_hide_password`
 --
 
-/*!50001 DROP VIEW IF EXISTS `users_without_password`*/;
+/*!50001 DROP VIEW IF EXISTS `users_hide_password`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
@@ -418,7 +418,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`ncvinh`@`%` SQL SECURITY DEFINER */
-/*!50001 VIEW `users_without_password` AS select `users`.`StudentID` AS `StudentID`,`users`.`FullName` AS `FullName`,`users`.`PhoneNumber` AS `PhoneNumber`,`users`.`Specialization` AS `Specialization`,`users`.`Class` AS `Class`,`users`.`Admin` AS `Admin`,`users`.`Token` AS `Token`,`users`.`Expiry` AS `Expiry`,`users`.`Status` AS `Status` from `users` where (`users`.`Status` = 'active') */;
+/*!50001 VIEW `users_hide_password` AS select `users`.`StudentID` AS `StudentID`,`users`.`FullName` AS `FullName`,`users`.`PhoneNumber` AS `PhoneNumber`,`users`.`Specialization` AS `Specialization`,`users`.`Class` AS `Class`,`users`.`Admin` AS `Admin`,`users`.`Token` AS `Token`,`users`.`Expiry` AS `Expiry`,`users`.`Status` AS `Status` from `users` where (`users`.`Status` = 'active') */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -432,4 +432,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-11-25 10:32:44
+-- Dump completed on 2021-11-28  9:24:05
