@@ -22,7 +22,7 @@ def borrowbook(token, documentsID, BorrowingTime):
         cursor.execute("DESCRIBE borrow")
         cols = cursor.fetchall()
         process.log(account.tokentoStudentID(token), str(rows[0][0]), "Borrow Document")
-        return process.tabletojson(cols, rows)
+        return process.tabletojson(cols, rows,"Borrow registration successful!")
 
     else:
         return process.error("An unknown error!")
@@ -43,7 +43,7 @@ def cancel(token, borrowID):
         cursor.execute("DESCRIBE borrow")
         cols = cursor.fetchall()
         process.log(account.tokentoStudentID(token), str(borrowID), "Cancel Borrow")
-        return process.tabletojson(cols, rows)
+        return process.tabletojson(cols, rows, "Canceled!")
     else:
         return process.error("An unknown error!")
 
@@ -53,7 +53,7 @@ def viewall(token):
     rows = cursor.fetchall()
     cursor.execute("DESCRIBE borrow")
     cols = cursor.fetchall()
-    return process.tabletojson(cols, rows)
+    return process.tabletojson(cols, rows, "Successfully!")
 
 def allofStudent(token, StudentID):
     if(account.tokenadmin(token)):
@@ -64,7 +64,7 @@ def allofStudent(token, StudentID):
             rows = cursor.fetchall()
             cursor.execute("DESCRIBE borrow")
             cols = cursor.fetchall()
-            return process.tabletojson(cols, rows)
+            return process.tabletojson(cols, rows, "Successfully!")
         else:
             return process.error("Student ID does not exist!")
     else:
@@ -82,7 +82,7 @@ def confirm(token, borrowID):
             cursor.execute("DESCRIBE borrow")
             cols = cursor.fetchall()
             process.log(account.tokentoStudentID(token), str(borrowID), "Confirm Borrow")
-            return process.tabletojson(cols, rows)
+            return process.tabletojson(cols, rows, "Successfully!")
         
     else:
         return process.error("You are not authorized to perform this action!")
@@ -102,7 +102,7 @@ def returndocument(token, documentID):
             cursor.execute("DESCRIBE borrow")
             cols = cursor.fetchall()
             process.log(account.tokentoStudentID(token), str(borrowID), "Return Document")
-            return process.tabletojson(cols, rows)
+            return process.tabletojson(cols, rows, "Successfully!")
         else:
             return process.error("An unknown error!")
     else:

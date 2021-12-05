@@ -1,38 +1,30 @@
 from server import db
 from server import process
+from object import account
 
 cursor = db.cursor
 
-def allbooks(token):
+def allbooks():
     query="select * from documents_quantity"
     cursor.execute(query)
     rows=cursor.fetchall()
     cursor.execute("DESCRIBE documents_quantity")
     cols=cursor.fetchall()
-    return process.tabletojson(cols,rows)
+    return process.tabletojson(cols,rows, "Successfully!")
 
-def searchbookswithname(name, token):
+def searchbooks(name):
     query="select * from documents_quantity where Name like '%"+name+"%'"
     cursor.execute(query)
     print(query)
     rows=cursor.fetchall()
     cursor.execute("DESCRIBE documents_quantity")
     cols=cursor.fetchall()
-    return process.tabletojson(cols,rows)
+    return process.tabletojson(cols,rows, "Successfully!")
 
-def searchbookswithauthor(author, token):
-    query="select * from documents_quantity where author like '%"+author+"%'"
-    cursor.execute(query)
-    print(query)
-    rows=cursor.fetchall()
-    cursor.execute("DESCRIBE documents_quantity")
-    cols=cursor.fetchall()
-    return process.tabletojson(cols,rows)
-
-def getcategory(token):
+def getcategory():
     query="select * from category_quantity"
     cursor.execute(query)
     rows=cursor.fetchall()
     cursor.execute("DESCRIBE category_quantity")
     cols=cursor.fetchall()
-    return process.tabletojson(cols,rows)
+    return process.tabletojson(cols,rows, "Successfully!")

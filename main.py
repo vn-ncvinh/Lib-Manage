@@ -40,54 +40,22 @@ def login():
 
 @app.route('/api/books/all', methods=['POST','GET'])
 def allbooks():
-    if process.checksqli(request.args):
-        return process.error("SQL Injection!")
-    
-    if 'token' in request.args:
-        token = request.args['token']
-        if account.checktoken(token):
-            return books.allbooks(token)
-        else:
-            return process.error("Incorrect Token!")
-    else:
-        return process.page404
+    return books.allbooks()
 
 
 @app.route('/api/books/search', methods=['POST', 'GET'])
 def searchbooks():
     if process.checksqli(request.args):
         return process.error("SQL Injection!")
-    
-    if 'token' in request.args:
-        token = request.args['token']
-        if (account.checktoken(token)):
-            if 'name' in request.args:
-                name = request.args['name']
-                return books.searchbookswithname(name, token)
-            else:
-                if 'author' in request.args:
-                    author = request.args['author']
-                    return books.searchbookswithauthor(author,token)
-                else:
-                    return process.page404
-        else:
-            return process.error("Incorrect Token!")
+    if 'key' in request.args:
+        key = request.args['key']
+        return books.searchbooks(key)
     else:
         return process.page404
 
 @app.route('/api/books/category', methods=['POST', 'GET'])
 def getcategory():
-    if process.checksqli(request.args):
-        return process.error("SQL Injection!")
-    
-    if 'token' in request.args:
-        token = request.args['token']
-        if (account.checktoken(token)):
-            return books.getcategory(token)
-        else:
-            return process.error("Incorrect Token!")
-    else:
-        return process.page404
+    return books.getcategory()
 
 
 # Borrow book API

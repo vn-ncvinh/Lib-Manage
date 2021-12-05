@@ -24,7 +24,7 @@ def strtomd5(str):
 def strtojson(str):
     return json.loads(str)
 
-def tabletojson(cols, rows):
+def tabletojson(cols, rows, message):
     result='{"status":"OK", "data":['
     for row in rows:
         result = result + '{'
@@ -34,7 +34,7 @@ def tabletojson(cols, rows):
         result = result + '},'
     if(result[len(result)-1]==','):
         result = result[:(len(result)-1)]
-    result = result + ']}'
+    result = result + '], "message":"'+message+'"}'
     # print(result)
     return strtojson(result)
 
@@ -43,7 +43,7 @@ def log(source, destination, content):
     db.connection.commit()
 
 def error(message):
-    return strtojson('{"status":"ERROR", "data":[{"message":"'+message+'"}]}')
+    return strtojson('{"status":"ERROR", "data":[], "message":"'+message+'"}')
 
 def ok(message):
-    return strtojson('{"status":"OK", "data":[{"message":"'+message+'"}]}')
+    return strtojson('{"status":"OK", "data":[], "message":"'+message+'"}')

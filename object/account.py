@@ -21,7 +21,7 @@ def tokentoStudentID(token):
 
 def login(user, passwd):
     passwdmd5 = process.strtomd5(user+passwd)
-    cursor.execute("select * from users where StudentID='" + user +"' and password = '"+passwdmd5+"'")
+    cursor.execute("select * from users where StudentID='" + user +"' and password = '"+passwdmd5+"' and status = 'active'")
     # print(passwdmd5)
     rows = cursor.fetchall()
     if(len(rows)>0):
@@ -29,11 +29,11 @@ def login(user, passwd):
         rows = cursor.fetchall()
         cursor.execute("DESCRIBE users_hide_password")
         cols = cursor.fetchall()
-        process.log(user, "App", "Login Success!")
-        return process.tabletojson(cols, rows)
+        process.log(user, "App", "Logged in successfully!")
+        return process.tabletojson(cols, rows, "Logged in successfully!")
             
     else:
-        return process.error("Student ID or Password incorrect!")
+        return process.error("Student ID or Password incorrect or Account has been disabled!")
     
 
 def tokenadmin(token):
@@ -64,7 +64,7 @@ def viewall(token):
         rows = cursor.fetchall()
         cursor.execute("DESCRIBE users_hide")
         cols = cursor.fetchall()
-        return process.tabletojson(cols, rows)
+        return process.tabletojson(cols, rows, "Successfully!")
     else:
         return process.error("You are not authorized to perform this action!")
 
@@ -86,7 +86,7 @@ def createuser(token, StudentID, Password, Fullname, PhoneNumber, Specialization
         cursor.execute("DESCRIBE users_hide")
         cols = cursor.fetchall()
         process.log(tokentoStudentID(token), StudentID, "Create User")
-        return process.tabletojson(cols, rows)
+        return process.tabletojson(cols, rows, "Successfully!")
     else:
         return process.error("You are not authorized to perform this action!")
 
