@@ -22,10 +22,12 @@ def strtomd5(str):
     return hashlib.md5(str.encode('utf-8')).hexdigest().upper()
 
 def strtojson(str):
-    return json.loads(str)
+    result = json.loads(str)
+    # print(result)
+    return result
 
 def tabletojson(cols, rows, message):
-    result='{"status":"OK", "data":['
+    result='{"status":"OK", "message":"'+message+'", "data":['
     for row in rows:
         result = result + '{'
         for col in cols:
@@ -34,7 +36,7 @@ def tabletojson(cols, rows, message):
         result = result + '},'
     if(result[len(result)-1]==','):
         result = result[:(len(result)-1)]
-    result = result + '], "message":"'+message+'"}'
+    result = result + ']}'
     # print(result)
     return strtojson(result)
 
@@ -43,7 +45,7 @@ def log(source, destination, content):
     db.connection.commit()
 
 def error(message):
-    return strtojson('{"status":"ERROR", "data":[], "message":"'+message+'"}')
+    return strtojson('{"status":"ERROR", "message":"'+message+'", "data":[]}')
 
 def ok(message):
-    return strtojson('{"status":"OK", "data":[], "message":"'+message+'"}')
+    return strtojson('{"status":"OK", "message":"'+message+'", "data":[]}')

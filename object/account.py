@@ -44,6 +44,14 @@ def tokenadmin(token):
     else:
         return False
 
+def StudentIDadmin(StudentID):
+    cursor.execute("select * from users where StudentID='"+StudentID+"'")
+    row = cursor.fetchone()
+    if(row[6]==1):
+        return True
+    else:
+        return False
+
 def changetoken(token):
     newtoken = ''.join(random.choices(string.ascii_letters + string.digits, k=20))
     cursor.execute("select * from users where token='"+token+"'")
@@ -69,6 +77,8 @@ def viewall(token):
         return process.error("You are not authorized to perform this action!")
 
 def createuser(token, StudentID, Password, Fullname, PhoneNumber, Specialization, Class, Admin):
+    if (Admin != "0"):
+        return process.error("You are not permitted!")
     if(tokenadmin(token)):
         cursor.execute('select * from users where StudentID = "'+StudentID+'"')
         rows = cursor.fetchall()
@@ -95,6 +105,8 @@ def deluser(token, StudentID):
         cursor.execute('select * from users where StudentID = "'+StudentID+'"')
         rows = cursor.fetchall()
         if(len(rows)>0):
+            if(StudentIDadmin(StudentID)):
+                return process.error("You are not permitted!")
             query = "Select * from borrow where StudentID = '"+StudentID+"' and (status = 'borrowed' or status = 'wait')"
             cursor.execute(query)
             rows = cursor.fetchall()
@@ -119,6 +131,8 @@ def disableuser(token, StudentID):
         rows = cursor.fetchall()
         if(len(rows)>0):
             if(rows[0][9]=='active'):
+                if(StudentIDadmin(StudentID)):
+                    return process.error("You are not permitted!")
                 query = "update users set status = 'disable' where StudentID = '"+StudentID+"'"
                 cursor.execute(query)
                 db.connection.commit()
@@ -137,6 +151,8 @@ def activeuser(token, StudentID):
         rows = cursor.fetchall()
         if(len(rows)>0):
             if(rows[0][9]=='disable'):
+                if(StudentIDadmin(StudentID)):
+                    return process.error("You are not permitted!")
                 query = "update users set status = 'active' where StudentID = '"+StudentID+"'"
                 cursor.execute(query)
                 db.connection.commit()

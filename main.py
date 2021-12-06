@@ -9,6 +9,7 @@ from flask import request
 app = flask.Flask(__name__)
 app.config["DEBUG"] = True
 app.config['JSON_AS_ASCII'] = False
+app.config['JSON_SORT_KEYS'] = False
 
 
 
@@ -18,10 +19,7 @@ def home():
 <p>API for Libmanage.</p>'''
 
 
-# Login API
-
-
-            
+# Login API            
 
 @app.route('/api/login', methods=['POST', 'GET'])
 def login():
@@ -57,6 +55,24 @@ def searchbooks():
 def getcategory():
     return books.getcategory()
 
+
+# Name, Author, Description
+
+@app.route('/api/books/add', methods=['POST', 'GET'])
+def addbooks():
+    if process.checksqli(request.args):
+        return process.error("SQL Injection!")
+    if 'token' in request.args and 'Name' in request.args and 'Author' in request.args and 'Description' in request.args:
+        token = request.args['token']
+        Name = request.args['Name']
+        Author = request.args['Author']
+        Description = request.args['Description']
+        if (account.checktoken(token)):
+            return books.addbooks(token, Name, Author, Description)
+        else:
+            return process.error("Incorrect Token!")
+    else:
+        return process.page404
 
 # Borrow book API
 
