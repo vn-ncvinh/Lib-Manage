@@ -1,0 +1,636 @@
+{
+	"info": {
+		"_postman_id": "71496556-31b0-41ef-b5b6-f17b7670e631",
+		"name": "Lib Manage API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Books View",
+					"item": [
+						{
+							"name": "View all",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/books/all?token=ge5hVuNgksZDmuo6bA3P",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"books",
+										"all"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "ge5hVuNgksZDmuo6bA3P"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search Name",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/books/search?key=Hệ thống",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"books",
+										"search"
+									],
+									"query": [
+										{
+											"key": "key",
+											"value": "Hệ thống"
+										},
+										{
+											"key": "token",
+											"value": "ge5hVuNgksZDmuo6bA3P",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Category",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/books/category?token=ge5hVuNgksZDmuo6bA3P",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"books",
+										"category"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "ge5hVuNgksZDmuo6bA3P"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Borrow Book",
+					"item": [
+						{
+							"name": "Borrow",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/borrow/request?token=NmbxvyYgTFyYw7O1mDMp&documentsid=1&BorrowingTime=14",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"borrow",
+										"request"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "NmbxvyYgTFyYw7O1mDMp"
+										},
+										{
+											"key": "documentsid",
+											"value": "1"
+										},
+										{
+											"key": "BorrowingTime",
+											"value": "14"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Cancel",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/borrow/cancel?token=ge5hVuNgksZDmuo6bA3P&borrowID=17",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"borrow",
+										"cancel"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "ge5hVuNgksZDmuo6bA3P"
+										},
+										{
+											"key": "borrowID",
+											"value": "17"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View all",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/borrow/all?token=k2XpR7wP7SilE7dw8b4m",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"borrow",
+										"all"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "k2XpR7wP7SilE7dw8b4m"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/login?username=AT150265&password=F6592E92496F977A3831F1999902FBC9",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"login"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "AT150265"
+								},
+								{
+									"key": "password",
+									"value": "F6592E92496F977A3831F1999902FBC9",
+									"description": "Password hashed md5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/logout?token=O1GvpzUHDnz8MJ2xuSCyuZQrNMZ7dO",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"logout"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "O1GvpzUHDnz8MJ2xuSCyuZQrNMZ7dO"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Admin",
+			"item": [
+				{
+					"name": "Borrow Book",
+					"item": [
+						{
+							"name": "Confirm",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/admin/borrow/confirm?token=NmbxvyYgTFyYw7O1mDMp&borrowID=28",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin",
+										"borrow",
+										"confirm"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "NmbxvyYgTFyYw7O1mDMp"
+										},
+										{
+											"key": "borrowID",
+											"value": "28"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Return",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/admin/borrow/return?token=NmbxvyYgTFyYw7O1mDMp&documentID=100003",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin",
+										"borrow",
+										"return"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "NmbxvyYgTFyYw7O1mDMp"
+										},
+										{
+											"key": "documentID",
+											"value": "100003"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View all wait and borrowed",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/admin/borrow/all?token=NmbxvyYgTFyYw7O1mDMp",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin",
+										"borrow",
+										"all"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "NmbxvyYgTFyYw7O1mDMp"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Lost",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/admin/borrow/lose?token=NmbxvyYgTFyYw7O1mDMp&documentID=100002",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin",
+										"borrow",
+										"lose"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "NmbxvyYgTFyYw7O1mDMp"
+										},
+										{
+											"key": "documentID",
+											"value": "100002"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "User Manage",
+					"item": [
+						{
+							"name": "Delete",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/admin/users/delete?token=ge5hVuNgksZDmuo6bA3P&StudentID=AT150201",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin",
+										"users",
+										"delete"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "ge5hVuNgksZDmuo6bA3P"
+										},
+										{
+											"key": "StudentID",
+											"value": "AT150201"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Disable",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/admin/users/disable?token=ge5hVuNgksZDmuo6bA3P&StudentID=AT1502068",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin",
+										"users",
+										"disable"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "ge5hVuNgksZDmuo6bA3P"
+										},
+										{
+											"key": "StudentID",
+											"value": "AT1502068"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Active",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/admin/users/active?token=ge5hVuNgksZDmuo6bA3P&StudentID=AT1502068",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin",
+										"users",
+										"active"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "ge5hVuNgksZDmuo6bA3P"
+										},
+										{
+											"key": "StudentID",
+											"value": "AT1502068"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/admin/users/create?token=ge5hVuNgksZDmuo6bA3P&StudentID=AT1502068&Password=0766188BFA633CAEB4E8A6DB3E846285&Fullname=Nguyễn Công Vinh&PhoneNumber=1&Specialization=ATTT&Class=AT15B&Admin=0",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin",
+										"users",
+										"create"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "ge5hVuNgksZDmuo6bA3P"
+										},
+										{
+											"key": "StudentID",
+											"value": "AT1502068"
+										},
+										{
+											"key": "Password",
+											"value": "0766188BFA633CAEB4E8A6DB3E846285"
+										},
+										{
+											"key": "Fullname",
+											"value": "Nguyễn Công Vinh"
+										},
+										{
+											"key": "PhoneNumber",
+											"value": "1"
+										},
+										{
+											"key": "Specialization",
+											"value": "ATTT"
+										},
+										{
+											"key": "Class",
+											"value": "AT15B"
+										},
+										{
+											"key": "Admin",
+											"value": "0"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View all",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/admin/users/all?token=VfYbaanAsVozvIJ7M5OS",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin",
+										"users",
+										"all"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "VfYbaanAsVozvIJ7M5OS"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Books Manage",
+					"item": [
+						{
+							"name": "Add Books",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/books/add?token=ge5hVuNgksZDmuo6bA3P&Name=Tích phân 2&Author=Công Vĩnh&Description=Toán cao cấp dành cho sinh viên năm hai",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"books",
+										"add"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "ge5hVuNgksZDmuo6bA3P"
+										},
+										{
+											"key": "Name",
+											"value": "Tích phân 2"
+										},
+										{
+											"key": "Author",
+											"value": "Công Vĩnh"
+										},
+										{
+											"key": "Description",
+											"value": "Toán cao cấp dành cho sinh viên năm hai"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "localhost:8080/api/admin/books/delete?token=k2XpR7wP7SilE7dw8b4m&ID=1",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"api",
+										"admin",
+										"books",
+										"delete"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "k2XpR7wP7SilE7dw8b4m"
+										},
+										{
+											"key": "ID",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	]
+}

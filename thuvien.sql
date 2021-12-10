@@ -32,10 +32,8 @@ CREATE TABLE `borrow` (
   `ReturnDate` date DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `StudentID` (`StudentID`),
-  KEY `DocumentID` (`DocumentID`),
-  CONSTRAINT `borrow_ibfk_1` FOREIGN KEY (`StudentID`) REFERENCES `users` (`StudentID`),
-  CONSTRAINT `borrow_ibfk_2` FOREIGN KEY (`DocumentID`) REFERENCES `document` (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `borrow_ibfk_1` FOREIGN KEY (`StudentID`) REFERENCES `users` (`StudentID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +42,6 @@ CREATE TABLE `borrow` (
 
 LOCK TABLES `borrow` WRITE;
 /*!40000 ALTER TABLE `borrow` DISABLE KEYS */;
-INSERT INTO `borrow` VALUES (1,'AT150265','100001','return',NULL,'2021-11-25','2021-11-25'),(2,'AT150265','100002','cancel',NULL,NULL,NULL),(3,'AT150265','100022','cancel',NULL,NULL,NULL),(4,'AT150265','100023','cancel',NULL,NULL,NULL),(5,'AT150265','100011','cancel',NULL,NULL,NULL),(6,'AT150265','100012','cancel',NULL,NULL,NULL),(7,'AT150265','100013','cancel',NULL,NULL,NULL),(8,'AT150265','100001','cancel',NULL,NULL,NULL),(9,'AT150265','100001','return',NULL,'2021-11-25','2021-11-25'),(10,'AT150265','100011','return',NULL,'2021-11-25','2021-11-25'),(11,'AT150265','100011','return',NULL,'2021-11-25','2021-11-25'),(14,'AT150265','100011','cancel',NULL,NULL,NULL),(15,'AT150265','100011','return',NULL,'2021-11-25','2021-11-25'),(16,'AT150265','100022','cancel',NULL,NULL,NULL),(17,'AT150265','100023','cancel',NULL,NULL,NULL),(18,'AT150265','100022','cancel',NULL,NULL,NULL),(19,'AT150265','100023','cancel',NULL,NULL,NULL),(20,'AT150265','100024','cancel',NULL,NULL,NULL),(21,'AT150265','100025','cancel',NULL,NULL,NULL),(22,'AT150265','100002','cancel',7,NULL,NULL),(23,'AT150265','100002','cancel',7,NULL,NULL);
 /*!40000 ALTER TABLE `borrow` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -172,7 +169,7 @@ CREATE TABLE `document` (
 
 LOCK TABLES `document` WRITE;
 /*!40000 ALTER TABLE `document` DISABLE KEYS */;
-INSERT INTO `document` VALUES ('100001',1,1,'available'),('100002',1,1,'available'),('100003',1,1,'available'),('100004',1,1,'available'),('100005',1,1,'available'),('100006',1,1,'available'),('100007',1,1,'available'),('100008',1,1,'available'),('100009',1,1,'available'),('100010',1,1,'available'),('100011',2,1,'available'),('100012',2,1,'available'),('100013',2,1,'available'),('100014',2,1,'available'),('100015',2,1,'available'),('100016',2,1,'available'),('100017',2,1,'available'),('100018',2,1,'available'),('100019',2,1,'available'),('100020',2,1,'available'),('100021',2,1,'available'),('100022',3,1,'available'),('100023',3,1,'available'),('100024',3,1,'available'),('100025',3,1,'available'),('100026',3,1,'available'),('100027',3,1,'available'),('100028',3,1,'available'),('100029',3,1,'available'),('100030',3,1,'available'),('100031',3,1,'available');
+INSERT INTO `document` VALUES ('100003',1,1,'available'),('100004',1,1,'available'),('100005',1,1,'available'),('100006',1,1,'available'),('100007',1,1,'available'),('100008',1,1,'available'),('100009',1,1,'available'),('100010',1,1,'available'),('100011',2,1,'available'),('100012',2,1,'available'),('100013',2,1,'available'),('100014',2,1,'available'),('100015',2,1,'available'),('100016',2,1,'available'),('100017',2,1,'available'),('100018',2,1,'available'),('100019',2,1,'available'),('100020',2,1,'available'),('100021',2,1,'available'),('100022',3,1,'available'),('100023',3,1,'available'),('100024',3,1,'available'),('100025',3,1,'available'),('100026',3,1,'available'),('100027',3,1,'available'),('100028',3,1,'available'),('100029',3,1,'available'),('100030',3,1,'available'),('100031',3,1,'available');
 /*!40000 ALTER TABLE `document` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -198,7 +195,7 @@ CREATE TABLE `documents` (
 
 LOCK TABLES `documents` WRITE;
 /*!40000 ALTER TABLE `documents` DISABLE KEYS */;
-INSERT INTO `documents` VALUES (1,'Phân tích thiết kế hệ thống','Công Vĩnh',NULL),(2,'Lý thuyết mật mã','Bá Long',NULL),(3,'An toàn Hệ điều hành','Văn Vỹ',NULL),(4,'Lý thuyết Cơ sở dữ liệu','actvn',NULL),(5,'Tích phân','Công Vĩnh','Toán cao cấp dành cho sinh viên năm nhất'),(6,'Tích phân 2','Công Vĩnh','Toán cao cấp dành cho sinh viên năm hai');
+INSERT INTO `documents` VALUES (1,'Phân tích thiết kế hệ thống','Công Vĩnh',NULL),(2,'Lý thuyết mật mã','Bá Long',NULL),(3,'An toàn Hệ điều hành','Văn Vỹ',NULL),(4,'Lý thuyết Cơ sở dữ liệu','actvn',NULL),(5,'Tích phân','Công Vĩnh','Toán cao cấp dành cho sinh viên năm nhất');
 /*!40000 ALTER TABLE `documents` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -232,7 +229,7 @@ CREATE TABLE `log` (
   `Destination` varchar(45) DEFAULT NULL,
   `Time` date DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -241,7 +238,7 @@ CREATE TABLE `log` (
 
 LOCK TABLES `log` WRITE;
 /*!40000 ALTER TABLE `log` DISABLE KEYS */;
-INSERT INTO `log` VALUES (1,'AT250265','Test','test','2021-11-25'),(2,'AT250265','Delete User','AT150202','2021-11-25'),(3,'AT250265','Delete User','AT150201','2021-11-25'),(4,'AT150265','Login Success!','App','2021-11-25'),(5,'AT150265','Cancel Borrow','14','2021-11-25'),(6,'AT150265','Borrow Document','15','2021-11-25'),(7,'AT150265','Confirm Borrow','15','2021-11-25'),(8,'AT150265','Return Document','15','2021-11-25'),(9,'AT150265','Delete User','AT150267','2021-11-25'),(14,'AT150265','Delete User','AT1502068','2021-11-25'),(15,'AT150201','Create User','AT150201','2021-11-25'),(16,'AT150265','Delete User','AT150201','2021-11-25'),(17,'AT150201','Create User','AT150201','2021-11-25'),(18,'AT150265','Delete User','AT150201','2021-11-25'),(19,'AT150265','Disable User','AT150265','2021-11-25'),(20,'AT150266','Disable User','AT150265','2021-11-25'),(21,'AT150265','Disable User','AT150266','2021-11-25'),(22,'AT150265','Disable User','AT150266','2021-11-25'),(23,'AT150265','Borrow Document','16','2021-11-25'),(24,'AT150265','Borrow Document','17','2021-11-25'),(25,'AT150265','Cancel Borrow','16','2021-11-25'),(26,'AT150265','Cancel Borrow','17','2021-11-25'),(27,'AT150265','Login Success!','App','2021-11-27'),(28,'AT150265','Login Success!','App','2021-11-27'),(29,'AT150265','Login Success!','App','2021-11-27'),(30,'AT150265','Login Success!','App','2021-11-27'),(31,'AT150265','Login Success!','App','2021-11-27'),(32,'AT150265','Login Success!','App','2021-11-27'),(33,'AT150265','Login Success!','App','2021-11-27'),(34,'AT150265','Login Success!','App','2021-11-27'),(35,'AT150265','Login Success!','App','2021-11-27'),(36,'AT150265','Login Success!','App','2021-11-27'),(37,'AT150265','Login Success!','App','2021-11-27'),(38,'AT150265','Login Success!','App','2021-11-27'),(39,'AT150265','Login Success!','App','2021-11-27'),(40,'AT150265','Login Success!','App','2021-11-27'),(41,'AT150265','Login Success!','App','2021-11-27'),(42,'AT150265','Login Success!','App','2021-11-27'),(43,'AT150265','Login Success!','App','2021-11-27'),(44,'AT150265\' OR 1=1 OR \'1','Login Success!','App','2021-11-27'),(45,'AT150265\' OR 1=1 OR \'1','Login Success!','App','2021-11-27'),(46,'AT150265','Login Success!','App','2021-11-27'),(47,'AT150265','Login Success!','App','2021-11-27'),(48,'AT150265\' OR 1=1 OR \'1','Login Success!','App','2021-11-27'),(49,'AT150265','Login Success!','App','2021-11-27'),(50,'AT150265','Borrow Document','18','2021-11-27'),(51,'AT150265','Borrow Document','19','2021-11-27'),(52,'AT150265','Login Success!','App','2021-11-27'),(53,'AT150265','Borrow Document','20','2021-11-27'),(54,'AT150265','Login Success!','App','2021-11-27'),(55,'AT150265','Login Success!','App','2021-11-27'),(56,'AT150265','Login Success!','App','2021-11-27'),(57,'AT150265','Login Success!','App','2021-11-27'),(58,'AT150265','Borrow Document','21','2021-11-27'),(59,'AT150265','Login Success!','App','2021-11-27'),(60,'AT150265','Login Success!','App','2021-11-27'),(61,'AT150265','Login Success!','App','2021-11-27'),(62,'AT150265','Login Success!','App','2021-11-27'),(63,'AT150265','Cancel Borrow','18','2021-11-27'),(64,'AT150265','Cancel Borrow','19','2021-11-27'),(65,'AT150265','Cancel Borrow','20','2021-11-27'),(66,'AT150265','Cancel Borrow','21','2021-11-27'),(67,'AT150265','Login Success!','App','2021-11-27'),(68,'AT150265','Login Success!','App','2021-11-27'),(69,'AT150265','Login Success!','App','2021-11-27'),(70,'AT150265','Login Success!','App','2021-11-27'),(71,'AT150265','Borrow Document','22','2021-12-06'),(72,'AT150265','Cancel Borrow','22','2021-12-06'),(73,'AT150265','Logged in successfully!','App','2021-12-06'),(74,'AT150265','Borrow Document','23','2021-12-06'),(75,'AT150265','Cancel Borrow','23','2021-12-06'),(76,'AT150265','Logged in successfully!','App','2021-12-06'),(77,'AT150268','Create User','AT150268','2021-12-06'),(78,'AT150267','Create User','AT150267','2021-12-06'),(79,'AT150265','Delete User','AT150268','2021-12-06');
+INSERT INTO `log` VALUES (1,'AT150265','Logout!','App','2021-12-10'),(2,'AT150267','Logout!','App','2021-12-10'),(3,'AT150265','Logout!','App','2021-12-10'),(4,'AT150265','Logout!','App','2021-12-10'),(5,'AT150265','Logged in successfully!','App','2021-12-10'),(6,'AT150265','Logout!','App','2021-12-10');
 /*!40000 ALTER TABLE `log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -260,7 +257,7 @@ CREATE TABLE `users` (
   `Specialization` varchar(10) NOT NULL,
   `Class` varchar(10) NOT NULL,
   `Admin` tinyint(1) NOT NULL DEFAULT '0',
-  `Token` varchar(20) NOT NULL,
+  `Token` varchar(30) NOT NULL,
   `Expiry` date NOT NULL,
   `Status` varchar(10) NOT NULL DEFAULT 'active',
   PRIMARY KEY (`StudentID`)
@@ -273,7 +270,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('AT150265','C231C34126D7D5DE3589108C387F1957','Nguyễn Công Vĩnh',NULL,'ATTT','AT15B',1,'ge5hVuNgksZDmuo6bA3P','2021-11-30','active'),('AT150266','BE5E9C7BEB5BE86F35ABDD606036B22B','Nguyễn Văn Vỹ','1','ATTT','AT15B',1,'spq9fjizYQCYgMzpXUmk','2025-11-25','active'),('AT150267','A663B63F854DCB0B94174617DE136091','Nguyễn Công Vinh','1','ATTT','AT15B',1,'AmaOWCM8z8qJEfu7Cyjx','2025-12-06','active');
+INSERT INTO `users` VALUES ('AT150265','C231C34126D7D5DE3589108C387F1957','Nguyễn Công Vĩnh',NULL,'ATTT','AT15B',1,'TOKEN','2021-11-30','active'),('AT150266','BE5E9C7BEB5BE86F35ABDD606036B22B','Nguyễn Văn Vỹ','1','ATTT','AT15B',1,'TOKEN','2025-11-25','active'),('AT150267','A663B63F854DCB0B94174617DE136091','Nguyễn Công Vinh','1','ATTT','AT15B',1,'TOKEN','2025-12-06','active');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -433,4 +430,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-06 10:18:49
+-- Dump completed on 2021-12-10 21:46:03
