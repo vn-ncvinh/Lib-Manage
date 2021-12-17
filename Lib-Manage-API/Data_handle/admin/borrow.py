@@ -24,7 +24,8 @@ def confirm(token, borrowID):
             cols = cursor.fetchall()
             output.log(token_handle.tokentoStudentID(token), str(borrowID), "Confirm Borrow")
             return output.tabletojson(cols, rows, "Successfully!")
-        
+        else:
+            return output.error("An unknown error!")
     else:
         return output.error("You are not authorized to perform this action!")
 

@@ -17,14 +17,14 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/api/books/all?token=ge5hVuNgksZDmuo6bA3P",
+									"raw": "localhost:8080/api/documents/all?token=ge5hVuNgksZDmuo6bA3P",
 									"host": [
 										"localhost"
 									],
 									"port": "8080",
 									"path": [
 										"api",
-										"books",
+										"documents",
 										"all"
 									],
 									"query": [
@@ -43,25 +43,20 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/api/books/search?key=Hệ thống",
+									"raw": "localhost:8080/api/documents/search?key=Hệ thống",
 									"host": [
 										"localhost"
 									],
 									"port": "8080",
 									"path": [
 										"api",
-										"books",
+										"documents",
 										"search"
 									],
 									"query": [
 										{
 											"key": "key",
 											"value": "Hệ thống"
-										},
-										{
-											"key": "token",
-											"value": "ge5hVuNgksZDmuo6bA3P",
-											"disabled": true
 										}
 									]
 								}
@@ -74,21 +69,15 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/api/books/category?token=ge5hVuNgksZDmuo6bA3P",
+									"raw": "localhost:8080/api/documents/category",
 									"host": [
 										"localhost"
 									],
 									"port": "8080",
 									"path": [
 										"api",
-										"books",
+										"documents",
 										"category"
-									],
-									"query": [
-										{
-											"key": "token",
-											"value": "ge5hVuNgksZDmuo6bA3P"
-										}
 									]
 								}
 							},
@@ -260,7 +249,7 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/api/admin/borrow/confirm?token=NmbxvyYgTFyYw7O1mDMp&borrowID=28",
+									"raw": "localhost:8080/api/admin/borrow/confirm?token=NgNLwcNMXsXTQmU93uPp0PcCNgpVoK&borrowID=1",
 									"host": [
 										"localhost"
 									],
@@ -274,11 +263,11 @@
 									"query": [
 										{
 											"key": "token",
-											"value": "NmbxvyYgTFyYw7O1mDMp"
+											"value": "NgNLwcNMXsXTQmU93uPp0PcCNgpVoK"
 										},
 										{
 											"key": "borrowID",
-											"value": "28"
+											"value": "1"
 										}
 									]
 								}
@@ -565,20 +554,21 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/api/books/add?token=ge5hVuNgksZDmuo6bA3P&Name=Tích phân 2&Author=Công Vĩnh&Description=Toán cao cấp dành cho sinh viên năm hai",
+									"raw": "localhost:8080/api/admin/documents/add?token=zVG1Yr8MurVLnzE4OQgbqUksGsWMXf&Name=Tích phân 2&Author=Công Vĩnh&Description=123111&ListCategoryID=1,2",
 									"host": [
 										"localhost"
 									],
 									"port": "8080",
 									"path": [
 										"api",
-										"books",
+										"admin",
+										"documents",
 										"add"
 									],
 									"query": [
 										{
 											"key": "token",
-											"value": "ge5hVuNgksZDmuo6bA3P"
+											"value": "zVG1Yr8MurVLnzE4OQgbqUksGsWMXf"
 										},
 										{
 											"key": "Name",
@@ -590,7 +580,11 @@
 										},
 										{
 											"key": "Description",
-											"value": "Toán cao cấp dành cho sinh viên năm hai"
+											"value": "123111"
+										},
+										{
+											"key": "ListCategoryID",
+											"value": "1,2"
 										}
 									]
 								}
@@ -603,7 +597,7 @@
 								"method": "POST",
 								"header": [],
 								"url": {
-									"raw": "localhost:8080/api/admin/books/delete?token=k2XpR7wP7SilE7dw8b4m&ID=1",
+									"raw": "localhost:8080/api/admin/documents/delete?token=k2XpR7wP7SilE7dw8b4m&ID=1",
 									"host": [
 										"localhost"
 									],
@@ -611,7 +605,7 @@
 									"path": [
 										"api",
 										"admin",
-										"books",
+										"documents",
 										"delete"
 									],
 									"query": [

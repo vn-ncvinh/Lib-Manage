@@ -18,7 +18,7 @@ def tabletojson(cols, rows, message):
     return string_handle.tojson(result)
 
 def log(source, destination, content):
-    cursor.execute('INSERT INTO log (Source, Content, Destination, Time) values ("'+source+'","'+content+'","'+destination+'", current_date())')
+    cursor.execute('INSERT INTO log (Source, Content, Destination, Time) values ("'+str(source)+'","'+str(content)+'","'+str(destination)+'", current_date())')
     connection.commit()
 
 def error(message):

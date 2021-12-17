@@ -98,13 +98,14 @@ def active_user():
 def add_documents():
     if sqli.check(request.args):
         return output.error("SQL Injection!")
-    if 'token' in request.args and 'Name' in request.args and 'Author' in request.args and 'Description' in request.args:
+    if 'token' in request.args and 'Name' in request.args and 'Author' in request.args and 'Description' in request.args and 'ListCategoryID' in request.args:
         token = request.args['token']
         Name = request.args['Name']
         Author = request.args['Author']
         Description = request.args['Description']
-        if (account.checktoken(token)):
-            return documents.add(token, Name, Author, Description)
+        ListCategoryID = request.args['ListCategoryID']
+        if (token_handle.checktoken(token)):
+            return documents.add(token, Name, Author, Description, ListCategoryID)
         else:
             return output.error("Incorrect Token!")
     else:
@@ -117,7 +118,7 @@ def delete_documents():
     if 'token' in request.args and 'DocumentsID' in request.args:
         token = request.args['token']
         DocumentsID = request.args['DocumentsID']
-        if (account.checktoken(token)):
+        if (token_handle.checktoken(token)):
             return documents.delete(token, DocumentsID)
         else:
             return output.error("Incorrect Token!")
