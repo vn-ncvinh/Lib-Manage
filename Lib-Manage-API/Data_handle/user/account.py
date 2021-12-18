@@ -33,6 +33,8 @@ def logout(token):
 def changepass(token, oldpassword, newpassword):
     oldpassword = string_handle.toMD5(token_handle.tokentoStudentID(token)+oldpassword)
     newpassword = string_handle.toMD5(token_handle.tokentoStudentID(token)+newpassword)
+
+    # cursor.execute("select * from users where StudentID='" + user +"' and password = '"+passwdmd5+"' and status = 'active'")
     try:
         query = "update users set password = '"+newpassword+"' where StudentID = '"+token_handle.tokentoStudentID(token)+"' and password = '"+oldpassword+"'"
         cursor.execute(query)

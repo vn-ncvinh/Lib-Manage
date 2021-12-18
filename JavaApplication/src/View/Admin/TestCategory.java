@@ -40,6 +40,9 @@ public class TestCategory {
 //            AdminCategoryManage.add("Test", "Test 1");
 //            AdminCategoryManage.delete("12");
 //            AdminCategoryManage.update("12", "Test 2", "Da sua");
+//            AdminCategoryManage.addfromFile("test.csv");
+//            AdminCategoryManage.deletefromFile("test.csv");
+//            AdminCategoryManage.updatefromFile("test.csv");
             UserDocumentsControl.category();
 
 //            UserAccountControl.Logout();

@@ -20,9 +20,9 @@ import org.json.simple.parser.ParseException;
  * @author ncvinh
  */
 public class TestAcount {
-    
+
     public static void main(String[] args) throws ParseException {
-        
+
         JFrame jFrame = new JFrame();
 
         // Frame Title
@@ -36,13 +36,17 @@ public class TestAcount {
 //            System.out.println(User.FullName);
 
 //            AdminAccountControl.create("AT150276", "Cong1111", " Van A", "012345", "ATTT", "AT18A", "0");
-//            AdminAccountControl.update("AT150276", "Cong1111", "Nguyen Van B", "012345", "ATTT", "AT18A", "0");
+//            AdminAccountControl.update("AT150276", "Cong1111", "Nguyen Van B", "1111", "A", "AT18A", "1");
 //            AdminAccountControl.delete("AT150276");
 //            AdminAccountControl.disable("AT150267");
 //            AdminAccountControl.active("AT150267");
 //            AdminAccountControl.addfromFile("test.csv");
-            AdminAccountControl.getlist();
-            
+//            AdminAccountControl.updatefromFile("test.csv");
+//            AdminAccountControl.deletefromFile("test.csv");
+//            AdminAccountControl.disablefromFile("test.csv");
+//            AdminAccountControl.ActivefromFile("test.csv");
+//            AdminAccountControl.getlist();
+
             UserAccountControl.Logout();
         } else {
             System.exit(0);
@@ -59,6 +63,6 @@ public class TestAcount {
         jFrame.setSize(1000, 400);
         jFrame.setLocationRelativeTo(null);
         jFrame.setVisible(true);
-        
+
     }
 }

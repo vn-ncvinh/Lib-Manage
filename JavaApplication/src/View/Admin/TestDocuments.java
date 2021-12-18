@@ -34,9 +34,9 @@ public class TestDocuments {
         if (User.Token != null) {
 //            System.out.println(User.FullName);
 
-            AdminDocumentsControl.add("Toan Cao Cap A2", "actvn", "Noi dung", "1,3");
+//            AdminDocumentsControl.add("Toan Cao Cap A2", "actvn", "Noi dung", "1,3");
 //            AdminDocumentsControl.update("18", "Toan cao cap A2 222", "actvn 2", "Noi dungg", "1,2");
-            AdminDocumentsControl.delete("17");
+//            AdminDocumentsControl.delete("17");
 //            AdminDocumentsControl.addDocfromFile("test.csv");
 //            AdminDocumentsControl.updatefromFile("test.csv");
 //            AdminDocumentsControl.deletefromFile("test.csv");
