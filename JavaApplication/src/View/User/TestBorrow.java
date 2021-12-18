@@ -3,11 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View.Admin;
+package View.User;
 
-import Control.Admin.AdminAccountControl;
+import Control.User.UserBorrowControl;
 import Control.User.UserAccountControl;
-import Model.List.ListAccount;
 import Model.List.ListBorrow;
 import Model.User;
 import javax.swing.JFrame;
@@ -19,7 +18,7 @@ import org.json.simple.parser.ParseException;
  *
  * @author ncvinh
  */
-public class TestViewAllAcount {
+public class TestBorrow {
 
     public static void main(String[] args) throws ParseException {
 
@@ -33,10 +32,10 @@ public class TestViewAllAcount {
 
         //Get Documents
         if (User.Token != null) {
-//            System.out.println(User.FullName);
-
-            AdminAccountControl.create("AT150267", "Cong1111", " Van A", "012345", "ATTT", "AT18A", "0");
-            AdminAccountControl.getlist();
+            System.out.println(User.FullName);
+//            UserBorrowControl.request(1, 14);
+//            UserBorrowControl.cancel(4);
+            UserBorrowControl.getList();
 
             UserAccountControl.Logout();
         } else {
@@ -44,14 +43,14 @@ public class TestViewAllAcount {
         }
 
         // Initializing the JTable
-        JTable jTable = new JTable(ListAccount.getArray(), ListAccount.columns);
+        JTable jTable = new JTable(ListBorrow.getArray(), ListBorrow.columns);
         jTable.setBounds(30, 40, 200, 300);
 
         // adding it to JScrollPane
         JScrollPane sp = new JScrollPane(jTable);
         jFrame.add(sp);
         // Frame Size
-        jFrame.setSize(500, 200);
+        jFrame.setSize(1000, 400);
         jFrame.setLocationRelativeTo(null);
         jFrame.setVisible(true);
 

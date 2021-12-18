@@ -5,11 +5,10 @@
  */
 package View.Admin;
 
-import Control.Admin.AdminAccountControl;
-import Control.Admin.AdminBorrowControl;
+import Control.Admin.AdminDocumentsControl;
 import Control.User.UserAccountControl;
-import Model.List.ListAccount;
-import Model.List.ListBorrow;
+import Control.User.UserDocumentsControl;
+import Model.List.ListDocuments;
 import Model.User;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
@@ -20,8 +19,7 @@ import org.json.simple.parser.ParseException;
  *
  * @author ncvinh
  */
-public class TestBorrow {
-
+public class TestDocuments {
     public static void main(String[] args) throws ParseException {
 
         JFrame jFrame = new JFrame();
@@ -35,18 +33,21 @@ public class TestBorrow {
         //Get Documents
         if (User.Token != null) {
 //            System.out.println(User.FullName);
-//            AdminBorrowControl.confirm("5");
-            AdminBorrowControl.returnDocument("100005");
-//            AdminBorrowControl.lose("100003");
-            AdminBorrowControl.getList();
 
+            AdminDocumentsControl.add("Toan Cao Cap A2", "actvn", "Noi dung", "1,3");
+//            AdminDocumentsControl.update("18", "Toan cao cap A2 222", "actvn 2", "Noi dungg", "1,2");
+            AdminDocumentsControl.delete("17");
+//            AdminDocumentsControl.addDocfromFile("test.csv");
+//            AdminDocumentsControl.updatefromFile("test.csv");
+//            AdminDocumentsControl.deletefromFile("test.csv");
+            UserDocumentsControl.getList();
             UserAccountControl.Logout();
         } else {
             System.exit(0);
         }
 
         // Initializing the JTable
-        JTable jTable = new JTable(ListBorrow.getArray(), ListBorrow.columns);
+        JTable jTable = new JTable(ListDocuments.getArray(), ListDocuments.columns);
         jTable.setBounds(30, 40, 200, 300);
 
         // adding it to JScrollPane

@@ -13,21 +13,31 @@ import java.util.ArrayList;
  * @author ncvinh
  */
 public class ListCategory {
+
+    static public String[] columns = {"ID", "Name", "Description", "Available"};
     static public ArrayList<Category> list = new ArrayList<Category>();
-    
-    public static void clean(){
+
+    public static void clean() {
         list = new ArrayList<Category>();
     }
-    
-    public static void add(String ID, String Name, String Description, String Available){
+
+    public static void add(String ID, String Name, String Description, String Available) {
         list.add(new Category(Integer.parseInt(ID), Name, Description, Integer.parseInt(Available)));
     }
-    
-    public static Category get(int index) {
-        return list.get(index);
+
+    public static String[] get(int index) {
+        return list.get(index).toArray();
     }
 
     public static int quantity() {
         return list.size();
+    }
+
+    public static String[][] getArray() {
+        String[][] rs = new String[quantity()][7];
+        for (int i = 0; i < list.size(); i++) {
+            rs[i] = get(i);
+        }
+        return rs;
     }
 }

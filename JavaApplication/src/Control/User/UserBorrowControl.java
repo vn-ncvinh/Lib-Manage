@@ -19,7 +19,7 @@ import org.json.simple.parser.ParseException;
 public class UserBorrowControl {
     static jsonobj result;
 
-    public static void send(url u){
+    private static void send(url u){
         try {
             API api = new API(u);
             result = new jsonobj(api.send());

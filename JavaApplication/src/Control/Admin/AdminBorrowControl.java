@@ -19,7 +19,7 @@ import org.json.simple.parser.ParseException;
 public class AdminBorrowControl {
     static jsonobj result;
 
-    public static void send(url u) {
+    private static void send(url u) {
         System.out.println(u.getUrl());
         API api = new API(u);
         try {

@@ -35,4 +35,13 @@ public class Category {
     public int getAvailable() {
         return Available;
     }
+    
+    public String[] toArray(){
+        String[] rs = new String[4];
+        rs[0]=""+ID;
+        rs[1]=""+Name;
+        rs[2]=""+Description;
+        rs[3]=""+Available;
+        return rs;
+    }
 }

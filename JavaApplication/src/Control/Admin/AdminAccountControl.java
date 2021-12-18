@@ -11,6 +11,10 @@ import Model.List.ListAccount;
 import Model.User;
 import Model.jsonobj;
 import Model.url;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -18,9 +22,10 @@ import org.json.simple.parser.ParseException;
  * @author ncvinh
  */
 public class AdminAccountControl {
+
     static jsonobj result;
 
-    public static void send(url u) {
+    private static void send(url u) {
         System.out.println(u.getUrl());
         API api = new API(u);
         try {
@@ -31,11 +36,11 @@ public class AdminAccountControl {
         }
         System.out.println(result.getmessage());
     }
-    
+
     public static void create(String StudentID, String Password, String Fullname, String PhoneNumber, String Specialization, String Class, String Admin) throws ParseException {
 //        StudentID, Password, Fullname, PhoneNumber, Specialization, Class, Admin
         url u = new url("/api/admin/users/create");
-        System.out.println(User.StudentID + ": Create Account" + StudentID);
+        System.out.println(User.StudentID + ": Create Account " + StudentID);
         StudentID = StudentID.toUpperCase();
         Password = str.getMD5(Password);
         u.addParameter("token", User.Token);
@@ -48,7 +53,7 @@ public class AdminAccountControl {
         u.addParameter("Admin", Admin);
         send(u);
     }
-    
+
     public static void getlist() throws ParseException {
         url u = new url("/api/admin/users/all");
         System.out.println(User.StudentID + ": Get List Account");
@@ -62,7 +67,7 @@ public class AdminAccountControl {
             }
         }
     }
-    
+
     public static void delete(String StudentID) throws ParseException {
         url u = new url("/api/admin/users/delete");
         System.out.println(User.StudentID + ": Get List Account");
@@ -70,8 +75,7 @@ public class AdminAccountControl {
         u.addParameter("StudentID", StudentID);
         send(u);
     }
-    
-    
+
     public static void active(String StudentID) throws ParseException {
         url u = new url("/api/admin/users/active");
         System.out.println(User.StudentID + ": Get List Account");
@@ -79,7 +83,7 @@ public class AdminAccountControl {
         u.addParameter("StudentID", StudentID);
         send(u);
     }
-    
+
     public static void disable(String StudentID) throws ParseException {
         url u = new url("/api/admin/users/disable");
         System.out.println(User.StudentID + ": Get List Account");
@@ -87,7 +91,7 @@ public class AdminAccountControl {
         u.addParameter("StudentID", StudentID);
         send(u);
     }
-    
+
     public static void update(String StudentID, String Password, String Fullname, String PhoneNumber, String Specialization, String Class, String Expiry) throws ParseException {
         url u = new url("/api/admin/users/update");
         System.out.println(User.StudentID + ": Create Account" + StudentID);
@@ -102,5 +106,80 @@ public class AdminAccountControl {
         u.addParameter("Class", Class);
         u.addParameter("Expiry", Expiry);
         send(u);
+    }
+
+    public static void addfromFile(String Filepatch) throws ParseException {
+        String line = "";
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(Filepatch));
+            while ((line = br.readLine()) != null) {
+                String[] Account = line.split(",");
+//                System.out.print(Account[0]);
+                create(Account[0], Account[1], Account[2], Account[3], Account[4], Account[5], Account[6]);
+//                System.out.println(" - " + result.getstatus());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void updatefromFile(String Filepatch) throws ParseException {
+        String line = "";
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(Filepatch));
+            while ((line = br.readLine()) != null) {
+                String[] Account = line.split(",");
+//                System.out.print(Account[0]);
+                update(Account[0], Account[1], Account[2], Account[3], Account[4], Account[5], Account[6]);
+//                System.out.println(" - " + result.getstatus());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void deletefromFile(String Filepatch) throws ParseException {
+        String line = "";
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(Filepatch));
+            while ((line = br.readLine()) != null) {
+                String[] Account = line.split(",");
+//                System.out.print(Account[0]);
+                delete(Account[0]);
+//                System.out.println(" - " + result.getstatus());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void disablefromFile(String Filepatch) throws ParseException {
+        String line = "";
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(Filepatch));
+            while ((line = br.readLine()) != null) {
+                String[] Account = line.split(",");
+//                System.out.print(Account[0]);
+                disable(Account[0]);
+//                System.out.println(" - " + result.getstatus());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void ActivefromFile(String Filepatch) throws ParseException {
+        String line = "";
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(Filepatch));
+            while ((line = br.readLine()) != null) {
+                String[] Account = line.split(",");
+//                System.out.print(Account[0]);
+                active(Account[0]);
+//                System.out.println(" - " + result.getstatus());
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

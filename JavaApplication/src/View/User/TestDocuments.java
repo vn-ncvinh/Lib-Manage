@@ -3,44 +3,38 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View.Admin;
+package View.User;
 
-import Control.Admin.AdminDocumentsControl;
 import Control.User.UserAccountControl;
-import Control.User.UserDocumentsControl;
 import Model.List.ListDocuments;
+import Control.User.UserDocumentsControl;
 import Model.User;
-import javax.swing.JFrame;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import javax.swing.*;
 import org.json.simple.parser.ParseException;
 
-/**
- *
- * @author ncvinh
- */
-public class TestAddDocuments {
+class TestDocuments {
+
     public static void main(String[] args) throws ParseException {
 
         JFrame jFrame = new JFrame();
 
         // Frame Title
-        jFrame.setTitle("List Borrow");
+        jFrame.setTitle("List Documents");
 
         //Login
         UserAccountControl.Login("at150265", "vinh@2000");
-
+        
+        
         //Get Documents
-        if (User.Token != null) {
-//            System.out.println(User.FullName);
-
-            AdminDocumentsControl.add("Toan Cao Cap A1", "actvn", "Noi dung", "1,3");
+        if(User.Token!=null){
+            System.out.println(User.FullName);
             UserDocumentsControl.getList();
+//            UserDocumentsControl.search("Toan");
             UserAccountControl.Logout();
         } else {
             System.exit(0);
         }
-
+        
         // Initializing the JTable
         JTable jTable = new JTable(ListDocuments.getArray(), ListDocuments.columns);
         jTable.setBounds(30, 40, 200, 300);
@@ -49,9 +43,9 @@ public class TestAddDocuments {
         JScrollPane sp = new JScrollPane(jTable);
         jFrame.add(sp);
         // Frame Size
-        jFrame.setSize(500, 200);
+        jFrame.setSize(1000, 400);
         jFrame.setLocationRelativeTo(null);
         jFrame.setVisible(true);
-
+        
     }
 }

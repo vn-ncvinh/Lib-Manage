@@ -29,7 +29,7 @@ public class UserDocumentsControl {
 
     static jsonobj result;
 
-    public static void send(url u) {
+    private static void send(url u) {
         System.out.println(u.getUrl());
         API api = new API(u);
         try {
@@ -87,7 +87,7 @@ public class UserDocumentsControl {
 
     public static void category() throws ParseException {
         System.out.println(User.StudentID + ": Get Category");
-        url u = new url("'/api/documents/category");
+        url u = new url("/api/documents/category");
         send(u);
         System.out.println(result.getstatus());
         ListDocuments.clean();
