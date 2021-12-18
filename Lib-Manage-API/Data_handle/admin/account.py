@@ -21,7 +21,7 @@ def createuser(token, StudentID, Password, Fullname, PhoneNumber, Specialization
         if(len(rows)>0):
             return output.error("Student ID already exist!")
         Password = string_handle.toMD5(StudentID+Password)
-        token = token_handle.newtoken()
+        token = "TOKEN"
         Expiry = '(select current_date() + interval 4 year)'
         query = "INSERT INTO users ( StudentID, Password, Fullname, PhoneNumber, Specialization, Class, Admin, token, Expiry) VALUES ('"+StudentID+"', '"+Password+"', '"+Fullname+"', '"+PhoneNumber+"', '"+Specialization+"', '"+Class+"', '"+Admin+"', '"+token+"', "+Expiry+")"
         print(query)
@@ -96,6 +96,31 @@ def activeuser(token, StudentID):
                 return output.ok("Actived!")
             else:
                 return output.error("Student has been activated before!")
+        else:
+            return output.error("Student ID does not exist!")
+    else:
+        return output.error("You are not authorized to perform this action!")
+
+def update(token, StudentID, Password, Fullname, PhoneNumber, Specialization, Class, Expiry):
+    if(token_handle.StudentIDadmin(StudentID)):
+        return output.error("You are not permitted!")
+    if(token_handle.tokenadmin(token)):
+        cursor.execute('select * from users where StudentID = "'+StudentID+'"')
+        rows = cursor.fetchall()
+        if(len(rows)>0):
+            Password = string_handle.toMD5(StudentID+Password)
+            Expiry = '(select current_date() + interval '+Expiry+' year)'
+            query = "update users set Password = '"+Password+"', Fullname = '"+Fullname+"', PhoneNumber = '"+PhoneNumber+"', Specialization = '"+Specialization+"', Class = '"+Class+"', Expiry = "+Expiry+" where StudentID = '"+StudentID+"'"
+            # if Password == "":
+            #     query = "update users set Fullname = '"+Fullname+"', PhoneNumber = '"+PhoneNumber+"', Specialization = '"+Specialization+"', Class = '"+Class+"', Expiry = '"+Expiry+"' where StudentID = '"+StudentID+"'"
+            cursor.execute(query)
+            connection.commit()
+            cursor.execute('select * from users_hide where StudentID = "'+StudentID+'"')
+            rows = cursor.fetchall()
+            cursor.execute("DESCRIBE users_hide")
+            cols = cursor.fetchall()
+            output.log(token_handle.tokentoStudentID(token), StudentID, "Create User")
+            return output.tabletojson(cols, rows, "Successfully!")
         else:
             return output.error("Student ID does not exist!")
     else:

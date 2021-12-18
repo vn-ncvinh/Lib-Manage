@@ -32,6 +32,7 @@ def tokenadmin(token):
 def StudentIDadmin(StudentID):
     cursor.execute("select * from users where StudentID='"+StudentID+"'")
     row = cursor.fetchone()
+    # print(StudentID)
     if(row[6]==1):
         return True
     else:

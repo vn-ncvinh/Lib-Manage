@@ -88,6 +88,19 @@ public class AdminAccountControl {
         send(u);
     }
     
-    
-    
+    public static void update(String StudentID, String Password, String Fullname, String PhoneNumber, String Specialization, String Class, String Expiry) throws ParseException {
+        url u = new url("/api/admin/users/update");
+        System.out.println(User.StudentID + ": Create Account" + StudentID);
+        StudentID = StudentID.toUpperCase();
+        Password = str.getMD5(Password);
+        u.addParameter("token", User.Token);
+        u.addParameter("StudentID", StudentID);
+        u.addParameter("Password", Password);
+        u.addParameter("Fullname", Fullname);
+        u.addParameter("PhoneNumber", PhoneNumber);
+        u.addParameter("Specialization", Specialization);
+        u.addParameter("Class", Class);
+        u.addParameter("Expiry", Expiry);
+        send(u);
+    }
 }

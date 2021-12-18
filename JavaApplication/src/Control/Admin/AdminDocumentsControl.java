@@ -49,4 +49,26 @@ public class AdminDocumentsControl {
         u.addParameter("DocumentsID", DocumentsID);
         send(u);
     }
+    
+    public static void update(String ID, String Name, String Author, String Description, String ListCategoryID){
+        url u = new url("/api/admin/documents/update");
+        System.out.println(User.StudentID + ": Update Docunments " + Name);
+        u.addParameter("token", User.Token);
+        u.addParameter("ID", ID);
+        u.addParameter("Name", Name);
+        u.addParameter("Author", Author);
+        u.addParameter("Description", Description);
+        u.addParameter("ListCategoryID", ListCategoryID);
+        send(u);
+    }
+    
+    public static void addDoc(String token, String ID, String DocumentsID, String Reprint){
+        url u = new url("/api/admin/documents/addDoc");
+        System.out.println(User.StudentID + ": Add Doc " + ID);
+        u.addParameter("token", User.Token);
+        u.addParameter("ID", ID);
+        u.addParameter("DocumentsID", DocumentsID);
+        u.addParameter("Reprint", Reprint);
+        send(u);
+    }
 }
