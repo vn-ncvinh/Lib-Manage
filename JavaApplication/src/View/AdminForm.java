@@ -17,7 +17,8 @@ import Model.List.ListCategory;
 import Model.List.ListDocuments;
 import Model.User;
 import View.Login;
-import View.Message;
+import Control.Message;
+import java.awt.Color;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,6 +36,7 @@ import org.json.simple.parser.ParseException;
 public class AdminForm extends javax.swing.JFrame {
 
     String FilePatch = null;
+    String FileName = null;
     DefaultTableModel model;
 
     /**
@@ -49,6 +51,12 @@ public class AdminForm extends javax.swing.JFrame {
         updateCategoryTable();
         updateBorrowTable();
         updateAccountTable();
+        txtStudentID.setText(User.StudentID);
+        txtName.setText(User.FullName);
+        txtPhone.setText(User.PhoneNumber);
+        txtKhoa.setText(User.Specialization);
+        txtClass.setText(User.sClass);
+        txtExp.setText(User.Expiry);
     }
 
     public void updateDocumentTable() throws ParseException {
@@ -57,11 +65,15 @@ public class AdminForm extends javax.swing.JFrame {
         DocumentsTable1.setModel(model);
         DocumentsTable.setModel(model);
     }
+    
+    
 
     public void updateBorrowTable() throws ParseException {
         AdminBorrowControl.getList();
         model = new DefaultTableModel(ListBorrow.getArray(), ListBorrow.columns);
         BorrowTable.setModel(model);
+        jPanel26.setVisible(false);
+        jPanel27.setVisible(false);
     }
 
     public void updateAccountTable() throws ParseException {
@@ -254,6 +266,34 @@ public class AdminForm extends javax.swing.JFrame {
         CatetoryUpdateTableBtn1 = new javax.swing.JButton();
         txtSearchStudentID2 = new javax.swing.JTextField();
         AccountSearchbtn2 = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jPanel32 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jPanel33 = new javax.swing.JPanel();
+        txtExp = new javax.swing.JLabel();
+        txtPhone = new javax.swing.JLabel();
+        txtKhoa = new javax.swing.JLabel();
+        txtName = new javax.swing.JLabel();
+        txtStudentID = new javax.swing.JLabel();
+        txtClass = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jPanel11 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jPanel31 = new javax.swing.JPanel();
+        txtOldPassword = new javax.swing.JPasswordField();
+        txtNewPassword = new javax.swing.JPasswordField();
+        txtNewPassword2 = new javax.swing.JPasswordField();
+        mess = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -492,8 +532,8 @@ public class AdminForm extends javax.swing.JFrame {
             }
         ));
         DocumentsTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                DocumentsTableMouseReleased(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DocumentsTableMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(DocumentsTable);
@@ -930,6 +970,9 @@ public class AdminForm extends javax.swing.JFrame {
             new String [] {}
         ));
         BorrowTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BorrowTableMouseClicked(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 BorrowTableMouseReleased(evt);
             }
@@ -1396,9 +1439,6 @@ public class AdminForm extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AccountTableMouseClicked(evt);
             }
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                AccountTableMouseReleased(evt);
-            }
         });
         jScrollPane5.setViewportView(AccountTable);
 
@@ -1827,6 +1867,277 @@ public class AdminForm extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Quản lý tài khoản", jTabbedPane3);
 
+        jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel11.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel11.setText("MSV");
+
+        jLabel12.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel12.setText("Họ và tên");
+
+        jLabel13.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel13.setText("SĐT");
+
+        jLabel14.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel14.setText("Khoa");
+
+        jLabel15.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel15.setText("Lớp");
+
+        jLabel16.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel16.setText("Hạn sử dụng");
+
+        javax.swing.GroupLayout jPanel32Layout = new javax.swing.GroupLayout(jPanel32);
+        jPanel32.setLayout(jPanel32Layout);
+        jPanel32Layout.setHorizontalGroup(
+            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel32Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                    .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 131, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel32Layout.setVerticalGroup(
+            jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel32Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        txtExp.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+
+        txtPhone.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+
+        txtKhoa.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+
+        txtName.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+
+        txtStudentID.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+
+        txtClass.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+
+        javax.swing.GroupLayout jPanel33Layout = new javax.swing.GroupLayout(jPanel33);
+        jPanel33.setLayout(jPanel33Layout);
+        jPanel33Layout.setHorizontalGroup(
+            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtExp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(txtPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+            .addComponent(txtKhoa, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+            .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+            .addComponent(txtStudentID, javax.swing.GroupLayout.DEFAULT_SIZE, 237, Short.MAX_VALUE)
+            .addComponent(txtClass, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jPanel33Layout.setVerticalGroup(
+            jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel33Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtStudentID, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtPhone, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtKhoa, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtClass, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtExp, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(280, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addGap(60, 60, 60)
+                .addComponent(jPanel32, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel33, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jPanel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel7.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Đổi mật khẩu");
+
+        jLabel8.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel8.setText("Mật khẩu cũ");
+
+        jLabel9.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel9.setText("Mật khẩu mới");
+
+        jLabel10.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel10.setText("Xác nhận");
+
+        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
+        jPanel11.setLayout(jPanel11Layout);
+        jPanel11Layout.setHorizontalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel11Layout.setVerticalGroup(
+            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel11Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(38, Short.MAX_VALUE))
+        );
+
+        txtOldPassword.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+
+        txtNewPassword.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        txtNewPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNewPasswordKeyReleased(evt);
+            }
+        });
+
+        txtNewPassword2.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        txtNewPassword2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNewPassword2ActionPerformed(evt);
+            }
+        });
+        txtNewPassword2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtNewPassword2KeyReleased(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNewPassword2KeyTyped(evt);
+            }
+        });
+
+        mess.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+
+        javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
+        jPanel31.setLayout(jPanel31Layout);
+        jPanel31Layout.setHorizontalGroup(
+            jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel31Layout.createSequentialGroup()
+                .addGroup(jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(mess, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(txtOldPassword)
+                    .addComponent(txtNewPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                    .addComponent(txtNewPassword2, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel31Layout.setVerticalGroup(
+            jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel31Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(txtOldPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtNewPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtNewPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mess, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jButton1.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jButton1.setText("Đổi mật khẩu");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(95, 95, 95)
+                        .addComponent(jPanel11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jPanel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel10Layout.createSequentialGroup()
+                .addContainerGap(183, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(124, 124, 124))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 498, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Tài khoản", jPanel8);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1853,7 +2164,11 @@ public class AdminForm extends javax.swing.JFrame {
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
         // TODO add your handling code here:
-        UserAccountControl.Logout();
+        try{
+            UserAccountControl.Logout();
+        } catch (Exception e){
+            Message.showMessage("ERROR", e.toString());
+        }
         System.exit(0);
     }//GEN-LAST:event_jButton19ActionPerformed
 
@@ -1976,14 +2291,6 @@ public class AdminForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton13ActionPerformed
 
-    private void CategoryTableMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CategoryTableMouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_CategoryTableMouseReleased
-
-    private void DocumentsTable1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DocumentsTable1MouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DocumentsTable1MouseReleased
-
     private void DocumentUpdateTableBtn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DocumentUpdateTableBtn2ActionPerformed
         // TODO add your handling code here:
         try {
@@ -2026,14 +2333,6 @@ public class AdminForm extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_jButton14ActionPerformed
-
-    private void DocumentsTableMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DocumentsTableMouseReleased
-        // TODO add your handling code here:
-        txtDocumentName.setText(DocumentsTable.getValueAt(DocumentsTable.getSelectedRow(), 1).toString());
-        txtDocumentAuthor.setText(DocumentsTable.getValueAt(DocumentsTable.getSelectedRow(), 2).toString());
-        txtDocumentDes.setText(DocumentsTable.getValueAt(DocumentsTable.getSelectedRow(), 3).toString());
-        txtDocumentCategory.setText(DocumentsTable.getValueAt(DocumentsTable.getSelectedRow(), 4).toString());
-    }//GEN-LAST:event_DocumentsTableMouseReleased
 
     private void DocumentUpdateTableBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DocumentUpdateTableBtn1ActionPerformed
         try {
@@ -2275,10 +2574,6 @@ public class AdminForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_AccountUpdateTableActionPerformed
 
-    private void AccountTableMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AccountTableMouseReleased
-
-    }//GEN-LAST:event_AccountTableMouseReleased
-
     private void jButton22ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton22ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton22ActionPerformed
@@ -2291,15 +2586,6 @@ public class AdminForm extends javax.swing.JFrame {
             Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_DocumentUpdateTableBtn4ActionPerformed
-
-    private void AccountTable2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AccountTable2MouseReleased
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_AccountTable2MouseReleased
-
-    private void AccountTable3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AccountTable3MouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AccountTable3MouseReleased
 
     private void ExtendBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExtendBtnActionPerformed
         if (!txtExtendAccountID.getText().isEmpty() && !txtExtendYearNumber.getText().isEmpty()) {
@@ -2358,7 +2644,8 @@ public class AdminForm extends javax.swing.JFrame {
 
     private void BorrowTableMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BorrowTableMouseReleased
         // TODO add your handling code here:
-        txtReturnDocID.setText(BorrowTable.getValueAt(BorrowTable.getSelectedRow(), 2).toString());
+        
+        
     }//GEN-LAST:event_BorrowTableMouseReleased
 
     private void BorrowSearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrowSearchBtnActionPerformed
@@ -2539,6 +2826,92 @@ public class AdminForm extends javax.swing.JFrame {
         txtAccountClass.setText(AccountTable.getModel().getValueAt(AccountTable.getSelectedRow(), 4).toString());
     }//GEN-LAST:event_AccountTableMouseClicked
 
+    private void DocumentsTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DocumentsTableMouseClicked
+        // TODO add your handling code here:
+        txtDocumentName.setText(DocumentsTable.getValueAt(DocumentsTable.getSelectedRow(), 1).toString());
+        txtDocumentAuthor.setText(DocumentsTable.getValueAt(DocumentsTable.getSelectedRow(), 2).toString());
+        txtDocumentDes.setText(DocumentsTable.getValueAt(DocumentsTable.getSelectedRow(), 3).toString());
+        txtDocumentCategory.setText(DocumentsTable.getValueAt(DocumentsTable.getSelectedRow(), 4).toString());
+    }//GEN-LAST:event_DocumentsTableMouseClicked
+
+    private void AccountTable3MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AccountTable3MouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AccountTable3MouseReleased
+
+    private void AccountTable2MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AccountTable2MouseReleased
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_AccountTable2MouseReleased
+
+    private void CategoryTableMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CategoryTableMouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CategoryTableMouseReleased
+
+    private void DocumentsTable1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DocumentsTable1MouseReleased
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DocumentsTable1MouseReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if(!txtOldPassword.getText().isEmpty()&&!txtNewPassword.getText().isEmpty()&&!txtNewPassword2.getText().isEmpty()){
+            if(txtNewPassword.getText().equals(txtNewPassword2.getText())){
+                UserAccountControl.ChangePass(txtOldPassword.getText(), txtNewPassword.getText());
+                Message.showMessage(UserAccountControl.result.getstatus(), UserAccountControl.result.getmessage());
+            } else {
+                Message.showMessage("ERROR", "New password is incorrect!");
+            }
+        } else {
+            Message.showMessage("ERROR", "Please enter enough information!");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtNewPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNewPasswordKeyReleased
+        // TODO add your handling code here:
+        if(!txtNewPassword2.getText().isEmpty()){
+            if(!txtNewPassword.getText().equals(txtNewPassword2.getText())){
+                mess.setText("Hai mật khẩu không khớp!");
+                mess.setForeground(Color.red);
+            } else {
+                mess.setText("OK");
+                mess.setForeground(Color.green);
+            }
+        }
+    }//GEN-LAST:event_txtNewPasswordKeyReleased
+
+    private void txtNewPassword2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNewPassword2KeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNewPassword2KeyTyped
+
+    private void txtNewPassword2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNewPassword2KeyReleased
+        // TODO add your handling code here:
+        if(!txtNewPassword.getText().isEmpty()){
+            if(!txtNewPassword.getText().equals(txtNewPassword2.getText())){
+                mess.setText("Hai mật khẩu không khớp!");
+                mess.setForeground(Color.red);
+            } else {
+                mess.setText("OK");
+                mess.setForeground(Color.green);
+            }
+        }
+    }//GEN-LAST:event_txtNewPassword2KeyReleased
+
+    private void BorrowTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BorrowTableMouseClicked
+        // TODO add your handling code here:
+        txtReturnDocID.setText(BorrowTable.getValueAt(BorrowTable.getSelectedRow(), 2).toString());
+        String status = BorrowTable.getValueAt(BorrowTable.getSelectedRow(), 4).toString();
+        jPanel26.setVisible(false);
+        jPanel27.setVisible(false);
+        if(status.equals("wait")){
+            jPanel26.setVisible(true);
+        } else if(status.equals("borrowed")){
+            jPanel27.setVisible(true);
+        }
+    }//GEN-LAST:event_BorrowTableMouseClicked
+
+    private void txtNewPassword2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNewPassword2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNewPassword2ActionPerformed
+
     public void selectFile() {
         JFileChooser j = new JFileChooser("C:");
 
@@ -2550,6 +2923,7 @@ public class AdminForm extends javax.swing.JFrame {
         if (r == JFileChooser.APPROVE_OPTION) {
             // set the label to the path of the selected file
             FilePatch = j.getSelectedFile().getAbsolutePath();
+            FileName = j.getSelectedFile().getName();
         }
     }
 
@@ -2637,6 +3011,7 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JButton UpdateFromFilebtn3;
     private javax.swing.JButton UpdateFromFilebtn4;
     private javax.swing.JButton addFromFilebtn5;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
@@ -2649,6 +3024,13 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JButton jButton26;
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
@@ -2674,7 +3056,12 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel13;
     private javax.swing.JPanel jPanel14;
@@ -2696,10 +3083,15 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel29;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel30;
+    private javax.swing.JPanel jPanel31;
+    private javax.swing.JPanel jPanel32;
+    private javax.swing.JPanel jPanel33;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -2711,6 +3103,7 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane5;
+    private javax.swing.JLabel mess;
     private javax.swing.JTextField txtAccountClass;
     private javax.swing.JTextField txtAccountID;
     private javax.swing.JTextField txtAccountIDDisable;
@@ -2720,19 +3113,28 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtAccountPhone;
     private javax.swing.JTextField txtCategoryDes;
     private javax.swing.JTextField txtCategoryName;
+    private javax.swing.JLabel txtClass;
     private javax.swing.JTextField txtDocID;
     private javax.swing.JTextField txtDocumentAuthor;
     private javax.swing.JTextField txtDocumentCategory;
     private javax.swing.JTextField txtDocumentDes;
     private javax.swing.JTextField txtDocumentName;
     private javax.swing.JTextField txtDocumentsID;
+    private javax.swing.JLabel txtExp;
     private javax.swing.JTextField txtExtendAccountID;
     private javax.swing.JTextField txtExtendYearNumber;
+    private javax.swing.JLabel txtKhoa;
+    private javax.swing.JLabel txtName;
+    private javax.swing.JPasswordField txtNewPassword;
+    private javax.swing.JPasswordField txtNewPassword2;
+    private javax.swing.JPasswordField txtOldPassword;
+    private javax.swing.JLabel txtPhone;
     private javax.swing.JTextField txtReprint;
     private javax.swing.JTextField txtReturnDocID;
     private javax.swing.JTextField txtSearchStudentID;
     private javax.swing.JTextField txtSearchStudentID1;
     private javax.swing.JTextField txtSearchStudentID2;
+    private javax.swing.JLabel txtStudentID;
     private javax.swing.JTextField txtStudentIDBorrow;
     // End of variables declaration//GEN-END:variables
 }

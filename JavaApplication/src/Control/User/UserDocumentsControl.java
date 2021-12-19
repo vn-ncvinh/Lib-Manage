@@ -63,7 +63,6 @@ public class UserDocumentsControl {
         key = str.deAccent(key);
         System.out.println(User.StudentID + ": Search " + key);
         ArrayList<Documents> temp2 = new ArrayList<Documents>();
-        ListDocuments.clean();
         for (Documents x : ListDocuments.list) {
             if (!temp2.contains(x) && str.deAccent(x.getAuthor()).contains(key)) {
                 temp2.add(x);
@@ -81,6 +80,8 @@ public class UserDocumentsControl {
                 temp2.add(x);
             }
         }
+        
+        ListDocuments.clean();
         ListDocuments.list = temp2;
     }
 

@@ -6,7 +6,7 @@ def request(token, documentsID, BorrowingTime):
     rows = cursor.fetchall()
     if(len(rows)>0):
         NameDocuments = rows[0][1]
-        if(int(rows[0][4])>0):
+        if(int(rows[0][5])>0):
             cursor.execute('select * from document where documentsID = "'+documentsID+'" and status="available"')
             row = cursor.fetchone()
             documentID = row[0]

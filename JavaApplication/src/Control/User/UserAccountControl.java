@@ -71,9 +71,5 @@ public class UserAccountControl {
             System.out.println(e);
             System.exit(0);
         }
-        if(result.getstatus().equals("OK")){
-            System.out.println(result.getmessage());
-            User.logout();
-        }
     }
 }

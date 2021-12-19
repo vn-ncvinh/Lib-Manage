@@ -5,7 +5,9 @@
  */
 package View;
 
+import Control.Message;
 import Control.User.UserAccountControl;
+import Model.User;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -16,12 +18,14 @@ import org.json.simple.parser.ParseException;
  * @author ncvinh
  */
 public class Login extends javax.swing.JFrame {
+
     /**
      * Creates new form Login
      */
     public Login() {
         initComponents();
         setLocationRelativeTo(null);
+        setTitle("Quản lý thư viện");
     }
 
     /**
@@ -138,11 +142,15 @@ public class Login extends javax.swing.JFrame {
             // TODO add your handling code here:
             UserAccountControl.Login(txtStudentID.getText(), txtPassword.getText());
             Message.showMessage(UserAccountControl.result.getstatus(), UserAccountControl.result.getmessage());
-            if(UserAccountControl.result.getstatus().equals("OK")){
+            if (UserAccountControl.result.getstatus().equals("OK")) {
                 this.setVisible(false);
-                new AdminForm().setVisible(true);
-            }
-            
+                if (User.Admin.equals("1")) {
+                    new AdminForm().setVisible(true);
+                } else {
+                    new UserForm().setVisible(true);
+                }
+                
+            }            
             
         } catch (ParseException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
