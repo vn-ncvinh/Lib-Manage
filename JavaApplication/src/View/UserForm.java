@@ -5,27 +5,18 @@
  */
 package View;
 
-import View.*;
 
 import Control.User.UserAccountControl;
 import Control.User.UserBorrowControl;
 import Control.User.UserDocumentsControl;
-import Model.List.ListAccount;
 import Model.List.ListBorrow;
-import Model.List.ListCategory;
 import Model.List.ListDocuments;
 import Model.User;
-import View.Login;
 import Control.Message;
 import java.awt.Color;
-import java.awt.Font;
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFileChooser;
-import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import org.json.simple.parser.ParseException;
 

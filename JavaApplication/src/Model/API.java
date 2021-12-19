@@ -1,6 +1,5 @@
 package Model;
 
-import Model.url;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -8,7 +7,6 @@ import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.ProtocolException;
 import java.net.URL;
-import java.net.URLEncoder;
 import org.json.simple.parser.ParseException;
 
 public class API {

@@ -84,6 +84,13 @@ public class AdminAccountControl {
                 temp.add(x);
             }
         }
+        
+        for (Accounts x : ListAccount.list) {
+            if (!temp.contains(x) && str.deAccent(x.getSClass()).contains(key)) {
+                temp.add(x);
+            }
+        }
+        
         ListAccount.clean();
         ListAccount.list = temp;
     }

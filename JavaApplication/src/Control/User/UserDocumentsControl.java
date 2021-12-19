@@ -14,11 +14,9 @@ import Model.url;
 import Control.str;
 import Model.Documents;
 import java.io.IOException;
-import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Pattern;
 import org.json.simple.parser.ParseException;
 
 /**
