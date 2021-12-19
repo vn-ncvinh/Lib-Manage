@@ -16,7 +16,7 @@ def add(token, Name, Author, Description, ListCategoryID):
             rows = cursor.fetchall()
             if(len(rows)<1):
                 return output.error("Incorrect Category ID")
-        query="INSERT INTO documents (Name, Author, Description) VALUES ('"+Name+"', '"+Author+"', '"+Description+"')"
+        query="INSERT INTO documents (Name, Author, Description, Category) VALUES ('"+Name+"', '"+Author+"', '"+Description+"', '"+ListCategoryID+"')"
         cursor.execute(query)
         connection.commit()
         query="select * from documents where Name = '"+Name+"' and Author = '"+Author+"' and Description = '"+Description+"'"

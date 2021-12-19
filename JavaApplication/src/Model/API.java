@@ -27,6 +27,7 @@ public class API {
         conn.setInstanceFollowRedirects(false);
         conn.setRequestMethod("POST");
         conn.setRequestProperty("Content-Type", "application/json; charset=utf-8");
+//        conn.setRequestProperty("Accept-Charset", "UTF-8"); 
         conn.setUseCaches(false);
 //        System.out.println(u.getUrl());
         Reader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));

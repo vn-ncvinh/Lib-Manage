@@ -13,15 +13,15 @@ import java.util.ArrayList;
  * @author ncvinh
  */
 public class ListDocuments {
-    public static String[] columns = {"ID", "Name", "Author", "Description", "Available"};
+    public static String[] columns = {"ID", "Name", "Author", "Description", "Category", "Available"};
     public static ArrayList<Documents> list = new ArrayList<Documents>();
     
     public static void clean(){
         list = new ArrayList<>();
     }
-    public static void add(String ID, String Name, String Author, String Description, String Available) {
+    public static void add(String ID, String Name, String Author, String Description, String Category, String Available) {
 //        ID, Name, Author, Description, Available
-        list.add(new Documents(ID, Name, Author, Description, Available));
+        list.add(new Documents(ID, Name, Author, Description, Category, Available));
     }
 
     public static String[] get(int index) {
@@ -33,7 +33,7 @@ public class ListDocuments {
     }
 
     public static String[][] getArray() {
-        String[][] rs = new String[quantity()][5];
+        String[][] rs = new String[quantity()][6];
         for (int i = 0; i < list.size(); i++) {
             rs[i] = get(i);
         }

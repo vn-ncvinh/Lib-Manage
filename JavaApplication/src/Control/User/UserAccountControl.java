@@ -18,7 +18,7 @@ import org.json.simple.parser.ParseException;
  */
 public class UserAccountControl {
     
-    static jsonobj result;
+    static public jsonobj result;
     
     private static void send(url u){
         try {

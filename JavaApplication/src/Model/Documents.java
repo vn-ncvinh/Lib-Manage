@@ -10,13 +10,14 @@ package Model;
  * @author ncvinh
  */
 public class Documents {
-    private String ID, Name, Author, Description, Available;
+    private String ID, Name, Author, Description, Category, Available;
 
-    public Documents(String ID, String Name, String Author, String Description, String Available) {
+    public Documents(String ID, String Name, String Author, String Description, String Category, String Available) {
         this.ID = ID;
         this.Name = Name;
         this.Author = Author;
         this.Description = Description;
+        this.Category = Category;
         this.Available = Available;
     }
 
@@ -41,12 +42,13 @@ public class Documents {
     }
     
     public String[] toArray(){
-        String[] rs = new String[5];
+        String[] rs = new String[6];
         rs[0] = ID;
         rs[1] = Name;
         rs[2] = Author;
         rs[3] = Description;
-        rs[4] = Available;
+        rs[4] = Category;
+        rs[5] = Available;
         return rs;
     }
 }

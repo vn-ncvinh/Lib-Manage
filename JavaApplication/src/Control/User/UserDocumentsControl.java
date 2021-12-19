@@ -27,7 +27,7 @@ import org.json.simple.parser.ParseException;
  */
 public class UserDocumentsControl {
 
-    static jsonobj result;
+    static public jsonobj result;
 
     private static void send(url u) {
         System.out.println(u.getUrl());
@@ -51,7 +51,7 @@ public class UserDocumentsControl {
         if (result.getstatus().equals("OK")) {
             for (int i = 0; i < result.lengthdata(); i++) {
 //                ID, Name, Author, Description, Available
-                ListDocuments.add(result.getdata(i, "ID"), result.getdata(i, "Name"), result.getdata(i, "Author"), result.getdata(i, "Description"), result.getdata(i, "Available"));
+                ListDocuments.add(result.getdata(i, "ID"), result.getdata(i, "Name"), result.getdata(i, "Author"), result.getdata(i, "Description"), result.getdata(i, "Category"), result.getdata(i, "Available"));
             }
         }
     }

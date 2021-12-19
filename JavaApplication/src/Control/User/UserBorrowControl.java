@@ -17,7 +17,7 @@ import org.json.simple.parser.ParseException;
  * @author ncvinh
  */
 public class UserBorrowControl {
-    static jsonobj result;
+    static public jsonobj result;
 
     private static void send(url u){
         try {

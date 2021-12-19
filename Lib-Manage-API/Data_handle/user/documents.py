@@ -20,9 +20,9 @@ def search(name):
     return output.tabletojson(cols,rows, "Successfully!")
 
 def category():
-    query="select * from category_quantity"
+    query="select * from category"
     cursor.execute(query)
     rows=cursor.fetchall()
-    cursor.execute("DESCRIBE category_quantity")
+    cursor.execute("DESCRIBE category")
     cols=cursor.fetchall()
     return output.tabletojson(cols,rows, "Successfully!")

@@ -10,7 +10,7 @@ package Model;
  * @author ncvinh
  */
 public class User {
-    public static String StudentID, FullName, PhoneNumber, Specialization, sClass, Admin, Token, Expiry, Status;
+    public static String StudentID, FullName, PhoneNumber, Specialization, sClass, Admin, Token ="oby1GR17CqDOndAbj6WKR7BMYHIHAN", Expiry, Status;
 
     public static void init (String StudentID, String FullName, String PhoneNumber, String Specialization, String sClass, String Admin, String Token, String Expiry, String Status) {
         User.StudentID = StudentID;

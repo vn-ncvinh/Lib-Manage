@@ -20,7 +20,7 @@ import org.json.simple.parser.ParseException;
  * @author ncvinh
  */
 public class AdminCategoryManage {
-    static jsonobj result;
+    static public jsonobj result;
 
     private static void send(url u) {
         System.out.println(u.getUrl());

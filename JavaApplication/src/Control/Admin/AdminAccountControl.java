@@ -23,7 +23,7 @@ import org.json.simple.parser.ParseException;
  */
 public class AdminAccountControl {
 
-    static jsonobj result;
+    static public jsonobj result;
 
     private static void send(url u) {
         System.out.println(u.getUrl());

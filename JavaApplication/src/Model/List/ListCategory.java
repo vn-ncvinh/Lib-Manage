@@ -14,7 +14,7 @@ import java.util.ArrayList;
  */
 public class ListCategory {
 
-    static public String[] columns = {"ID", "Name", "Description", "Available"};
+    static public String[] columns = {"ID", "Name", "Description"};
     static public ArrayList<Category> list = new ArrayList<Category>();
 
     public static void clean() {
