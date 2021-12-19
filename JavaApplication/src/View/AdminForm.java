@@ -17,6 +17,7 @@ import Model.List.ListCategory;
 import Model.List.ListDocuments;
 import Model.User;
 import Control.Message;
+import Control.User.UserCategoryControl;
 import java.awt.Color;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -106,7 +107,7 @@ public class AdminForm extends javax.swing.JFrame {
     }
 
     public void updateCategoryTable() throws ParseException {
-        UserDocumentsControl.category();
+        UserCategoryControl.category();
         CategoryTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         model = new DefaultTableModel(ListCategory.getArray(), ListCategory.columns);
         CategoryTable.setModel(model);
@@ -148,6 +149,8 @@ public class AdminForm extends javax.swing.JFrame {
         DocumentsAddFromFileBtn = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         DocumentUpdateTableBtn1 = new javax.swing.JButton();
+        txtSearchBox = new javax.swing.JTextField();
+        txtSearchbtn = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         DocumentsTable = new javax.swing.JTable();
@@ -454,6 +457,16 @@ public class AdminForm extends javax.swing.JFrame {
             }
         });
 
+        txtSearchBox.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+
+        txtSearchbtn.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        txtSearchbtn.setText("Tìm kiếm");
+        txtSearchbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchbtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -487,6 +500,10 @@ public class AdminForm extends javax.swing.JFrame {
                 .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(txtSearchBox, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(txtSearchbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(43, 43, 43)
                 .addComponent(DocumentUpdateTableBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -516,7 +533,11 @@ public class AdminForm extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addComponent(DocumentUpdateTableBtn1)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(DocumentUpdateTableBtn1)
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(txtSearchBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtSearchbtn)))
                 .addContainerGap())
         );
 
@@ -2910,6 +2931,19 @@ public class AdminForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNewPassword2ActionPerformed
 
+    private void txtSearchbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchbtnActionPerformed
+        // TODO add your handling code here
+        if (!txtSearchBox.getText().isEmpty()) {
+            try {
+                UserDocumentsControl.search(txtSearchBox.getText());
+                model = new DefaultTableModel(ListDocuments.getArray(), ListDocuments.columns);
+                DocumentsTable.setModel(model);
+            } catch (ParseException ex) {
+                Logger.getLogger(UserForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }//GEN-LAST:event_txtSearchbtnActionPerformed
+
     public void selectFile() {
         JFileChooser j = new JFileChooser("C:");
 
@@ -3129,9 +3163,11 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JLabel txtPhone;
     private javax.swing.JTextField txtReprint;
     private javax.swing.JTextField txtReturnDocID;
+    private javax.swing.JTextField txtSearchBox;
     private javax.swing.JTextField txtSearchStudentID;
     private javax.swing.JTextField txtSearchStudentID1;
     private javax.swing.JTextField txtSearchStudentID2;
+    private javax.swing.JButton txtSearchbtn;
     private javax.swing.JLabel txtStudentID;
     private javax.swing.JTextField txtStudentIDBorrow;
     // End of variables declaration//GEN-END:variables

@@ -37,6 +37,10 @@ public class Documents {
         return Description;
     }
 
+    public String getCategory() {
+        return Category;
+    }
+
     public String getAvailable() {
         return Available;
     }

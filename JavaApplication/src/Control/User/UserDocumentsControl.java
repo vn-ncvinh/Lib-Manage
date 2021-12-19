@@ -49,7 +49,11 @@ public class UserDocumentsControl {
         if (result.getstatus().equals("OK")) {
             for (int i = 0; i < result.lengthdata(); i++) {
 //                ID, Name, Author, Description, Available
-                ListDocuments.add(result.getdata(i, "ID"), result.getdata(i, "Name"), result.getdata(i, "Author"), result.getdata(i, "Description"), result.getdata(i, "Category"), result.getdata(i, "Available"));
+                String Category = result.getdata(i, "Category");
+                if(User.Admin.equals("0")){
+                    Category = UserCategoryControl.ListIDtoListName(Category);
+                }
+                ListDocuments.add(result.getdata(i, "ID"), result.getdata(i, "Name"), result.getdata(i, "Author"), result.getdata(i, "Description"), Category, result.getdata(i, "Available"));
             }
         }
     }
@@ -72,6 +76,14 @@ public class UserDocumentsControl {
                 temp2.add(x);
             }
         }
+        
+        for (Documents x : ListDocuments.list) {
+            if (!temp2.contains(x) && str.deAccent(x.getCategory()).contains(key)) {
+                temp2.add(x);
+            }
+        }
+        
+        
 
         for (Documents x : ListDocuments.list) {
             if (!temp2.contains(x) && str.deAccent(x.getDescription()).contains(key)) {
@@ -83,17 +95,6 @@ public class UserDocumentsControl {
         ListDocuments.list = temp2;
     }
 
-    public static void category() throws ParseException {
-        System.out.println(User.StudentID + ": Get Category");
-        url u = new url("/api/documents/category");
-        send(u);
-        System.out.println(result.getstatus());
-        ListCategory.clean();
-        if (result.getstatus().equals("OK")) {
-            for (int i = 0; i < result.lengthdata(); i++) {
-                ListCategory.add(result.getdata(i, "ID"), result.getdata(i, "Name"), result.getdata(i, "Description"));
-            }
-        }
-    }
+    
 
 }
