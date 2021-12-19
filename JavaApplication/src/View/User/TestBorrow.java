@@ -28,12 +28,12 @@ public class TestBorrow {
         jFrame.setTitle("List Borrow");
 
         //Login
-        UserAccountControl.Login("at150265", "vinh@2000");
+        UserAccountControl.Login("at150266", "nguyenvanvy");
 
         //Get Documents
         if (User.Token != null) {
-            System.out.println(User.FullName);
-//            UserBorrowControl.request(1, 14);
+//            System.out.println(User.FullName);
+            UserBorrowControl.request(2, 14);
 //            UserBorrowControl.cancel(4);
             UserBorrowControl.getList();
 

@@ -21,8 +21,8 @@ public class ListCategory {
         list = new ArrayList<Category>();
     }
 
-    public static void add(String ID, String Name, String Description, String Available) {
-        list.add(new Category(Integer.parseInt(ID), Name, Description, Integer.parseInt(Available)));
+    public static void add(String ID, String Name, String Description) {
+        list.add(new Category(Integer.parseInt(ID), Name, Description));
     }
 
     public static String[] get(int index) {
@@ -34,7 +34,7 @@ public class ListCategory {
     }
 
     public static String[][] getArray() {
-        String[][] rs = new String[quantity()][7];
+        String[][] rs = new String[quantity()][3];
         for (int i = 0; i < list.size(); i++) {
             rs[i] = get(i);
         }

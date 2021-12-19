@@ -10,10 +10,10 @@ package Model;
  * @author ncvinh
  */
 public class Borrow {
-    private String StudentID, DocumentID, status, BorrowDate, ReturnDate;
+    private String StudentID, DocumentID,NameDocument, status, BorrowDate, ReturnDate;
     private int ID, BorrowingTime;
 
-    public Borrow(int ID, String StudentID, String DocumentID, String status, int BorrowingTime, String BorrowDate, String ReturnDate) {
+    public Borrow(int ID, String StudentID, String DocumentID,String NameDocument, String status, int BorrowingTime, String BorrowDate, String ReturnDate) {
         this.StudentID = StudentID;
         this.DocumentID = DocumentID;
         this.status = status;
@@ -21,6 +21,7 @@ public class Borrow {
         this.ReturnDate = ReturnDate;
         this.ID = ID;
         this.BorrowingTime = BorrowingTime;
+        this.NameDocument = NameDocument;
     }
 
     public String getStudentID() {
@@ -52,14 +53,15 @@ public class Borrow {
     }
     
     public String[] toArray(){
-        String[] rs = new String[7];
+        String[] rs = new String[8];
         rs[0] = ""+ID;
         rs[1] = StudentID;
         rs[2] = DocumentID;
-        rs[3] = status;
-        rs[4] = ""+BorrowingTime;
-        rs[5] = BorrowDate;
-        rs[6] = ReturnDate;
+        rs[3] = NameDocument;
+        rs[4] = status;
+        rs[5] = ""+BorrowingTime;
+        rs[6] = BorrowDate;
+        rs[7] = ReturnDate;
         return rs;
     }
     

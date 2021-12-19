@@ -113,6 +113,24 @@ def update_user():
     else:
         return output.page404
 
+@app.route('/api/admin/users/extend', methods=['POST', 'GET'])
+def Extend():
+    if sqli.check(request.args):
+        return output.error("SQL Injection!")
+    
+    if 'token' in request.args and 'StudentID' in request.args and 'Expiry' in request.args:
+        token = request.args['token']
+        StudentID = request.args['StudentID']
+        Expiry = request.args['Expiry']
+        if (token_handle.checktoken(token)):
+            return account.Extend(token, StudentID, Expiry)
+        else:
+            return output.error("Incorrect Token!")
+    else:
+        return output.page404
+
+
+
 
 #############
 # Documents #
@@ -250,6 +268,24 @@ def viewall_borrow():
             return output.error("Incorrect Token!")
     else:
         return output.page404
+
+@app.route('/api/admin/borrow/search', methods=['POST', 'GET'])
+def searchbyStudentID():
+    if sqli.check(request.args):
+        return output.error("SQL Injection!")
+    
+    if 'token' in request.args and 'StudentID' in request.args:
+        token = request.args['token']
+        StudentID = request.args['StudentID']
+        if (token_handle.checktoken(token)):
+            return borrow.SearchbyStudentID(token, StudentID)
+        else:
+            return output.error("Incorrect Token!")
+    else:
+        return output.page404
+
+
+
 
 @app.route('/api/admin/borrow/confirm', methods=['POST', 'GET'])
 def confirm_borrow():

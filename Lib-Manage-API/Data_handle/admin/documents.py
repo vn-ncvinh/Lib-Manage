@@ -122,7 +122,7 @@ def addDoc(token, ID, DocumentsID, Reprint):
             rows = cursor.fetchall()
             cursor.execute("DESCRIBE document")
             cols = cursor.fetchall()
-            output.log(token_handle.tokentoStudentID(token), ID, "Update Documents!" )
+            output.log(token_handle.tokentoStudentID(token), ID, "Add Document!" )
             return output.tabletojson(cols, rows, "Successfully!")
         else:
             return output.error('Incorrect Documents ID!')

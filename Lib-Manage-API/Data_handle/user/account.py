@@ -39,6 +39,8 @@ def changepass(token, oldpassword, newpassword):
         query = "update users set password = '"+newpassword+"' where StudentID = '"+token_handle.tokentoStudentID(token)+"' and password = '"+oldpassword+"'"
         cursor.execute(query)
         connection.commit()
+        StudentID =token_handle.tokentoStudentID(token);
+        output.log(StudentID, StudentID, "Change password!")
         return output.ok("Successfully!")
     except:
         return output.error("Old Password Incorrect!")

@@ -21,6 +21,7 @@ import org.json.simple.parser.ParseException;
  */
 public class AdminCategoryManage {
     static public jsonobj result;
+    static public String rsfile;
 
     private static void send(url u) {
         System.out.println(u.getUrl());
@@ -63,14 +64,19 @@ public class AdminCategoryManage {
     
     public static void addfromFile(String Filepatch) throws ParseException, FileNotFoundException, IOException {
         String line = "";
+        int ok=0;
+        int error=0;
         try {
             BufferedReader br = new BufferedReader(new FileReader(Filepatch));
             while ((line = br.readLine()) != null) {
                 String[] Category = line.split(",");
 //                System.out.print(Account[0]);
                 add(Category[0], Category[1]);
+                if(result.getstatus().equals("OK")) ok++;
+                else error++;
 //                System.out.println(" - " + result.getstatus());
             }
+            rsfile = "OK: " + ok + " - ERROR: " + error;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -78,14 +84,19 @@ public class AdminCategoryManage {
     
     public static void deletefromFile(String Filepatch) throws ParseException, FileNotFoundException, IOException {
         String line = "";
+        int ok=0;
+        int error=0;
         try {
             BufferedReader br = new BufferedReader(new FileReader(Filepatch));
             while ((line = br.readLine()) != null) {
                 String[] Category = line.split(",");
 //                System.out.print(Account[0]);
                 delete(Category[0]);
+                if(result.getstatus().equals("OK")) ok++;
+                else error++;
 //                System.out.println(" - " + result.getstatus());
             }
+            rsfile = "OK: " + ok + " - ERROR: " + error;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -93,14 +104,19 @@ public class AdminCategoryManage {
     
     public static void updatefromFile(String Filepatch) throws ParseException, FileNotFoundException, IOException {
         String line = "";
+        int ok=0;
+        int error=0;
         try {
             BufferedReader br = new BufferedReader(new FileReader(Filepatch));
             while ((line = br.readLine()) != null) {
                 String[] Category = line.split(",");
 //                System.out.print(Account[0]);
                 update(Category[0], Category[1], Category[3]);
+                if(result.getstatus().equals("OK")) ok++;
+                else error++;
 //                System.out.println(" - " + result.getstatus());
             }
+            rsfile = "OK: " + ok + " - ERROR: " + error;
         } catch (IOException e) {
             e.printStackTrace();
         }

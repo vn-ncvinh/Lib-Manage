@@ -17,7 +17,7 @@ public class ListDocuments {
     public static ArrayList<Documents> list = new ArrayList<Documents>();
     
     public static void clean(){
-        list = new ArrayList<>();
+        list = new ArrayList<Documents>();
     }
     public static void add(String ID, String Name, String Author, String Description, String Category, String Available) {
 //        ID, Name, Author, Description, Available

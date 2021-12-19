@@ -37,14 +37,6 @@ public class UserBorrowControl {
         u.addParameter("documentsid", "" + documentsid);
         u.addParameter("BorrowingTime", "" + BorrowingTime);
         send(u);
-        System.out.println(result.getstatus());
-        ListBorrow.clean();
-        if (result.getstatus().equals("OK")) {
-            for (int i = 0; i < result.lengthdata(); i++) {
-//                ID, StudentID, DocumentID, status, BorrowingTime, BorrowDate, ReturnDate
-                ListBorrow.add(result.getdata(i, "ID"), result.getdata(i, "StudentID"), result.getdata(i, "DocumentID"), result.getdata(i, "status"), result.getdata(i, "BorrowingTime"), result.getdata(i, "BorrowDate"), result.getdata(i, "ReturnDate"));
-            }
-        }
     }
     
     
@@ -55,14 +47,6 @@ public class UserBorrowControl {
         u.addParameter("token", User.Token);
         u.addParameter("borrowID", "" + borrowID);
         send(u);
-        System.out.println(result.getstatus());
-        ListBorrow.clean();
-        if (result.getstatus().equals("OK")) {
-            for (int i = 0; i < result.lengthdata(); i++) {
-//                ID, StudentID, DocumentID, status, BorrowingTime, BorrowDate, ReturnDate
-                ListBorrow.add(result.getdata(i, "ID"), result.getdata(i, "StudentID"), result.getdata(i, "DocumentID"), result.getdata(i, "status"), result.getdata(i, "BorrowingTime"), result.getdata(i, "BorrowDate"), result.getdata(i, "ReturnDate"));
-            }
-        }
     }
     
     public static void getList() throws ParseException {
@@ -75,7 +59,7 @@ public class UserBorrowControl {
         if (result.getstatus().equals("OK")) {
             for (int i = 0; i < result.lengthdata(); i++) {
 //                ID, StudentID, DocumentID, status, BorrowingTime, BorrowDate, ReturnDate
-                ListBorrow.add(result.getdata(i, "ID"), result.getdata(i, "StudentID"), result.getdata(i, "DocumentID"), result.getdata(i, "status"), result.getdata(i, "BorrowingTime"), result.getdata(i, "BorrowDate"), result.getdata(i, "ReturnDate"));
+                ListBorrow.add(result.getdata(i, "ID"), result.getdata(i, "StudentID"), result.getdata(i, "DocumentID"), result.getdata(i, "NameDocument"), result.getdata(i, "status"), result.getdata(i, "BorrowingTime"), result.getdata(i, "BorrowDate"), result.getdata(i, "ReturnDate"));
             }
         }
     }

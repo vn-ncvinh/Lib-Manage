@@ -36,6 +36,7 @@ def delete(token, ID):
             query="Delete from category where ID = '"+ID+"'"
             cursor.execute(query)
             connection.commit()
+            output.log(token_handle.tokentoStudentID(token), ID, "Delete Category!" )
             return output.ok("Successfully!")
         else:
             return output.error('Incorrect Category ID!')
@@ -51,6 +52,7 @@ def update(token, ID, Name, Description):
             query="Update category set Name = '"+Name+"', Description = '"+Description+"' where ID = '"+ID+"'"
             cursor.execute(query)
             connection.commit()
+            output.log(token_handle.tokentoStudentID(token), ID, "Delete Category!" )
             return output.ok("Successfully!")
         else:
             return output.error('Incorrect Category ID!')

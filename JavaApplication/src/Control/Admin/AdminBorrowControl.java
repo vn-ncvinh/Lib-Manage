@@ -40,7 +40,22 @@ public class AdminBorrowControl {
         if (result.getstatus().equals("OK")) {
             for (int i = 0; i < result.lengthdata(); i++) {
 //                ID, StudentID, DocumentID, status, BorrowingTime, BorrowDate, ReturnDate
-                ListBorrow.add(result.getdata(i, "ID"), result.getdata(i, "StudentID"), result.getdata(i, "DocumentID"), result.getdata(i, "status"), result.getdata(i, "BorrowingTime"), result.getdata(i, "BorrowDate"), result.getdata(i, "ReturnDate"));
+                ListBorrow.add(result.getdata(i, "ID"), result.getdata(i, "StudentID"), result.getdata(i, "DocumentID"), result.getdata(i, "NameDocument"), result.getdata(i, "status"), result.getdata(i, "BorrowingTime"), result.getdata(i, "BorrowDate"), result.getdata(i, "ReturnDate"));
+            }
+        }
+    }
+    
+    public static void search(String StudentID) throws ParseException {
+        url u = new url("/api/admin/borrow/search");
+        System.out.println(User.StudentID + ": Search Borrow of " + StudentID);
+        u.addParameter("token", User.Token);
+        u.addParameter("StudentID", StudentID);
+        send(u);
+        ListBorrow.clean();
+        if (result.getstatus().equals("OK")) {
+            for (int i = 0; i < result.lengthdata(); i++) {
+//                ID, StudentID, DocumentID, status, BorrowingTime, BorrowDate, ReturnDate
+                ListBorrow.add(result.getdata(i, "ID"), result.getdata(i, "StudentID"), result.getdata(i, "DocumentID"), result.getdata(i, "NameDocument"), result.getdata(i, "status"), result.getdata(i, "BorrowingTime"), result.getdata(i, "BorrowDate"), result.getdata(i, "ReturnDate"));
             }
         }
     }

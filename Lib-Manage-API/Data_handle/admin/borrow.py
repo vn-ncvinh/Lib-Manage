@@ -1,9 +1,20 @@
 from general_handle.dbc import cursor, connection
 from general_handle import output, token_handle
 
+
 def viewall(token):
     if(token_handle.tokenadmin(token)):
         cursor.execute('select * from borrow where status = "wait" or status = "borrowed"')
+        rows = cursor.fetchall()
+        cursor.execute("DESCRIBE borrow")
+        cols = cursor.fetchall()
+        return output.tabletojson(cols, rows, "Successfully!")
+    else:
+        return output.error("You are not authorized to perform this action!")
+
+def SearchbyStudentID(token, StudentID):
+    if(token_handle.tokenadmin(token)):
+        cursor.execute('select * from borrow where StudentID = "'+StudentID+'"')
         rows = cursor.fetchall()
         cursor.execute("DESCRIBE borrow")
         cols = cursor.fetchall()

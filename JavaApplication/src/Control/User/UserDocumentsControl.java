@@ -62,22 +62,21 @@ public class UserDocumentsControl {
         getList();
         key = str.deAccent(key);
         System.out.println(User.StudentID + ": Search " + key);
-        ArrayList<Documents> temp = ListDocuments.list;
         ArrayList<Documents> temp2 = new ArrayList<Documents>();
         ListDocuments.clean();
-        for (Documents x : temp) {
+        for (Documents x : ListDocuments.list) {
             if (!temp2.contains(x) && str.deAccent(x.getAuthor()).contains(key)) {
                 temp2.add(x);
             }
         }
 
-        for (Documents x : temp) {
+        for (Documents x : ListDocuments.list) {
             if (!temp2.contains(x) && str.deAccent(x.getName()).contains(key)) {
                 temp2.add(x);
             }
         }
 
-        for (Documents x : temp) {
+        for (Documents x : ListDocuments.list) {
             if (!temp2.contains(x) && str.deAccent(x.getDescription()).contains(key)) {
                 temp2.add(x);
             }
@@ -90,10 +89,10 @@ public class UserDocumentsControl {
         url u = new url("/api/documents/category");
         send(u);
         System.out.println(result.getstatus());
-        ListDocuments.clean();
+        ListCategory.clean();
         if (result.getstatus().equals("OK")) {
             for (int i = 0; i < result.lengthdata(); i++) {
-                ListCategory.add(result.getdata(i, "ID"), result.getdata(i, "Name"), result.getdata(i, "Description"), result.getdata(i, "Available"));
+                ListCategory.add(result.getdata(i, "ID"), result.getdata(i, "Name"), result.getdata(i, "Description"));
             }
         }
     }

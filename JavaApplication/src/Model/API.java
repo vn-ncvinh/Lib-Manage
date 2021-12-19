@@ -8,6 +8,7 @@ import java.io.Reader;
 import java.net.HttpURLConnection;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.net.URLEncoder;
 import org.json.simple.parser.ParseException;
 
 public class API {
@@ -26,7 +27,7 @@ public class API {
         conn.setDoOutput(true);
         conn.setInstanceFollowRedirects(false);
         conn.setRequestMethod("POST");
-        conn.setRequestProperty("Content-Type", "application/json; charset=utf-8");
+        conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
 //        conn.setRequestProperty("Accept-Charset", "UTF-8"); 
         conn.setUseCaches(false);
 //        System.out.println(u.getUrl());

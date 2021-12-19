@@ -21,6 +21,7 @@ import org.json.simple.parser.ParseException;
  */
 public class AdminDocumentsControl {
     static public jsonobj result;
+    static public String rsfile;
 
     private static void send(url u) {
         System.out.println(u.getUrl());
@@ -77,6 +78,8 @@ public class AdminDocumentsControl {
     }
     
     public static void addfromFile(String Filepatch) throws ParseException, FileNotFoundException, IOException {
+        int ok = 0;
+        int error = 0;
         String line = "";
         try {
             BufferedReader br = new BufferedReader(new FileReader(Filepatch));
@@ -84,8 +87,11 @@ public class AdminDocumentsControl {
                 String[] Documents = line.split(",");
 //                System.out.print(Account[0]);
                 add(Documents[0], Documents[1], Documents[2], Documents[3]);
-//                System.out.println(" - " + result.getstatus());
+                if(result.getstatus().equals("OK")){
+                    ok++;
+                } else error++;
             }
+            rsfile = "OK: " + ok + " - ERROR: " + error;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -93,14 +99,19 @@ public class AdminDocumentsControl {
     
     public static void deletefromFile(String Filepatch) throws ParseException, FileNotFoundException, IOException {
         String line = "";
+        int ok = 0;
+        int error = 0;
         try {
             BufferedReader br = new BufferedReader(new FileReader(Filepatch));
             while ((line = br.readLine()) != null) {
                 String[] Documents = line.split(",");
 //                System.out.print(Account[0]);
                 delete(Documents[0]);
-//                System.out.println(" - " + result.getstatus());
+                if(result.getstatus().equals("OK")){
+                    ok++;
+                } else error++;
             }
+            rsfile = "OK: " + ok + " - ERROR: " + error;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -108,14 +119,20 @@ public class AdminDocumentsControl {
     
     public static void updatefromFile(String Filepatch) throws ParseException, FileNotFoundException, IOException {
         String line = "";
+        int ok = 0;
+        int error = 0;
         try {
             BufferedReader br = new BufferedReader(new FileReader(Filepatch));
             while ((line = br.readLine()) != null) {
                 String[] Documents = line.split(",");
 //                System.out.print(Account[0]);
                 update(Documents[0], Documents[1], Documents[2], Documents[3], Documents[4]);
+                if(result.getstatus().equals("OK")){
+                    ok++;
+                } else error++;
 //                System.out.println(" - " + result.getstatus());
             }
+            rsfile = "OK: " + ok + " - ERROR: " + error;
         } catch (IOException e) {
             e.printStackTrace();
         }

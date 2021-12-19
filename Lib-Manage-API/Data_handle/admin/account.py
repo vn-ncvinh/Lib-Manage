@@ -92,7 +92,7 @@ def activeuser(token, StudentID):
                 query = "update users set status = 'active' where StudentID = '"+StudentID+"'"
                 cursor.execute(query)
                 connection.commit()
-                output.log(token_handle.tokentoStudentID(token), StudentID, "Disable User" )
+                output.log(token_handle.tokentoStudentID(token), StudentID, "Active User" )
                 return output.ok("Actived!")
             else:
                 return output.error("Student has been activated before!")
@@ -101,16 +101,17 @@ def activeuser(token, StudentID):
     else:
         return output.error("You are not authorized to perform this action!")
 
-def update(token, StudentID, Password, Fullname, PhoneNumber, Specialization, Class, Expiry):
+def update(token, StudentID, Password, Fullname, PhoneNumber, Specialization, Class, Admin):
     if(token_handle.StudentIDadmin(StudentID)):
+        return output.error("You are not permitted!")
+    if(Admin == "1"):
         return output.error("You are not permitted!")
     if(token_handle.tokenadmin(token)):
         cursor.execute('select * from users where StudentID = "'+StudentID+'"')
         rows = cursor.fetchall()
         if(len(rows)>0):
             Password = string_handle.toMD5(StudentID+Password)
-            Expiry = '(select current_date() + interval '+Expiry+' year)'
-            query = "update users set Password = '"+Password+"', Fullname = '"+Fullname+"', PhoneNumber = '"+PhoneNumber+"', Specialization = '"+Specialization+"', Class = '"+Class+"', Expiry = "+Expiry+" where StudentID = '"+StudentID+"'"
+            query = "update users set Password = '"+Password+"', Fullname = '"+Fullname+"', PhoneNumber = '"+PhoneNumber+"', Specialization = '"+Specialization+"', Class = '"+Class+"', Admin = "+Admin+" where StudentID = '"+StudentID+"'"
             # if Password == "":
             #     query = "update users set Fullname = '"+Fullname+"', PhoneNumber = '"+PhoneNumber+"', Specialization = '"+Specialization+"', Class = '"+Class+"', Expiry = '"+Expiry+"' where StudentID = '"+StudentID+"'"
             cursor.execute(query)
@@ -119,7 +120,32 @@ def update(token, StudentID, Password, Fullname, PhoneNumber, Specialization, Cl
             rows = cursor.fetchall()
             cursor.execute("DESCRIBE users_hide")
             cols = cursor.fetchall()
-            output.log(token_handle.tokentoStudentID(token), StudentID, "Create User")
+            output.log(token_handle.tokentoStudentID(token), StudentID, "Update User")
+            return output.tabletojson(cols, rows, "Successfully!")
+        else:
+            return output.error("Student ID does not exist!")
+    else:
+        return output.error("You are not authorized to perform this action!")
+
+def Extend(token, StudentID, Expiry):
+    if(token_handle.StudentIDadmin(StudentID)):
+        return output.error("You are not permitted!")
+    if(token_handle.tokenadmin(token)):
+        cursor.execute('select * from users where StudentID = "'+StudentID+'"')
+        rows = cursor.fetchall()
+        if(len(rows)>0):
+            
+            Expiry = '(select current_date() + interval '+Expiry+' year)'
+            query = "update users set Expiry = "+Expiry+" where StudentID = '"+StudentID+"'"
+            # if Password == "":
+            #     query = "update users set Fullname = '"+Fullname+"', PhoneNumber = '"+PhoneNumber+"', Specialization = '"+Specialization+"', Class = '"+Class+"', Expiry = '"+Expiry+"' where StudentID = '"+StudentID+"'"
+            cursor.execute(query)
+            connection.commit()
+            cursor.execute('select * from users_hide where StudentID = "'+StudentID+'"')
+            rows = cursor.fetchall()
+            cursor.execute("DESCRIBE users_hide")
+            cols = cursor.fetchall()
+            output.log(token_handle.tokentoStudentID(token), StudentID, "Extend")
             return output.tabletojson(cols, rows, "Successfully!")
         else:
             return output.error("Student ID does not exist!")

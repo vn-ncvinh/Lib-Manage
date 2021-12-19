@@ -11,13 +11,12 @@ package Model;
  */
 public class Category {
     private String Name ,Description;
-    private int ID, Available;
+    private int ID;
 
-    public Category(int ID, String Name, String Description, int Available) {
+    public Category(int ID, String Name, String Description) {
         this.ID = ID;
         this.Name = Name;
         this.Description = Description;
-        this.Available = Available;
     }
 
     public int getID() {
@@ -32,16 +31,12 @@ public class Category {
         return Description;
     }
 
-    public int getAvailable() {
-        return Available;
-    }
     
     public String[] toArray(){
-        String[] rs = new String[4];
+        String[] rs = new String[3];
         rs[0]=""+ID;
         rs[1]=""+Name;
         rs[2]=""+Description;
-        rs[3]=""+Available;
         return rs;
     }
 }

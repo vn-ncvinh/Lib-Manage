@@ -26,6 +26,7 @@ CREATE TABLE `borrow` (
   `ID` int NOT NULL AUTO_INCREMENT,
   `StudentID` varchar(20) NOT NULL,
   `DocumentID` varchar(20) NOT NULL,
+  `NameDocument` varchar(45) DEFAULT NULL,
   `status` varchar(10) NOT NULL DEFAULT 'wait',
   `BorrowingTime` int DEFAULT NULL,
   `BorrowDate` date DEFAULT NULL,
@@ -126,7 +127,6 @@ CREATE TABLE `category_documents` (
 
 LOCK TABLES `category_documents` WRITE;
 /*!40000 ALTER TABLE `category_documents` DISABLE KEYS */;
-INSERT INTO `category_documents` VALUES (4,1),(5,2),(6,3);
 /*!40000 ALTER TABLE `category_documents` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -169,7 +169,6 @@ CREATE TABLE `document` (
 
 LOCK TABLES `document` WRITE;
 /*!40000 ALTER TABLE `document` DISABLE KEYS */;
-INSERT INTO `document` VALUES ('100003',1,1,'available'),('100004',1,1,'available'),('100005',1,1,'available'),('100006',1,1,'available'),('100007',1,1,'available'),('100008',1,1,'available'),('100009',1,1,'available'),('100010',1,1,'available'),('100011',2,1,'available'),('100012',2,1,'available'),('100013',2,1,'available'),('100014',2,1,'available'),('100015',2,1,'available'),('100016',2,1,'available'),('100017',2,1,'available'),('100018',2,1,'available'),('100019',2,1,'available'),('100020',2,1,'available'),('100021',2,1,'available'),('100022',3,1,'available'),('100023',3,1,'available'),('100024',3,1,'available'),('100025',3,1,'available'),('100026',3,1,'available'),('100027',3,1,'available'),('100028',3,1,'available'),('100029',3,1,'available'),('100030',3,1,'available'),('100031',3,1,'available');
 /*!40000 ALTER TABLE `document` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -185,8 +184,9 @@ CREATE TABLE `documents` (
   `Name` varchar(100) NOT NULL,
   `Author` varchar(50) NOT NULL,
   `Description` varchar(100) DEFAULT NULL,
+  `Category` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -195,7 +195,6 @@ CREATE TABLE `documents` (
 
 LOCK TABLES `documents` WRITE;
 /*!40000 ALTER TABLE `documents` DISABLE KEYS */;
-INSERT INTO `documents` VALUES (1,'Phân tích thiết kế hệ thống','Công Vĩnh',NULL),(2,'Lý thuyết mật mã','Bá Long',NULL),(3,'An toàn Hệ điều hành','Văn Vỹ',NULL),(4,'Lý thuyết Cơ sở dữ liệu','actvn',NULL),(5,'Tích phân','Công Vĩnh','Toán cao cấp dành cho sinh viên năm nhất');
 /*!40000 ALTER TABLE `documents` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -212,6 +211,7 @@ SET @saved_cs_client     = @@character_set_client;
  1 AS `Name`,
  1 AS `Author`,
  1 AS `Description`,
+ 1 AS `Category`,
  1 AS `Available`*/;
 SET character_set_client = @saved_cs_client;
 
@@ -229,7 +229,7 @@ CREATE TABLE `log` (
   `Destination` varchar(45) DEFAULT NULL,
   `Time` date DEFAULT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -238,7 +238,6 @@ CREATE TABLE `log` (
 
 LOCK TABLES `log` WRITE;
 /*!40000 ALTER TABLE `log` DISABLE KEYS */;
-INSERT INTO `log` VALUES (1,'AT150265','Logout!','App','2021-12-10'),(2,'AT150267','Logout!','App','2021-12-10'),(3,'AT150265','Logout!','App','2021-12-10'),(4,'AT150265','Logout!','App','2021-12-10'),(5,'AT150265','Logged in successfully!','App','2021-12-10'),(6,'AT150265','Logout!','App','2021-12-10');
 /*!40000 ALTER TABLE `log` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -270,7 +269,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES ('AT150265','C231C34126D7D5DE3589108C387F1957','Nguyễn Công Vĩnh',NULL,'ATTT','AT15B',1,'TOKEN','2021-11-30','active'),('AT150266','BE5E9C7BEB5BE86F35ABDD606036B22B','Nguyễn Văn Vỹ','1','ATTT','AT15B',1,'TOKEN','2025-11-25','active'),('AT150267','A663B63F854DCB0B94174617DE136091','Nguyễn Công Vinh','1','ATTT','AT15B',1,'TOKEN','2025-12-06','active');
+INSERT INTO `users` VALUES ('AT150265','C231C34126D7D5DE3589108C387F1957','Cong Vinh','1','ATTT','AT15B',1,'TOKEN','2025-12-18','active'),('AT150266','BE5E9C7BEB5BE86F35ABDD606036B22B','Van Vy','1','ATTT','AT15B',0,'TOKEN','2025-11-25','active');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -380,7 +379,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`ncvinh`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `documents_quantity` AS select `documents`.`ID` AS `ID`,`documents`.`Name` AS `Name`,`documents`.`Author` AS `Author`,`documents`.`Description` AS `Description`,count(`document`.`DocumentsID`) AS `Available` from (`documents` left join `document` on(((`document`.`DocumentsID` = `documents`.`ID`) and (`document`.`Status` = 'available')))) group by `documents`.`ID` */;
+/*!50001 VIEW `documents_quantity` AS select `documents`.`ID` AS `ID`,`documents`.`Name` AS `Name`,`documents`.`Author` AS `Author`,`documents`.`Description` AS `Description`,`documents`.`Category` AS `Category`,count(`document`.`DocumentsID`) AS `Available` from (`documents` left join `document` on(((`document`.`DocumentsID` = `documents`.`ID`) and (`document`.`Status` = 'available')))) group by `documents`.`ID` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -398,7 +397,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`ncvinh`@`%` SQL SECURITY DEFINER */
-/*!50001 VIEW `users_hide` AS select `users`.`StudentID` AS `StudentID`,`users`.`FullName` AS `FullName`,`users`.`PhoneNumber` AS `PhoneNumber`,`users`.`Specialization` AS `Specialization`,`users`.`Class` AS `Class`,`users`.`Admin` AS `Admin`,`users`.`Expiry` AS `Expiry`,`users`.`Status` AS `Status` from `users` where (`users`.`Status` = 'active') */;
+/*!50001 VIEW `users_hide` AS select `users`.`StudentID` AS `StudentID`,`users`.`FullName` AS `FullName`,`users`.`PhoneNumber` AS `PhoneNumber`,`users`.`Specialization` AS `Specialization`,`users`.`Class` AS `Class`,`users`.`Admin` AS `Admin`,`users`.`Expiry` AS `Expiry`,`users`.`Status` AS `Status` from `users` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -430,4 +429,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2021-12-10 21:46:03
+-- Dump completed on 2021-12-19 14:27:19
