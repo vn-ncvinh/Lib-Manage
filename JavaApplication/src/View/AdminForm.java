@@ -9,15 +9,15 @@ import Control.Admin.AdminAccountControl;
 import Control.Admin.AdminBorrowControl;
 import Control.Admin.AdminCategoryManage;
 import Control.Admin.AdminDocumentsControl;
-import Control.User.UserAccountControl;
-import Control.User.UserDocumentsControl;
+import Control.AccountControl;
+import Control.DocumentsControl;
 import Model.List.ListAccount;
 import Model.List.ListBorrow;
 import Model.List.ListCategory;
 import Model.List.ListDocuments;
 import Model.User;
 import Control.Message;
-import Control.User.UserCategoryControl;
+import Control.CategoryControl;
 import java.awt.Color;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -59,7 +59,7 @@ public class AdminForm extends javax.swing.JFrame {
     }
 
     public void updateDocumentTable() throws ParseException {
-        UserDocumentsControl.getList();
+        DocumentsControl.getList();
         model = new DefaultTableModel(ListDocuments.getArray(), ListDocuments.columns);
         DocumentsTable1.setModel(model);
         DocumentsTable.setModel(model);
@@ -72,7 +72,8 @@ public class AdminForm extends javax.swing.JFrame {
         model = new DefaultTableModel(ListBorrow.getArray(), ListBorrow.columns);
         BorrowTable.setModel(model);
         jPanel26.setVisible(false);
-        jPanel27.setVisible(false);
+        jPanel27.setVisible(true);
+        txtReturnDocID.setText("");
     }
 
     public void updateAccountTable() throws ParseException {
@@ -107,7 +108,7 @@ public class AdminForm extends javax.swing.JFrame {
     }
 
     public void updateCategoryTable() throws ParseException {
-        UserCategoryControl.category();
+        CategoryControl.category();
         CategoryTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         model = new DefaultTableModel(ListCategory.getArray(), ListCategory.columns);
         CategoryTable.setModel(model);
@@ -158,8 +159,8 @@ public class AdminForm extends javax.swing.JFrame {
         jPanel12 = new javax.swing.JPanel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        txtDocumentsID = new javax.swing.JTextField();
         txtDocID = new javax.swing.JTextField();
+        txtDocumentsID = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         txtReprint = new javax.swing.JTextField();
         jButton14 = new javax.swing.JButton();
@@ -533,11 +534,11 @@ public class AdminForm extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DocumentUpdateTableBtn1)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtSearchBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtSearchbtn)))
+                        .addComponent(txtSearchbtn))
+                    .addComponent(DocumentUpdateTableBtn1))
                 .addContainerGap())
         );
 
@@ -596,14 +597,14 @@ public class AdminForm extends javax.swing.JFrame {
         jTabbedPane2.addTab("Quản lý Đầu sách", jPanel2);
 
         jLabel17.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel17.setText("Mã đầu sách");
+        jLabel17.setText("Mã sách");
 
         jLabel18.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
-        jLabel18.setText("Mã sách");
-
-        txtDocumentsID.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel18.setText("Mã đầu sách");
 
         txtDocID.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+
+        txtDocumentsID.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
 
         jLabel19.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         jLabel19.setText("Tái bản");
@@ -686,8 +687,8 @@ public class AdminForm extends javax.swing.JFrame {
                     .addComponent(jLabel18))
                 .addGap(70, 70, 70)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtDocumentsID)
-                    .addComponent(txtDocID, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE))
+                    .addComponent(txtDocID)
+                    .addComponent(txtDocumentsID, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE))
                 .addGap(98, 98, 98)
                 .addComponent(jLabel19)
                 .addGap(80, 80, 80)
@@ -709,13 +710,13 @@ public class AdminForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(txtDocumentsID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDocID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel19)
                     .addComponent(txtReprint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(txtDocID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtDocumentsID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGap(72, 72, 72)
@@ -2184,7 +2185,7 @@ public class AdminForm extends javax.swing.JFrame {
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
         // TODO add your handling code here:
         try{
-            UserAccountControl.Logout();
+            AccountControl.Logout();
         } catch (Exception e){
             Message.showMessage("ERROR", e.toString());
         }
@@ -2342,8 +2343,8 @@ public class AdminForm extends javax.swing.JFrame {
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
-        if (!txtDocumentsID.getText().isEmpty() && !txtDocID.getText().isEmpty() && !txtReprint.getText().isEmpty()) {
-            AdminDocumentsControl.addDoc(txtDocumentsID.getText(), txtDocID.getText(), txtReprint.getText());
+        if (!txtDocID.getText().isEmpty() && !txtDocumentsID.getText().isEmpty() && !txtReprint.getText().isEmpty()) {
+            AdminDocumentsControl.addDoc(txtDocID.getText(), txtDocumentsID.getText(), txtReprint.getText());
             Message.showMessage(AdminDocumentsControl.result.getstatus(), AdminDocumentsControl.result.getmessage());
             try {
                 updateDocumentTable();
@@ -2874,8 +2875,8 @@ public class AdminForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(!txtOldPassword.getText().isEmpty()&&!txtNewPassword.getText().isEmpty()&&!txtNewPassword2.getText().isEmpty()){
             if(txtNewPassword.getText().equals(txtNewPassword2.getText())){
-                UserAccountControl.ChangePass(txtOldPassword.getText(), txtNewPassword.getText());
-                Message.showMessage(UserAccountControl.result.getstatus(), UserAccountControl.result.getmessage());
+                AccountControl.ChangePass(txtOldPassword.getText(), txtNewPassword.getText());
+                Message.showMessage(AccountControl.result.getstatus(), AccountControl.result.getmessage());
             } else {
                 Message.showMessage("ERROR", "New password is incorrect!");
             }
@@ -2935,7 +2936,7 @@ public class AdminForm extends javax.swing.JFrame {
         // TODO add your handling code here
         if (!txtSearchBox.getText().isEmpty()) {
             try {
-                UserDocumentsControl.search(txtSearchBox.getText());
+                DocumentsControl.search(txtSearchBox.getText());
                 model = new DefaultTableModel(ListDocuments.getArray(), ListDocuments.columns);
                 DocumentsTable.setModel(model);
             } catch (ParseException ex) {

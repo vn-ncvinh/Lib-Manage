@@ -6,9 +6,9 @@
 package View;
 
 
-import Control.User.UserAccountControl;
+import Control.AccountControl;
 import Control.User.UserBorrowControl;
-import Control.User.UserDocumentsControl;
+import Control.DocumentsControl;
 import Model.List.ListBorrow;
 import Model.List.ListDocuments;
 import Model.User;
@@ -49,7 +49,7 @@ public class UserForm extends javax.swing.JFrame {
     }
 
     public void updateDocumentTable() throws ParseException {
-        UserDocumentsControl.getList();
+        DocumentsControl.getList();
         model = new DefaultTableModel(ListDocuments.getArray(), ListDocuments.columns);
         DocumentTable.setModel(model);
     }
@@ -729,7 +729,7 @@ public class UserForm extends javax.swing.JFrame {
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
         // TODO add your handling code here:
         try {
-            UserAccountControl.Logout();
+            AccountControl.Logout();
         } catch (Exception e) {
             Message.showMessage("Message", e.toString());
         }
@@ -749,7 +749,7 @@ public class UserForm extends javax.swing.JFrame {
         // TODO add your handling code here
         if (!txtSearchBox.getText().isEmpty()) {
             try {
-                UserDocumentsControl.search(txtSearchBox.getText());
+                DocumentsControl.search(txtSearchBox.getText());
                 model = new DefaultTableModel(ListDocuments.getArray(), ListDocuments.columns);
                 DocumentTable.setModel(model);
             } catch (ParseException ex) {
@@ -807,10 +807,10 @@ public class UserForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(!txtOldPassword.getText().isEmpty()&&!txtNewPassword.getText().isEmpty()&&!txtNewPassword2.getText().isEmpty()){
             if(txtNewPassword.getText().equals(txtNewPassword2.getText())){
-                UserAccountControl.ChangePass(txtOldPassword.getText(), txtNewPassword.getText());
-                Message.showMessage(UserAccountControl.result.getstatus(), UserAccountControl.result.getmessage());
+                AccountControl.ChangePass(txtOldPassword.getText(), txtNewPassword.getText());
+                Message.showMessage(AccountControl.result.getstatus(), AccountControl.result.getmessage());
                 Message.showMessage("Nhắc nhở", "Để đảm bảo an toàn, bạn sẽ được thoát, vui lòng mở app và đăng nhập lại!");
-                UserAccountControl.Logout();
+                AccountControl.Logout();
                 System.exit(0);
             } else {
                 Message.showMessage("ERROR", "New password is incorrect!");

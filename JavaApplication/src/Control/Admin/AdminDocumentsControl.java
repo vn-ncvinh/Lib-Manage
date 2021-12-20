@@ -140,14 +140,20 @@ public class AdminDocumentsControl {
     
     public static void addDocfromFile(String Filepatch) throws ParseException, FileNotFoundException, IOException {
         String line = "";
+        int ok = 0;
+        int error = 0;
         try {
             BufferedReader br = new BufferedReader(new FileReader(Filepatch));
             while ((line = br.readLine()) != null) {
                 String[] Documents = line.split(",");
 //                System.out.print(Account[0]);
                 addDoc(Documents[0], Documents[1], Documents[2]);
+                if(result.getstatus().equals("OK")){
+                    ok++;
+                } else error++;
 //                System.out.println(" - " + result.getstatus());
             }
+            rsfile = "OK: " + ok + " - ERROR: " + error;
         } catch (IOException e) {
             e.printStackTrace();
         }

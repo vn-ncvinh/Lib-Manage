@@ -7,6 +7,7 @@
             <file>file:/C:/Users/ncvinh/OneDrive%20-%20NCV/Documents/Báo%20cáo/Phat_trien_phan_mem_ung_dung/Lib-Manage-API/JavaApplication/src/Model/User.java</file>
             <file>file:/C:/Users/ncvinh/OneDrive%20-%20NCV/Documents/Báo%20cáo/Phat_trien_phan_mem_ung_dung/Lib-Manage-API/JavaApplication/src/Control/Admin/AdminBorrowControl.java</file>
             <file>file:/C:/Users/ncvinh/OneDrive%20-%20NCV/Documents/Báo%20cáo/Phat_trien_phan_mem_ung_dung/Lib-Manage-API/JavaApplication/manifest.mf</file>
+            <file>file:/C:/Users/ncvinh/OneDrive%20-%20NCV/Documents/Báo%20cáo/Phat_trien_phan_mem_ung_dung/Lib-Manage-API/JavaApplication/src/Control/DocumentsControl.java</file>
             <file>file:/C:/Users/ncvinh/OneDrive%20-%20NCV/Documents/Báo%20cáo/Phat_trien_phan_mem_ung_dung/Lib-Manage-API/JavaApplication/src/Model/Accounts.java</file>
             <file>file:/C:/Users/ncvinh/OneDrive%20-%20NCV/Documents/Báo%20cáo/Phat_trien_phan_mem_ung_dung/Lib-Manage-API/JavaApplication/build.xml</file>
             <file>file:/C:/Users/ncvinh/OneDrive%20-%20NCV/Documents/Báo%20cáo/Phat_trien_phan_mem_ung_dung/Lib-Manage-API/JavaApplication/src/Control/User/UserBorrowControl.java</file>
@@ -18,11 +19,10 @@
             <file>file:/C:/Users/ncvinh/OneDrive%20-%20NCV/Documents/Báo%20cáo/Phat_trien_phan_mem_ung_dung/Lib-Manage-API/JavaApplication/src/Control/Admin/AdminDocumentsControl.java</file>
             <file>file:/C:/Users/ncvinh/OneDrive%20-%20NCV/Documents/Báo%20cáo/Phat_trien_phan_mem_ung_dung/Lib-Manage-API/JavaApplication/src/Control/Config.java</file>
             <file>file:/C:/Users/ncvinh/OneDrive%20-%20NCV/Documents/Báo%20cáo/Phat_trien_phan_mem_ung_dung/Lib-Manage-API/JavaApplication/src/View/AdminForm.java</file>
-            <file>file:/C:/Users/ncvinh/OneDrive%20-%20NCV/Documents/Báo%20cáo/Phat_trien_phan_mem_ung_dung/Lib-Manage-API/JavaApplication/src/Control/User/UserAccountControl.java</file>
-            <file>file:/C:/Users/ncvinh/OneDrive%20-%20NCV/Documents/Báo%20cáo/Phat_trien_phan_mem_ung_dung/Lib-Manage-API/JavaApplication/src/Control/User/UserDocumentsControl.java</file>
+            <file>file:/C:/Users/ncvinh/OneDrive%20-%20NCV/Documents/Báo%20cáo/Phat_trien_phan_mem_ung_dung/Lib-Manage-API/JavaApplication/src/Control/AccountControl.java</file>
             <file>file:/C:/Users/ncvinh/OneDrive%20-%20NCV/Documents/Báo%20cáo/Phat_trien_phan_mem_ung_dung/Lib-Manage-API/JavaApplication/test.csv</file>
-            <file>file:/C:/Users/ncvinh/OneDrive%20-%20NCV/Documents/Báo%20cáo/Phat_trien_phan_mem_ung_dung/Lib-Manage-API/JavaApplication/src/Control/User/UserCategoryControl.java</file>
             <file>file:/C:/Users/ncvinh/OneDrive%20-%20NCV/Documents/Báo%20cáo/Phat_trien_phan_mem_ung_dung/Lib-Manage-API/JavaApplication/src/Control/Message.java</file>
+            <file>file:/C:/Users/ncvinh/OneDrive%20-%20NCV/Documents/Báo%20cáo/Phat_trien_phan_mem_ung_dung/Lib-Manage-API/JavaApplication/src/Control/CategoryControl.java</file>
             <file>file:/C:/Users/ncvinh/OneDrive%20-%20NCV/Documents/Báo%20cáo/Phat_trien_phan_mem_ung_dung/Lib-Manage-API/JavaApplication/src/Model/API.java</file>
             <file>file:/C:/Users/ncvinh/OneDrive%20-%20NCV/Documents/Báo%20cáo/Phat_trien_phan_mem_ung_dung/Lib-Manage-API/JavaApplication/src/Model/List/ListDocuments.java</file>
             <file>file:/C:/Users/ncvinh/OneDrive%20-%20NCV/Documents/Báo%20cáo/Phat_trien_phan_mem_ung_dung/Lib-Manage-API/JavaApplication/src/View/Login.java</file>

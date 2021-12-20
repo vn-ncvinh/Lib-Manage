@@ -6,7 +6,7 @@
 package View;
 
 import Control.Message;
-import Control.User.UserAccountControl;
+import Control.AccountControl;
 import Model.User;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -139,9 +139,9 @@ public class Login extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         try {
             // TODO add your handling code here:
-            UserAccountControl.Login(txtStudentID.getText(), txtPassword.getText());
-            Message.showMessage(UserAccountControl.result.getstatus(), UserAccountControl.result.getmessage());
-            if (UserAccountControl.result.getstatus().equals("OK")) {
+            AccountControl.Login(txtStudentID.getText(), txtPassword.getText());
+            Message.showMessage(AccountControl.result.getstatus(), AccountControl.result.getmessage());
+            if (AccountControl.result.getstatus().equals("OK")) {
                 this.setVisible(false);
                 if (User.Admin.equals("1")) {
                     new AdminForm().setVisible(true);

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Control.User;
+package Control;
 
 import Model.API;
 import Model.Category;
@@ -17,7 +17,7 @@ import org.json.simple.parser.ParseException;
  *
  * @author ncvinh
  */
-public class UserCategoryControl {
+public class CategoryControl {
 
     static public jsonobj result;
 

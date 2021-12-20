@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Control.User;
+package Control;
 
+import Control.CategoryControl;
 import Model.API;
 import Model.List.ListCategory;
 import Model.List.ListDocuments;
@@ -23,7 +24,7 @@ import org.json.simple.parser.ParseException;
  *
  * @author ncvinh
  */
-public class UserDocumentsControl {
+public class DocumentsControl {
 
     static public jsonobj result;
 
@@ -33,9 +34,9 @@ public class UserDocumentsControl {
         try {
             result = new jsonobj(api.send());
         } catch (IOException ex) {
-            Logger.getLogger(UserDocumentsControl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DocumentsControl.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ParseException ex) {
-            Logger.getLogger(UserDocumentsControl.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(DocumentsControl.class.getName()).log(Level.SEVERE, null, ex);
         }
         System.out.println(result.getmessage());
     }
@@ -51,7 +52,7 @@ public class UserDocumentsControl {
 //                ID, Name, Author, Description, Available
                 String Category = result.getdata(i, "Category");
                 if(User.Admin.equals("0")){
-                    Category = UserCategoryControl.ListIDtoListName(Category);
+                    Category = CategoryControl.ListIDtoListName(Category);
                 }
                 ListDocuments.add(result.getdata(i, "ID"), result.getdata(i, "Name"), result.getdata(i, "Author"), result.getdata(i, "Description"), Category, result.getdata(i, "Available"));
             }
