@@ -68,13 +68,14 @@ public class AdminDocumentsControl {
         send(u);
     }
     
-    public static void addDoc(String ID, String DocumentsID, String Reprint) throws UnsupportedEncodingException{
+    public static void addDoc(String ID, String DocumentsID, String Reprint, String Price) throws UnsupportedEncodingException{
         url u = new url("/api/admin/documents/addDoc");
         System.out.println(User.StudentID + ": Add Doc " + ID);
         u.addParameter("token", User.Token);
         u.addParameter("ID", ID);
         u.addParameter("DocumentsID", DocumentsID);
         u.addParameter("Reprint", Reprint);
+        u.addParameter("Price", Price);
         send(u);
     }
     
@@ -148,7 +149,7 @@ public class AdminDocumentsControl {
             while ((line = br.readLine()) != null) {
                 String[] Documents = line.split(",");
 //                System.out.print(Account[0]);
-                addDoc(Documents[0], Documents[1], Documents[2]);
+                addDoc(Documents[0], Documents[1], Documents[2], Documents[3]);
                 if(result.getstatus().equals("OK")){
                     ok++;
                 } else error++;

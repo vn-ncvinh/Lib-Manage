@@ -8,6 +8,7 @@ package View;
 import Control.Message;
 import Control.AccountControl;
 import Model.User;
+import java.awt.event.KeyEvent;
 import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

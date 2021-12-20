@@ -189,13 +189,14 @@ def update_documents():
 def add_document():
     if sqli.check(request.args):
         return output.error("SQL Injection!")
-    if 'token' in request.args and 'ID' in request.args and 'DocumentsID' in request.args and 'Reprint' in request.args:
+    if 'token' in request.args and 'ID' in request.args and 'DocumentsID' in request.args and 'Reprint' in request.args and 'Price' in request.args:
         token = request.args['token']
         ID = request.args['ID']
         DocumentsID = request.args['DocumentsID']
         Reprint = request.args['Reprint']
+        Price = request.args['Price']
         if (token_handle.checktoken(token)):
-            return documents.addDoc(token, ID, DocumentsID, Reprint)
+            return documents.addDoc(token, ID, DocumentsID, Reprint, Price)
         else:
             return output.error("Incorrect Token!")
     else:

@@ -1,7 +1,15 @@
 from general_handle.dbc import cursor, connection
 from general_handle import output, token_handle
+import config
 
 def request(token, documentsID, BorrowingTime):
+    StudentID = token_handle.tokentoStudentID(token)
+    cursor.execute('select * from borrow where StudentID = "'+StudentID+'" and (status = "borrowed" or status = "wait")')
+    rows = cursor.fetchall()
+    if(int(BorrowingTime)>config.Limited_Day_Borrows):
+        return output.error("Borrowing is only allowed for a limit of "+str(config.Limited_Day_Borrows)+" days")
+    if(len(rows)>config.Limited_Borrows):
+        return output.error("Borrowing is limited to "+str(config.Limited_Borrows)+" documents only")
     cursor.execute('select * from documents_quantity where ID = "'+documentsID+'"')
     rows = cursor.fetchall()
     if(len(rows)>0):
@@ -21,7 +29,7 @@ def request(token, documentsID, BorrowingTime):
             cols = cursor.fetchall()
             output.log(token_handle.tokentoStudentID(token), str(rows[0][0]), "Borrow Document")
             return output.tabletojson(cols, rows,"Borrow registration successful!")
-    return output.error("An unknown error!")
+    return output.error(config.unknown)
 
 def cancel(token, borrowID):
     StudentID = token_handle.tokentoStudentID(token)
@@ -41,7 +49,7 @@ def cancel(token, borrowID):
         output.log(token_handle.tokentoStudentID(token), str(borrowID), "Cancel Borrow")
         return output.tabletojson(cols, rows, "Canceled!")
     else:
-        return output.error("An unknown error!")
+        return output.error(config.unknown)
 
 def all(token):
     StudentID = token_handle.tokentoStudentID(token)
@@ -49,4 +57,4 @@ def all(token):
     rows = cursor.fetchall()
     cursor.execute("DESCRIBE borrow")
     cols = cursor.fetchall()
-    return output.tabletojson(cols, rows, "Successfully!")
+    return output.tabletojson(cols, rows, config.Success)

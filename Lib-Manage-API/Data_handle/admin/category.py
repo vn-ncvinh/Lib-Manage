@@ -1,5 +1,7 @@
 from general_handle.dbc import cursor, connection
 from general_handle import output, token_handle
+import config
+
 
 def add(token, Name, Description):
     if(token_handle.tokenadmin(token)):
@@ -18,11 +20,11 @@ def add(token, Name, Description):
         cursor.execute("DESCRIBE category_quantity")
         cols = cursor.fetchall()
         output.log(token_handle.tokentoStudentID(token), rows[0][0], "Add Category!" )
-        return output.tabletojson(cols, rows, "Successfully!")
+        return output.tabletojson(cols, rows, config.Success)
         # except Exception as e:
         #     return output.error(str(e))
     else:
-        return output.error("You are not authorized to perform this action!")
+        return output.error(config.not_permitted)
 
 def delete(token, ID):
     if(token_handle.tokenadmin(token)):
@@ -37,11 +39,11 @@ def delete(token, ID):
             cursor.execute(query)
             connection.commit()
             output.log(token_handle.tokentoStudentID(token), ID, "Delete Category!" )
-            return output.ok("Successfully!")
+            return output.ok(config.Success)
         else:
             return output.error('Incorrect Category ID!')
     else:
-        return output.error("You are not authorized to perform this action!")
+        return output.error(config.not_permitted)
 
 def update(token, ID, Name, Description):
     if(token_handle.tokenadmin(token)):
@@ -53,8 +55,8 @@ def update(token, ID, Name, Description):
             cursor.execute(query)
             connection.commit()
             output.log(token_handle.tokentoStudentID(token), ID, "Delete Category!" )
-            return output.ok("Successfully!")
+            return output.ok(config.Success)
         else:
             return output.error('Incorrect Category ID!')
     else:
-        return output.error("You are not authorized to perform this action!")
+        return output.error(config.not_permitted)

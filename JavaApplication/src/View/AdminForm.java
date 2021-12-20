@@ -162,6 +162,8 @@ public class AdminForm extends javax.swing.JFrame {
         UpdateFromFilebtn3 = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
         DocumentUpdateTableBtn2 = new javax.swing.JButton();
+        jLabel30 = new javax.swing.JLabel();
+        txtDocPrice = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         DocumentsTable1 = new javax.swing.JTable();
         jPanel4 = new javax.swing.JPanel();
@@ -669,6 +671,11 @@ public class AdminForm extends javax.swing.JFrame {
             }
         });
 
+        jLabel30.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+        jLabel30.setText("Giá");
+
+        txtDocPrice.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
+
         javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
         jPanel12.setLayout(jPanel12Layout);
         jPanel12Layout.setHorizontalGroup(
@@ -683,9 +690,13 @@ public class AdminForm extends javax.swing.JFrame {
                     .addComponent(txtDocID)
                     .addComponent(txtDocumentsID, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE))
                 .addGap(98, 98, 98)
-                .addComponent(jLabel19)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel19)
+                    .addComponent(jLabel30))
                 .addGap(80, 80, 80)
-                .addComponent(txtReprint, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtDocPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtReprint, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel12Layout.createSequentialGroup()
                 .addGap(176, 176, 176)
@@ -707,9 +718,13 @@ public class AdminForm extends javax.swing.JFrame {
                     .addComponent(jLabel19)
                     .addComponent(txtReprint, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(txtDocumentsID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel18)
+                        .addComponent(txtDocumentsID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel30)
+                        .addComponent(txtDocPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGap(72, 72, 72)
@@ -2342,9 +2357,9 @@ public class AdminForm extends javax.swing.JFrame {
 
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
-        if (!txtDocID.getText().isEmpty() && !txtDocumentsID.getText().isEmpty() && !txtReprint.getText().isEmpty()) {
+        if (!txtDocID.getText().isEmpty() && !txtDocumentsID.getText().isEmpty() && !txtReprint.getText().isEmpty() && !txtDocPrice.getText().isEmpty()) {
             try {
-                AdminDocumentsControl.addDoc(txtDocID.getText(), txtDocumentsID.getText(), txtReprint.getText());
+                AdminDocumentsControl.addDoc(txtDocID.getText(), txtDocumentsID.getText(), txtReprint.getText(), txtDocPrice.getText());
             } catch (UnsupportedEncodingException ex) {
                 Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -3128,6 +3143,7 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
@@ -3197,6 +3213,7 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JTextField txtCategoryName;
     private javax.swing.JLabel txtClass;
     private javax.swing.JTextField txtDocID;
+    private javax.swing.JTextField txtDocPrice;
     private javax.swing.JTextField txtDocumentAuthor;
     private javax.swing.JTextField txtDocumentCategory;
     private javax.swing.JTextField txtDocumentDes;

@@ -1,5 +1,6 @@
 from general_handle.dbc import cursor, connection
 from general_handle import output, string_handle, token_handle
+import config
 
 def login(user, passwd):
     user = user.upper()
@@ -28,7 +29,7 @@ def logout(token):
     cursor.execute(query)
     connection.commit()
     output.log(StudentID, "App", "Logout!")
-    return output.ok("Successfully!")
+    return output.ok(config.Success)
 
 def changepass(token, oldpassword, newpassword):
     oldpassword = string_handle.toMD5(token_handle.tokentoStudentID(token)+oldpassword)
@@ -41,6 +42,6 @@ def changepass(token, oldpassword, newpassword):
         connection.commit()
         StudentID =token_handle.tokentoStudentID(token);
         output.log(StudentID, StudentID, "Change password!")
-        return output.ok("Successfully!")
+        return output.ok(config.Success)
     except:
         return output.error("Old Password Incorrect!")

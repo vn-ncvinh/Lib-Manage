@@ -1,5 +1,6 @@
 from general_handle.dbc import cursor, connection
 from general_handle import output, token_handle
+import config
 
 def add(token, Name, Author, Description, ListCategoryID):
     if(token_handle.tokenadmin(token)):
@@ -34,10 +35,10 @@ def add(token, Name, Author, Description, ListCategoryID):
         cursor.execute("DESCRIBE documents")
         cols = cursor.fetchall()
         output.log(token_handle.tokentoStudentID(token), rows[0][0], "Add Documents!" )
-        return output.tabletojson(cols, rows, "Successfully!")
+        return output.tabletojson(cols, rows, config.Success)
         
     else:
-        return output.error("You are not authorized to perform this action!")
+        return output.error(config.not_permitted)
 
 def delete(token, DocumentsID):
     if(token_handle.tokenadmin(token)):
@@ -60,11 +61,11 @@ def delete(token, DocumentsID):
             cursor.execute(query)
             connection.commit()
             output.log(token_handle.tokentoStudentID(token), DocumentsID, "Delete Documents!" )
-            return output.ok("Successfully!")
+            return output.ok(config.Success)
         else:
             return output.error('Incorrect Documents ID!')
     else:
-        return output.error("You are not authorized to perform this action!")
+        return output.error(config.not_permitted)
 
 
 def update(token, ID, Name, Author, Description, ListCategoryID):
@@ -96,14 +97,14 @@ def update(token, ID, Name, Author, Description, ListCategoryID):
             cursor.execute("DESCRIBE documents")
             cols = cursor.fetchall()
             output.log(token_handle.tokentoStudentID(token), ID, "Update Documents!" )
-            return output.tabletojson(cols, rows, "Successfully!")
+            return output.tabletojson(cols, rows, config.Success)
         else:
             return output.error('Incorrect Documents ID!')
     else:
-        return output.error("You are not authorized to perform this action!")
+        return output.error(config.not_permitted)
 
 
-def addDoc(token, ID, DocumentsID, Reprint):
+def addDoc(token, ID, DocumentsID, Reprint, Price):
     if(token_handle.tokenadmin(token)):
         query="select * from documents where ID = '"+DocumentsID+"'"
         cursor.execute(query)
@@ -114,7 +115,7 @@ def addDoc(token, ID, DocumentsID, Reprint):
             rows=cursor.fetchall()
             if(len(rows)>0):
                 return output.error("Documents already exist")
-            query="INSERT INTO document (ID, DocumentsID, Reprint) VALUES ('"+ID+"', '"+DocumentsID+"', '"+Reprint+"')"
+            query="INSERT INTO document (ID, DocumentsID, Reprint, Price) VALUES ('"+ID+"', '"+DocumentsID+"', '"+Reprint+"', "+Price+" )"
             cursor.execute(query)
             connection.commit()
             query="select * from document where ID = '"+ID+"'"
@@ -123,8 +124,8 @@ def addDoc(token, ID, DocumentsID, Reprint):
             cursor.execute("DESCRIBE document")
             cols = cursor.fetchall()
             output.log(token_handle.tokentoStudentID(token), ID, "Add Document!" )
-            return output.tabletojson(cols, rows, "Successfully!")
+            return output.tabletojson(cols, rows, config.Success)
         else:
             return output.error('Incorrect Documents ID!')
     else:
-        return output.error("You are not authorized to perform this action!")
+        return output.error(config.not_permitted)

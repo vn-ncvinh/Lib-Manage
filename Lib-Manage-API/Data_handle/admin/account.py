@@ -1,6 +1,6 @@
 from general_handle.dbc import connection, cursor
 from general_handle import output, string_handle, token_handle
-
+import config
 
 def viewall(token):
     if(token_handle.tokenadmin(token)):
@@ -8,13 +8,13 @@ def viewall(token):
         rows = cursor.fetchall()
         cursor.execute("DESCRIBE users_hide")
         cols = cursor.fetchall()
-        return output.tabletojson(cols, rows, "Successfully!")
+        return output.tabletojson(cols, rows, config.Success)
     else:
-        return output.error("You are not authorized to perform this action!")
+        return output.error(config.not_permitted)
 
 def createuser(token, StudentID, Password, Fullname, PhoneNumber, Specialization, Class, Admin):
     if (Admin != "0"):
-        return output.error("You are not permitted!")
+        return output.error(config.not_permitted)
     if(token_handle.tokenadmin(token)):
         cursor.execute('select * from users where StudentID = "'+StudentID+'"')
         rows = cursor.fetchall()
@@ -27,14 +27,10 @@ def createuser(token, StudentID, Password, Fullname, PhoneNumber, Specialization
         print(query)
         cursor.execute(query)
         connection.commit()
-        cursor.execute('select * from users_hide where StudentID = "'+StudentID+'"')
-        rows = cursor.fetchall()
-        cursor.execute("DESCRIBE users_hide")
-        cols = cursor.fetchall()
         output.log(token_handle.tokentoStudentID(token), StudentID, "Create User")
-        return output.tabletojson(cols, rows, "Successfully!")
+        return output.ok(config.Success)
     else:
-        return output.error("You are not authorized to perform this action!")
+        return output.error(config.not_permitted)
 
 def deluser(token, StudentID):
     if(token_handle.tokenadmin(token)):
@@ -42,7 +38,7 @@ def deluser(token, StudentID):
         rows = cursor.fetchall()
         if(len(rows)>0):
             if(token_handle.StudentIDadmin(StudentID)):
-                return output.error("You are not permitted!")
+                return output.error(config.not_permitted)
             query = "Select * from borrow where StudentID = '"+StudentID+"' and (status = 'borrowed' or status = 'wait')"
             cursor.execute(query)
             rows = cursor.fetchall()
@@ -55,11 +51,11 @@ def deluser(token, StudentID):
             cursor.execute(query)
             connection.commit()
             output.log(token_handle.tokentoStudentID(token), StudentID, "Delete User" )
-            return output.ok("Deleted successfully!")
+            return output.ok(config.Success)
         else:
             return output.error("Student ID does not exist!")
     else:
-        return output.error("You are not authorized to perform this action!")
+        return output.error(config.not_permitted)
 
 def disableuser(token, StudentID):
     if(token_handle.tokenadmin(token)):
@@ -68,7 +64,7 @@ def disableuser(token, StudentID):
         if(len(rows)>0):
             if(rows[0][9]=='active'):
                 if(token_handle.StudentIDadmin(StudentID)):
-                    return output.error("You are not permitted!")
+                    return output.error(config.not_permitted)
                 query = "update users set status = 'disable' where StudentID = '"+StudentID+"'"
                 cursor.execute(query)
                 connection.commit()
@@ -79,7 +75,7 @@ def disableuser(token, StudentID):
         else:
             return output.error("Student ID does not exist!")
     else:
-        return output.error("You are not authorized to perform this action!")
+        return output.error(config.not_permitted)
 
 def activeuser(token, StudentID):
     if(token_handle.tokenadmin(token)):
@@ -88,7 +84,7 @@ def activeuser(token, StudentID):
         if(len(rows)>0):
             if(rows[0][9]=='disable'):
                 if(token_handle.StudentIDadmin(StudentID)):
-                    return output.error("You are not permitted!")
+                    return output.error(config.not_permitted)
                 query = "update users set status = 'active' where StudentID = '"+StudentID+"'"
                 cursor.execute(query)
                 connection.commit()
@@ -99,13 +95,13 @@ def activeuser(token, StudentID):
         else:
             return output.error("Student ID does not exist!")
     else:
-        return output.error("You are not authorized to perform this action!")
+        return output.error(config.not_permitted)
 
 def update(token, StudentID, Password, Fullname, PhoneNumber, Specialization, Class, Admin):
     if(token_handle.StudentIDadmin(StudentID)):
-        return output.error("You are not permitted!")
+        return output.error(config.not_permitted)
     if(Admin == "1"):
-        return output.error("You are not permitted!")
+        return output.error(config.not_permitted)
     if(token_handle.tokenadmin(token)):
         cursor.execute('select * from users where StudentID = "'+StudentID+'"')
         rows = cursor.fetchall()
@@ -116,38 +112,30 @@ def update(token, StudentID, Password, Fullname, PhoneNumber, Specialization, Cl
             #     query = "update users set Fullname = '"+Fullname+"', PhoneNumber = '"+PhoneNumber+"', Specialization = '"+Specialization+"', Class = '"+Class+"', Expiry = '"+Expiry+"' where StudentID = '"+StudentID+"'"
             cursor.execute(query)
             connection.commit()
-            cursor.execute('select * from users_hide where StudentID = "'+StudentID+'"')
-            rows = cursor.fetchall()
-            cursor.execute("DESCRIBE users_hide")
-            cols = cursor.fetchall()
             output.log(token_handle.tokentoStudentID(token), StudentID, "Update User")
-            return output.tabletojson(cols, rows, "Successfully!")
+            return output.ok(config.Success)
         else:
             return output.error("Student ID does not exist!")
     else:
-        return output.error("You are not authorized to perform this action!")
+        return output.error(config.not_permitted)
 
 def Extend(token, StudentID, Expiry):
     if(token_handle.StudentIDadmin(StudentID)):
-        return output.error("You are not permitted!")
+        return output.error(config.not_permitted)
     if(token_handle.tokenadmin(token)):
         cursor.execute('select * from users where StudentID = "'+StudentID+'"')
         rows = cursor.fetchall()
         if(len(rows)>0):
             
-            Expiry = '(select current_date() + interval '+Expiry+' year)'
+            Expiry = 'DATE_ADD(Expiry, INTERVAL '+Expiry+' year)'
             query = "update users set Expiry = "+Expiry+" where StudentID = '"+StudentID+"'"
             # if Password == "":
             #     query = "update users set Fullname = '"+Fullname+"', PhoneNumber = '"+PhoneNumber+"', Specialization = '"+Specialization+"', Class = '"+Class+"', Expiry = '"+Expiry+"' where StudentID = '"+StudentID+"'"
             cursor.execute(query)
             connection.commit()
-            cursor.execute('select * from users_hide where StudentID = "'+StudentID+'"')
-            rows = cursor.fetchall()
-            cursor.execute("DESCRIBE users_hide")
-            cols = cursor.fetchall()
             output.log(token_handle.tokentoStudentID(token), StudentID, "Extend")
-            return output.tabletojson(cols, rows, "Successfully!")
+            return output.ok(config.Success)
         else:
             return output.error("Student ID does not exist!")
     else:
-        return output.error("You are not authorized to perform this action!")
+        return output.error(config.not_permitted)
