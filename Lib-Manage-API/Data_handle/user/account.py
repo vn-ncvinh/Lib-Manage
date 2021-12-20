@@ -17,7 +17,7 @@ def login(user, passwd):
         rows = cursor.fetchall()
         cursor.execute("DESCRIBE users_hide_password")
         cols = cursor.fetchall()
-        output.log(user, "App", "Logged in successfully!")
+        # output.log(user, "App", "Logged in successfully!")
         return output.tabletojson(cols, rows, "Logged in successfully!")
             
     else:
@@ -28,7 +28,7 @@ def logout(token):
     query = "update users set token = 'TOKEN' where token = '"+token+"'"
     cursor.execute(query)
     connection.commit()
-    output.log(StudentID, "App", "Logout!")
+    # output.log(StudentID, "App", "Logout!")
     return output.ok(config.Success)
 
 def changepass(token, oldpassword, newpassword):
