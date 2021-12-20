@@ -10,6 +10,7 @@ import Control.str;
 import Model.User;
 import Model.jsonobj;
 import Model.url;
+import java.io.UnsupportedEncodingException;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -32,7 +33,7 @@ public class AccountControl {
         }
     }
     
-    public static void Login(String StudentID, String password) throws ParseException {
+    public static void Login(String StudentID, String password) throws ParseException, UnsupportedEncodingException {
         url u = new url("/api/login");
         System.out.println(StudentID + ": Login");
         StudentID = StudentID.toUpperCase();
@@ -45,7 +46,7 @@ public class AccountControl {
         } 
     }
     
-    public static void Logout(){
+    public static void Logout() throws UnsupportedEncodingException{
         url u = new url("/api/logout");
         System.out.println(User.StudentID + ": Logout");
         u.addParameter("token", User.Token);
@@ -56,7 +57,7 @@ public class AccountControl {
         }
     }
     
-    public static void ChangePass(String OldPass, String NewPass){
+    public static void ChangePass(String OldPass, String NewPass) throws UnsupportedEncodingException{
         url u = new url("/api/user/changepassword");
         OldPass = str.getMD5(OldPass);
         NewPass = str.getMD5(NewPass);

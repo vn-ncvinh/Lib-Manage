@@ -10,6 +10,7 @@ import Model.List.ListBorrow;
 import Model.User;
 import Model.jsonobj;
 import Model.url;
+import java.io.UnsupportedEncodingException;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -31,7 +32,7 @@ public class AdminBorrowControl {
         System.out.println(result.getmessage());
     }
     
-    public static void getList() throws ParseException {
+    public static void getList() throws ParseException, UnsupportedEncodingException {
         url u = new url("/api/admin/borrow/all");
         System.out.println(User.StudentID + ": Request Refresh Borrow List");
         u.addParameter("token", User.Token);
@@ -45,7 +46,7 @@ public class AdminBorrowControl {
         }
     }
     
-    public static void search(String StudentID) throws ParseException {
+    public static void search(String StudentID) throws ParseException, UnsupportedEncodingException {
         url u = new url("/api/admin/borrow/search");
         System.out.println(User.StudentID + ": Search Borrow of " + StudentID);
         u.addParameter("token", User.Token);
@@ -60,7 +61,7 @@ public class AdminBorrowControl {
         }
     }
     
-    public static void confirm(String borrowID) throws ParseException {
+    public static void confirm(String borrowID) throws ParseException, UnsupportedEncodingException {
         url u = new url("/api/admin/borrow/confirm");
         System.out.println(User.StudentID + ": Get List Account");
         u.addParameter("token", User.Token);
@@ -68,7 +69,7 @@ public class AdminBorrowControl {
         send(u);
     }
     
-    public static void returnDocument(String documentID) throws ParseException {
+    public static void returnDocument(String documentID) throws ParseException, UnsupportedEncodingException {
         url u = new url("/api/admin/borrow/return");
         System.out.println(User.StudentID + ": Get List Account");
         u.addParameter("token", User.Token);
@@ -76,7 +77,7 @@ public class AdminBorrowControl {
         send(u);
     }
     
-    public static void lose(String documentID) throws ParseException {
+    public static void lose(String documentID) throws ParseException, UnsupportedEncodingException {
         url u = new url("/api/admin/borrow/lose");
         System.out.println(User.StudentID + ": Get List Account");
         u.addParameter("token", User.Token);

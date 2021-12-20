@@ -10,6 +10,7 @@ import Model.List.ListBorrow;
 import Model.User;
 import Model.jsonobj;
 import Model.url;
+import java.io.UnsupportedEncodingException;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -30,7 +31,7 @@ public class UserBorrowControl {
             System.exit(0);
         }
     }
-    public static void request(int documentsid, int BorrowingTime) throws ParseException {
+    public static void request(int documentsid, int BorrowingTime) throws ParseException, UnsupportedEncodingException {
         url u = new url("/api/borrow/request");
         System.out.println(User.StudentID + ": Request Borrow " + documentsid);
         u.addParameter("token", User.Token);
@@ -40,7 +41,7 @@ public class UserBorrowControl {
     }
     
     
-    public static void cancel(int borrowID) throws ParseException {
+    public static void cancel(int borrowID) throws ParseException, UnsupportedEncodingException {
 
         url u = new url("/api/borrow/cancel");
         System.out.println(User.StudentID + ": Cancel Borrow " + borrowID);
@@ -49,7 +50,7 @@ public class UserBorrowControl {
         send(u);
     }
     
-    public static void getList() throws ParseException {
+    public static void getList() throws ParseException, UnsupportedEncodingException {
         url u = new url("/api/borrow/all");
         System.out.println(User.StudentID + ": Request Refresh Borrow List");
         u.addParameter("token", User.Token);

@@ -25,7 +25,8 @@ public class API {
         conn.setDoOutput(true);
         conn.setInstanceFollowRedirects(false);
         conn.setRequestMethod("POST");
-        conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=UTF-8");
+        conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+        conn.setRequestProperty("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/44.0.2403.155 Safari/537.36");
         conn.setUseCaches(false);
 //        System.out.println(u.getUrl());
         Reader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
@@ -34,6 +35,7 @@ public class API {
 //            System.out.print((char) c);
             rs = rs +(char) c;
         }
+        
         
         return rs;
         

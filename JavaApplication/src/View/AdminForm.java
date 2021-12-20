@@ -20,6 +20,7 @@ import Control.Message;
 import Control.CategoryControl;
 import java.awt.Color;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFileChooser;
@@ -41,7 +42,7 @@ public class AdminForm extends javax.swing.JFrame {
     /**
      * Creates new form AdminForm
      */
-    public AdminForm() throws ParseException {
+    public AdminForm() throws ParseException, UnsupportedEncodingException {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Quản lý thư viện");
@@ -64,10 +65,8 @@ public class AdminForm extends javax.swing.JFrame {
         DocumentsTable1.setModel(model);
         DocumentsTable.setModel(model);
     }
-    
-    
 
-    public void updateBorrowTable() throws ParseException {
+    public void updateBorrowTable() throws ParseException, UnsupportedEncodingException {
         AdminBorrowControl.getList();
         model = new DefaultTableModel(ListBorrow.getArray(), ListBorrow.columns);
         BorrowTable.setModel(model);
@@ -76,7 +75,7 @@ public class AdminForm extends javax.swing.JFrame {
         txtReturnDocID.setText("");
     }
 
-    public void updateAccountTable() throws ParseException {
+    public void updateAccountTable() throws ParseException, UnsupportedEncodingException {
         AdminAccountControl.getlist();
         model = new DefaultTableModel(ListAccount.getArray(), ListAccount.columns);
         AccountTable.setModel(model);
@@ -91,7 +90,7 @@ public class AdminForm extends javax.swing.JFrame {
         AccountTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         AccountTable2.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         AccountTable3.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        
+
         DocumentsTable.setRowHeight(25);
         DocumentsTable1.setRowHeight(25);
         CategoryTable.setRowHeight(25);
@@ -99,11 +98,6 @@ public class AdminForm extends javax.swing.JFrame {
         AccountTable.setRowHeight(25);
         AccountTable2.setRowHeight(25);
         AccountTable3.setRowHeight(25);
-        
-        
-        
-        
-        
 
     }
 
@@ -112,7 +106,6 @@ public class AdminForm extends javax.swing.JFrame {
         CategoryTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         model = new DefaultTableModel(ListCategory.getArray(), ListCategory.columns);
         CategoryTable.setModel(model);
-        
 
     }
 
@@ -2184,9 +2177,9 @@ public class AdminForm extends javax.swing.JFrame {
 
     private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
         // TODO add your handling code here:
-        try{
+        try {
             AccountControl.Logout();
-        } catch (Exception e){
+        } catch (Exception e) {
             Message.showMessage("ERROR", e.toString());
         }
         System.exit(0);
@@ -2276,6 +2269,8 @@ public class AdminForm extends javax.swing.JFrame {
             updateCategoryTable();
         } catch (ParseException ex) {
             Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton17ActionPerformed
 
@@ -2293,6 +2288,8 @@ public class AdminForm extends javax.swing.JFrame {
                 }
             } catch (ParseException ex) {
                 Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
@@ -2306,6 +2303,8 @@ public class AdminForm extends javax.swing.JFrame {
                 Message.showMessage(AdminCategoryManage.result.getstatus(), AdminCategoryManage.result.getmessage());
                 updateCategoryTable();
             } catch (ParseException ex) {
+                Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
                 Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -2344,7 +2343,11 @@ public class AdminForm extends javax.swing.JFrame {
     private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
         // TODO add your handling code here:
         if (!txtDocID.getText().isEmpty() && !txtDocumentsID.getText().isEmpty() && !txtReprint.getText().isEmpty()) {
-            AdminDocumentsControl.addDoc(txtDocID.getText(), txtDocumentsID.getText(), txtReprint.getText());
+            try {
+                AdminDocumentsControl.addDoc(txtDocID.getText(), txtDocumentsID.getText(), txtReprint.getText());
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
             Message.showMessage(AdminDocumentsControl.result.getstatus(), AdminDocumentsControl.result.getmessage());
             try {
                 updateDocumentTable();
@@ -2435,6 +2438,8 @@ public class AdminForm extends javax.swing.JFrame {
             Message.showMessage(AdminDocumentsControl.result.getstatus(), AdminDocumentsControl.result.getmessage());
         } catch (ParseException ex) {
             Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
             updateDocumentTable();
@@ -2449,7 +2454,11 @@ public class AdminForm extends javax.swing.JFrame {
         if (!txtDocumentName.getText().isEmpty() && !txtDocumentAuthor.getText().isEmpty() && !txtDocumentCategory.getText().isEmpty()) {
 
             String ID = DocumentsTable.getValueAt(DocumentsTable.getSelectedRow(), 0).toString();
-            AdminDocumentsControl.update(ID, txtDocumentName.getText(), txtDocumentAuthor.getText(), txtDocumentDes.getText(), txtDocumentCategory.getText());
+            try {
+                AdminDocumentsControl.update(ID, txtDocumentName.getText(), txtDocumentAuthor.getText(), txtDocumentDes.getText(), txtDocumentCategory.getText());
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
             Message.showMessage(AdminDocumentsControl.result.getstatus(), AdminDocumentsControl.result.getmessage());
             try {
                 updateDocumentTable();
@@ -2465,6 +2474,8 @@ public class AdminForm extends javax.swing.JFrame {
                 AdminDocumentsControl.add(txtDocumentName.getText(), txtDocumentAuthor.getText(), txtDocumentDes.getText(), txtDocumentCategory.getText());
                 Message.showMessage(AdminDocumentsControl.result.getstatus(), AdminDocumentsControl.result.getmessage());
             } catch (ParseException ex) {
+                Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
                 Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
@@ -2482,6 +2493,8 @@ public class AdminForm extends javax.swing.JFrame {
             updateBorrowTable();
         } catch (ParseException ex) {
             Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_BorrowTableUpdatebtnActionPerformed
 
@@ -2493,6 +2506,8 @@ public class AdminForm extends javax.swing.JFrame {
                 Message.showMessage(AdminAccountControl.result.getstatus(), AdminAccountControl.result.getmessage());
                 updateAccountTable();
             } catch (ParseException ex) {
+                Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
                 Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -2509,6 +2524,8 @@ public class AdminForm extends javax.swing.JFrame {
                 updateAccountTable();
             } catch (ParseException ex) {
                 Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
@@ -2522,6 +2539,8 @@ public class AdminForm extends javax.swing.JFrame {
             Message.showMessage(AdminAccountControl.result.getstatus(), AdminAccountControl.result.getmessage());
             updateAccountTable();
         } catch (ParseException ex) {
+            Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
             Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_AccountDeleteBtnActionPerformed
@@ -2591,6 +2610,8 @@ public class AdminForm extends javax.swing.JFrame {
             updateAccountTable();
         } catch (ParseException ex) {
             Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_AccountUpdateTableActionPerformed
 
@@ -2604,6 +2625,8 @@ public class AdminForm extends javax.swing.JFrame {
             updateAccountTable();
         } catch (ParseException ex) {
             Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_DocumentUpdateTableBtn4ActionPerformed
 
@@ -2616,6 +2639,8 @@ public class AdminForm extends javax.swing.JFrame {
                 Message.showMessage(AdminAccountControl.result.getstatus(), AdminAccountControl.result.getmessage());
                 updateAccountTable();
             } catch (ParseException ex) {
+                Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
                 Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -2658,14 +2683,16 @@ public class AdminForm extends javax.swing.JFrame {
             Message.showMessage(AdminBorrowControl.result.getstatus(), AdminBorrowControl.result.getmessage());
         } catch (ParseException ex) {
             Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }//GEN-LAST:event_ConfirmBtnActionPerformed
 
     private void BorrowTableMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BorrowTableMouseReleased
         // TODO add your handling code here:
-        
-        
+
+
     }//GEN-LAST:event_BorrowTableMouseReleased
 
     private void BorrowSearchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrowSearchBtnActionPerformed
@@ -2674,6 +2701,8 @@ public class AdminForm extends javax.swing.JFrame {
                 // TODO add your handling code here:
                 AdminBorrowControl.search(txtStudentIDBorrow.getText());
             } catch (ParseException ex) {
+                Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
                 Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
             }
             model = new DefaultTableModel(ListBorrow.getArray(), ListBorrow.columns);
@@ -2693,6 +2722,8 @@ public class AdminForm extends javax.swing.JFrame {
                 updateBorrowTable();
             } catch (ParseException ex) {
                 Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
@@ -2709,6 +2740,8 @@ public class AdminForm extends javax.swing.JFrame {
                 updateBorrowTable();
             } catch (ParseException ex) {
                 Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
@@ -2722,6 +2755,8 @@ public class AdminForm extends javax.swing.JFrame {
                 Message.showMessage(AdminAccountControl.result.getstatus(), AdminAccountControl.result.getmessage());
                 updateAccountTable();
             } catch (ParseException ex) {
+                Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
                 Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -2738,6 +2773,8 @@ public class AdminForm extends javax.swing.JFrame {
                 Message.showMessage(AdminAccountControl.result.getstatus(), AdminAccountControl.result.getmessage());
                 updateAccountTable();
             } catch (ParseException ex) {
+                Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
                 Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -2787,6 +2824,8 @@ public class AdminForm extends javax.swing.JFrame {
                 AdminAccountControl.search(txtSearchStudentID.getText());
             } catch (ParseException ex) {
                 Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
             }
             model = new DefaultTableModel(ListAccount.getArray(), ListAccount.columns);
             AccountTable.setModel(model);
@@ -2803,6 +2842,8 @@ public class AdminForm extends javax.swing.JFrame {
                 AdminAccountControl.search(txtSearchStudentID1.getText());
             } catch (ParseException ex) {
                 Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
             }
             model = new DefaultTableModel(ListAccount.getArray(), ListAccount.columns);
             AccountTable.setModel(model);
@@ -2818,6 +2859,8 @@ public class AdminForm extends javax.swing.JFrame {
                 AdminAccountControl.search(txtSearchStudentID2.getText());
             } catch (ParseException ex) {
                 Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
             }
             model = new DefaultTableModel(ListAccount.getArray(), ListAccount.columns);
             AccountTable.setModel(model);
@@ -2826,9 +2869,9 @@ public class AdminForm extends javax.swing.JFrame {
 
     private void AccountTable3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AccountTable3MouseClicked
         // TODO add your handling code here:
-        
+
         txtExtendAccountID.setText(AccountTable3.getModel().getValueAt(AccountTable3.getSelectedRow(), 0).toString());
-        
+
     }//GEN-LAST:event_AccountTable3MouseClicked
 
     private void AccountTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AccountTable2MouseClicked
@@ -2838,7 +2881,7 @@ public class AdminForm extends javax.swing.JFrame {
 
     private void AccountTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AccountTableMouseClicked
         // TODO add your handling code here:
-                // TODO add your handling code here:
+        // TODO add your handling code here:
         txtAccountID.setText(AccountTable.getModel().getValueAt(AccountTable.getSelectedRow(), 0).toString());
         txtAccountName.setText(AccountTable.getModel().getValueAt(AccountTable.getSelectedRow(), 1).toString());
         txtAccountPhone.setText(AccountTable.getModel().getValueAt(AccountTable.getSelectedRow(), 2).toString());
@@ -2873,9 +2916,13 @@ public class AdminForm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(!txtOldPassword.getText().isEmpty()&&!txtNewPassword.getText().isEmpty()&&!txtNewPassword2.getText().isEmpty()){
-            if(txtNewPassword.getText().equals(txtNewPassword2.getText())){
-                AccountControl.ChangePass(txtOldPassword.getText(), txtNewPassword.getText());
+        if (!txtOldPassword.getText().isEmpty() && !txtNewPassword.getText().isEmpty() && !txtNewPassword2.getText().isEmpty()) {
+            if (txtNewPassword.getText().equals(txtNewPassword2.getText())) {
+                try {
+                    AccountControl.ChangePass(txtOldPassword.getText(), txtNewPassword.getText());
+                } catch (UnsupportedEncodingException ex) {
+                    Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+                }
                 Message.showMessage(AccountControl.result.getstatus(), AccountControl.result.getmessage());
             } else {
                 Message.showMessage("ERROR", "New password is incorrect!");
@@ -2887,8 +2934,8 @@ public class AdminForm extends javax.swing.JFrame {
 
     private void txtNewPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNewPasswordKeyReleased
         // TODO add your handling code here:
-        if(!txtNewPassword2.getText().isEmpty()){
-            if(!txtNewPassword.getText().equals(txtNewPassword2.getText())){
+        if (!txtNewPassword2.getText().isEmpty()) {
+            if (!txtNewPassword.getText().equals(txtNewPassword2.getText())) {
                 mess.setText("Hai mật khẩu không khớp!");
                 mess.setForeground(Color.red);
             } else {
@@ -2904,8 +2951,8 @@ public class AdminForm extends javax.swing.JFrame {
 
     private void txtNewPassword2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNewPassword2KeyReleased
         // TODO add your handling code here:
-        if(!txtNewPassword.getText().isEmpty()){
-            if(!txtNewPassword.getText().equals(txtNewPassword2.getText())){
+        if (!txtNewPassword.getText().isEmpty()) {
+            if (!txtNewPassword.getText().equals(txtNewPassword2.getText())) {
                 mess.setText("Hai mật khẩu không khớp!");
                 mess.setForeground(Color.red);
             } else {
@@ -2921,9 +2968,9 @@ public class AdminForm extends javax.swing.JFrame {
         String status = BorrowTable.getValueAt(BorrowTable.getSelectedRow(), 4).toString();
         jPanel26.setVisible(false);
         jPanel27.setVisible(false);
-        if(status.equals("wait")){
+        if (status.equals("wait")) {
             jPanel26.setVisible(true);
-        } else if(status.equals("borrowed")){
+        } else if (status.equals("borrowed")) {
             jPanel27.setVisible(true);
         }
     }//GEN-LAST:event_BorrowTableMouseClicked
@@ -2993,6 +3040,8 @@ public class AdminForm extends javax.swing.JFrame {
                 try {
                     new AdminForm().setVisible(true);
                 } catch (ParseException ex) {
+                    Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (UnsupportedEncodingException ex) {
                     Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }

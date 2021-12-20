@@ -6,6 +6,9 @@
 package Model;
 
 import Control.Config;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 /**
  *
@@ -26,8 +29,9 @@ public class url {
 //        System.out.println(this.u);
     }
 
-    public void addParameter(String Parameter, String value) {
-        value = value.replace(" ", "%20");
+    public void addParameter(String Parameter, String value) throws UnsupportedEncodingException {
+//        value = value.replace(" ", "%20");
+        value = encode(value);
 //        System.out.println(value);
         if (flag == 0) {
             flag = 1;
@@ -35,6 +39,10 @@ public class url {
         } else {
             Parameters = Parameters + "&" + Parameter + "=" + value;
         }
+    }
+    
+    private String encode(String value) throws UnsupportedEncodingException {
+        return URLEncoder.encode(value, StandardCharsets.UTF_8.toString());
     }
 
     public String getUrl() {

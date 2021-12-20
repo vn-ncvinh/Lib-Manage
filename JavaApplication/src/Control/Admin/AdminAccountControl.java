@@ -15,6 +15,7 @@ import Model.url;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import org.json.simple.parser.ParseException;
 
@@ -38,7 +39,7 @@ public class AdminAccountControl {
         System.out.println(result.getmessage());
     }
 
-    public static void create(String StudentID, String Password, String Fullname, String PhoneNumber, String Specialization, String Class, String Admin) throws ParseException {
+    public static void create(String StudentID, String Password, String Fullname, String PhoneNumber, String Specialization, String Class, String Admin) throws ParseException, UnsupportedEncodingException {
 //        StudentID, Password, Fullname, PhoneNumber, Specialization, Class, Admin
         url u = new url("/api/admin/users/create");
         System.out.println(User.StudentID + ": Create Account " + StudentID);
@@ -55,7 +56,7 @@ public class AdminAccountControl {
         send(u);
     }
 
-    public static void getlist() throws ParseException {
+    public static void getlist() throws ParseException, UnsupportedEncodingException {
         url u = new url("/api/admin/users/all");
         System.out.println(User.StudentID + ": Get List Account");
         u.addParameter("token", User.Token);
@@ -69,7 +70,7 @@ public class AdminAccountControl {
         }
     }
     
-    public static void search(String key) throws ParseException{
+    public static void search(String key) throws ParseException, UnsupportedEncodingException{
         getlist();
         key = str.deAccent(key);
         ArrayList<Accounts> temp = new ArrayList<Accounts>();
@@ -95,7 +96,7 @@ public class AdminAccountControl {
         ListAccount.list = temp;
     }
 
-    public static void delete(String StudentID) throws ParseException {
+    public static void delete(String StudentID) throws ParseException, UnsupportedEncodingException {
         url u = new url("/api/admin/users/delete");
         System.out.println(User.StudentID + ": Get List Account");
         u.addParameter("token", User.Token);
@@ -103,7 +104,7 @@ public class AdminAccountControl {
         send(u);
     }
 
-    public static void active(String StudentID) throws ParseException {
+    public static void active(String StudentID) throws ParseException, UnsupportedEncodingException {
         url u = new url("/api/admin/users/active");
         System.out.println(User.StudentID + ": Get List Account");
         u.addParameter("token", User.Token);
@@ -111,7 +112,7 @@ public class AdminAccountControl {
         send(u);
     }
 
-    public static void disable(String StudentID) throws ParseException {
+    public static void disable(String StudentID) throws ParseException, UnsupportedEncodingException {
         url u = new url("/api/admin/users/disable");
         System.out.println(User.StudentID + ": Get List Account");
         u.addParameter("token", User.Token);
@@ -119,7 +120,7 @@ public class AdminAccountControl {
         send(u);
     }
 
-    public static void update(String StudentID, String Password, String Fullname, String PhoneNumber, String Specialization, String Class, String Expiry) throws ParseException {
+    public static void update(String StudentID, String Password, String Fullname, String PhoneNumber, String Specialization, String Class, String Expiry) throws ParseException, UnsupportedEncodingException {
         url u = new url("/api/admin/users/update");
         System.out.println(User.StudentID + ": Create Account" + StudentID);
         StudentID = StudentID.toUpperCase();
@@ -135,7 +136,7 @@ public class AdminAccountControl {
         send(u);
     }
     
-    public static void Extend(String StudentID, String Expiry) throws ParseException {
+    public static void Extend(String StudentID, String Expiry) throws ParseException, UnsupportedEncodingException {
         url u = new url("/api/admin/users/extend");
         System.out.println(User.StudentID + ": Create Account" + StudentID);
         StudentID = StudentID.toUpperCase();

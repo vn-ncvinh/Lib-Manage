@@ -5,7 +5,6 @@
  */
 package View;
 
-
 import Control.AccountControl;
 import Control.User.UserBorrowControl;
 import Control.DocumentsControl;
@@ -14,6 +13,7 @@ import Model.List.ListDocuments;
 import Model.User;
 import Control.Message;
 import java.awt.Color;
+import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ListSelectionModel;
@@ -33,7 +33,7 @@ public class UserForm extends javax.swing.JFrame {
     /**
      * Creates new form AdminForm
      */
-    public UserForm() throws ParseException {
+    public UserForm() throws ParseException, UnsupportedEncodingException {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Quản lý thư viện");
@@ -53,8 +53,8 @@ public class UserForm extends javax.swing.JFrame {
         model = new DefaultTableModel(ListDocuments.getArray(), ListDocuments.columns);
         DocumentTable.setModel(model);
     }
-    
-    public void updateHistoryTable() throws ParseException{
+
+    public void updateHistoryTable() throws ParseException, UnsupportedEncodingException {
         UserBorrowControl.getList();
         model = new DefaultTableModel(ListBorrow.getArray(), ListBorrow.columns);
         HistoryTable.setModel(model);
@@ -64,7 +64,7 @@ public class UserForm extends javax.swing.JFrame {
     public void FormatTable() {
         DocumentTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         DocumentTable.setRowHeight(25);
-        
+
         HistoryTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         HistoryTable.setRowHeight(25);
     }
@@ -770,6 +770,8 @@ public class UserForm extends javax.swing.JFrame {
                 updateHistoryTable();
             } catch (ParseException ex) {
                 Logger.getLogger(UserForm.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
+                Logger.getLogger(UserForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
@@ -783,6 +785,8 @@ public class UserForm extends javax.swing.JFrame {
             updateHistoryTable();
         } catch (ParseException ex) {
             Logger.getLogger(UserForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(UserForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_RequestBorrowBtn1ActionPerformed
 
@@ -792,25 +796,32 @@ public class UserForm extends javax.swing.JFrame {
             updateHistoryTable();
         } catch (ParseException ex) {
             Logger.getLogger(UserForm.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedEncodingException ex) {
+            Logger.getLogger(UserForm.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_txtSearchbtn3ActionPerformed
 
     private void HistoryTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HistoryTableMouseClicked
         // TODO add your handling code here:
         jPanel6.setVisible(false);
-        if(HistoryTable.getValueAt(HistoryTable.getSelectedRow(), 4).toString().equals("wait")){
+        if (HistoryTable.getValueAt(HistoryTable.getSelectedRow(), 4).toString().equals("wait")) {
             jPanel6.setVisible(true);
         }
     }//GEN-LAST:event_HistoryTableMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(!txtOldPassword.getText().isEmpty()&&!txtNewPassword.getText().isEmpty()&&!txtNewPassword2.getText().isEmpty()){
-            if(txtNewPassword.getText().equals(txtNewPassword2.getText())){
-                AccountControl.ChangePass(txtOldPassword.getText(), txtNewPassword.getText());
-                Message.showMessage(AccountControl.result.getstatus(), AccountControl.result.getmessage());
-                Message.showMessage("Nhắc nhở", "Để đảm bảo an toàn, bạn sẽ được thoát, vui lòng mở app và đăng nhập lại!");
-                AccountControl.Logout();
+        if (!txtOldPassword.getText().isEmpty() && !txtNewPassword.getText().isEmpty() && !txtNewPassword2.getText().isEmpty()) {
+            if (txtNewPassword.getText().equals(txtNewPassword2.getText())) {
+                try {
+                    AccountControl.ChangePass(txtOldPassword.getText(), txtNewPassword.getText());
+                    Message.showMessage(AccountControl.result.getstatus(), AccountControl.result.getmessage());
+                    Message.showMessage("Nhắc nhở", "Để đảm bảo an toàn, bạn sẽ được thoát, vui lòng mở app và đăng nhập lại!");
+                    AccountControl.Logout();
+                } catch (UnsupportedEncodingException ex) {
+                    Logger.getLogger(UserForm.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
                 System.exit(0);
             } else {
                 Message.showMessage("ERROR", "New password is incorrect!");
@@ -822,8 +833,8 @@ public class UserForm extends javax.swing.JFrame {
 
     private void txtNewPasswordKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNewPasswordKeyReleased
         // TODO add your handling code here:
-        if(!txtNewPassword2.getText().isEmpty()){
-            if(!txtNewPassword.getText().equals(txtNewPassword2.getText())){
+        if (!txtNewPassword2.getText().isEmpty()) {
+            if (!txtNewPassword.getText().equals(txtNewPassword2.getText())) {
                 mess.setText("Hai mật khẩu không khớp!");
                 mess.setForeground(Color.red);
             } else {
@@ -839,8 +850,8 @@ public class UserForm extends javax.swing.JFrame {
 
     private void txtNewPassword2KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNewPassword2KeyReleased
         // TODO add your handling code here:
-        if(!txtNewPassword.getText().isEmpty()){
-            if(!txtNewPassword.getText().equals(txtNewPassword2.getText())){
+        if (!txtNewPassword.getText().isEmpty()) {
+            if (!txtNewPassword.getText().equals(txtNewPassword2.getText())) {
                 mess.setText("Hai mật khẩu không khớp!");
                 mess.setForeground(Color.red);
             } else {
@@ -884,6 +895,8 @@ public class UserForm extends javax.swing.JFrame {
                 try {
                     new UserForm().setVisible(true);
                 } catch (ParseException ex) {
+                    Logger.getLogger(UserForm.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (UnsupportedEncodingException ex) {
                     Logger.getLogger(UserForm.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }

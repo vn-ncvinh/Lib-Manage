@@ -13,6 +13,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import org.json.simple.parser.ParseException;
 
 /**
@@ -35,7 +36,7 @@ public class AdminDocumentsControl {
         System.out.println(result.getmessage());
     }
     
-    public static void add(String Name, String Author, String Description, String ListCategoryID) throws ParseException {
+    public static void add(String Name, String Author, String Description, String ListCategoryID) throws ParseException, UnsupportedEncodingException {
 //        Name, Author, Description
         url u = new url("/api/admin/documents/add");
         System.out.println(User.StudentID + ": Add Docunments " + Name);
@@ -47,7 +48,7 @@ public class AdminDocumentsControl {
         send(u);
     }
     
-    public static void delete(String DocumentsID) throws ParseException {
+    public static void delete(String DocumentsID) throws ParseException, UnsupportedEncodingException {
         url u = new url("/api/admin/documents/delete");
         System.out.println(User.StudentID + ": Delete Docunments " + DocumentsID);
         u.addParameter("token", User.Token);
@@ -55,7 +56,7 @@ public class AdminDocumentsControl {
         send(u);
     }
     
-    public static void update(String ID, String Name, String Author, String Description, String ListCategoryID){
+    public static void update(String ID, String Name, String Author, String Description, String ListCategoryID) throws UnsupportedEncodingException{
         url u = new url("/api/admin/documents/update");
         System.out.println(User.StudentID + ": Update Docunments " + Name);
         u.addParameter("token", User.Token);
@@ -67,7 +68,7 @@ public class AdminDocumentsControl {
         send(u);
     }
     
-    public static void addDoc(String ID, String DocumentsID, String Reprint){
+    public static void addDoc(String ID, String DocumentsID, String Reprint) throws UnsupportedEncodingException{
         url u = new url("/api/admin/documents/addDoc");
         System.out.println(User.StudentID + ": Add Doc " + ID);
         u.addParameter("token", User.Token);
