@@ -34,14 +34,15 @@ def logout(token):
 def changepass(token, oldpassword, newpassword):
     oldpassword = string_handle.toMD5(token_handle.tokentoStudentID(token)+oldpassword)
     newpassword = string_handle.toMD5(token_handle.tokentoStudentID(token)+newpassword)
-
-    # cursor.execute("select * from users where StudentID='" + user +"' and password = '"+passwdmd5+"' and status = 'active'")
-    try:
+    
+    cursor.execute("select * from users where StudentID='" + token_handle.tokentoStudentID(token) +"' and password = '"+oldpassword+"'")
+    rows = cursor.fetchall()
+    if len(rows)>0:
         query = "update users set password = '"+newpassword+"' where StudentID = '"+token_handle.tokentoStudentID(token)+"' and password = '"+oldpassword+"'"
         cursor.execute(query)
         connection.commit()
         StudentID =token_handle.tokentoStudentID(token);
         output.log(StudentID, StudentID, "Change password!")
         return output.ok(config.Success)
-    except:
+    else:
         return output.error("Old Password Incorrect!")

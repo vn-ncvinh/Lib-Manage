@@ -60,7 +60,7 @@ public class UserBorrowControl {
         if (result.getstatus().equals("OK")) {
             for (int i = 0; i < result.lengthdata(); i++) {
 //                ID, StudentID, DocumentID, status, BorrowingTime, BorrowDate, ReturnDate
-                ListBorrow.add(result.getdata(i, "ID"), result.getdata(i, "StudentID"), result.getdata(i, "DocumentID"), result.getdata(i, "NameDocument"), result.getdata(i, "status"), result.getdata(i, "BorrowingTime"), result.getdata(i, "BorrowDate"), result.getdata(i, "ReturnDate"));
+                ListBorrow.add(result.getdata(i, "ID"), result.getdata(i, "StudentID"), result.getdata(i, "DocumentID"), result.getdata(i, "NameDocument"), result.getdata(i, "status"), result.getdata(i, "BorrowingTime"), result.getdata(i, "BorrowDate"), result.getdata(i, "ReturnDate"), result.getdata(i, "Note"));
             }
         }
     }

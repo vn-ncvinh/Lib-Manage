@@ -732,7 +732,7 @@ public class AdminForm extends javax.swing.JFrame {
                     .addGroup(jPanel12Layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addComponent(jPanel13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                 .addComponent(DocumentUpdateTableBtn2)
                 .addContainerGap())
         );
@@ -777,7 +777,7 @@ public class AdminForm extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jPanel12, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(457, Short.MAX_VALUE)))
+                    .addContainerGap(429, Short.MAX_VALUE)))
         );
 
         jTabbedPane2.addTab("Quản lý sách", jPanel3);
@@ -1056,6 +1056,8 @@ public class AdminForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jPanel26.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
         ConfirmBtn.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
         ConfirmBtn.setText("Cho mượn");
         ConfirmBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -1202,7 +1204,7 @@ public class AdminForm extends javax.swing.JFrame {
                         .addComponent(jPanel26, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jPanel27, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 221, Short.MAX_VALUE)))
+                        .addGap(0, 219, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -2935,10 +2937,20 @@ public class AdminForm extends javax.swing.JFrame {
             if (txtNewPassword.getText().equals(txtNewPassword2.getText())) {
                 try {
                     AccountControl.ChangePass(txtOldPassword.getText(), txtNewPassword.getText());
+                    Message.showMessage(AccountControl.result.getstatus(), AccountControl.result.getmessage());
                 } catch (UnsupportedEncodingException ex) {
-                    Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(UserForm.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                Message.showMessage(AccountControl.result.getstatus(), AccountControl.result.getmessage());
+                if (AccountControl.result.getstatus().equals("OK")) {
+                    Message.showMessage("Nhắc nhở", "Để đảm bảo an toàn, bạn sẽ được thoát, vui lòng mở app và đăng nhập lại!");
+                    try {
+                        AccountControl.Logout();
+                    } catch (UnsupportedEncodingException ex) {
+                        Logger.getLogger(UserForm.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    System.exit(0);
+                }
+
             } else {
                 Message.showMessage("ERROR", "New password is incorrect!");
             }

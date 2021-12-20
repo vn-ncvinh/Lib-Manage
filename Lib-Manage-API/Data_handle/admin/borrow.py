@@ -55,9 +55,9 @@ def returndocument(token, documentID):
             
             if(int(datelate)>0):
                 Pay_the_fine=datelate*config.Late_payment_penalty_per_day
-                cursor.execute('update borrow set status = "return", ReturnDate = current_date(), note = "Pay the fine '+str(Pay_the_fine)+'" where id = '+ str(borrowID))
+                cursor.execute('update borrow set status = "return", ReturnDate = current_date(), note = "Pay for late '+str(Pay_the_fine)+'" where id = '+ str(borrowID))
                 connection.commit()
-                output.log(token_handle.tokentoStudentID(token), documentID,StudentID + " Return Document and Pay the fine " + str(Pay_the_fine))
+                output.log(token_handle.tokentoStudentID(token), documentID,StudentID + " Return Document and Pay late " + str(Pay_the_fine))
                 return output.ok("Late payment penalty amount to be paid:  "+str(config.Late_payment_penalty_per_day) +" * " + str(datelate) +" = " + str(Pay_the_fine))
             cursor.execute('update borrow set status = "return", ReturnDate = current_date() where id = '+ str(borrowID))
             connection.commit()
@@ -79,9 +79,9 @@ def lose(token, documentID):
             Pay_the_fine = Price*1.5
             cursor.execute('DELETE FROM document where id = "'+documentID+'"')
             connection.commit()
-            cursor.execute('update borrow set status = "lose", ReturnDate = current_date(), note = "Pay the fine '+str(Pay_the_fine)+'" where id = '+ str(borrowID))
+            cursor.execute('update borrow set status = "lose", ReturnDate = current_date(), note = "Pay for loss '+str(Pay_the_fine)+'" where id = '+ str(borrowID))
             connection.commit()
-            output.log(token_handle.tokentoStudentID(token), str(borrowID), StudentID + " Lose Document and Pay the fine "+str(Pay_the_fine))
+            output.log(token_handle.tokentoStudentID(token), str(borrowID), StudentID + " Lose Document and Pay for loss "+str(Pay_the_fine))
             return output.ok("The penalty for loss is " + str(Pay_the_fine))
         else:
             return output.error(config.unknown) 

@@ -816,13 +816,20 @@ public class UserForm extends javax.swing.JFrame {
                 try {
                     AccountControl.ChangePass(txtOldPassword.getText(), txtNewPassword.getText());
                     Message.showMessage(AccountControl.result.getstatus(), AccountControl.result.getmessage());
-                    Message.showMessage("Nhắc nhở", "Để đảm bảo an toàn, bạn sẽ được thoát, vui lòng mở app và đăng nhập lại!");
-                    AccountControl.Logout();
+
                 } catch (UnsupportedEncodingException ex) {
                     Logger.getLogger(UserForm.class.getName()).log(Level.SEVERE, null, ex);
                 }
+                if (AccountControl.result.getstatus().equals("OK")) {
+                    Message.showMessage("Nhắc nhở", "Để đảm bảo an toàn, bạn sẽ được thoát, vui lòng mở app và đăng nhập lại!");
+                    try {
+                        AccountControl.Logout();
+                    } catch (UnsupportedEncodingException ex) {
+                        Logger.getLogger(UserForm.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    System.exit(0);
+                }
 
-                System.exit(0);
             } else {
                 Message.showMessage("ERROR", "New password is incorrect!");
             }

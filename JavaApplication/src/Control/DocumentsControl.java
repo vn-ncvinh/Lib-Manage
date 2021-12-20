@@ -51,7 +51,7 @@ public class DocumentsControl {
             for (int i = 0; i < result.lengthdata(); i++) {
 //                ID, Name, Author, Description, Available
                 String Category = result.getdata(i, "Category");
-                if(User.Admin.equals("0")){
+                if (User.Admin.equals("0")) {
                     Category = CategoryControl.ListIDtoListName(Category);
                 }
                 ListDocuments.add(result.getdata(i, "ID"), result.getdata(i, "Name"), result.getdata(i, "Author"), result.getdata(i, "Description"), Category, result.getdata(i, "Available"));
@@ -59,43 +59,39 @@ public class DocumentsControl {
         }
     }
 
-    
-
-    public static void search(String key) throws ParseException {
+    public static void search(String keys) throws ParseException {
         getList();
-        key = str.deAccent(key);
-        System.out.println(User.StudentID + ": Search " + key);
+        keys = str.deAccent(keys);
+        System.out.println(User.StudentID + ": Search " + keys);
         ArrayList<Documents> temp2 = new ArrayList<Documents>();
-        for (Documents x : ListDocuments.list) {
-            if (!temp2.contains(x) && str.deAccent(x.getAuthor()).contains(key)) {
-                temp2.add(x);
+        for (String key : keys.split(",")) {
+            for (Documents x : ListDocuments.list) {
+                if (!temp2.contains(x) && str.deAccent(x.getAuthor()).contains(key)) {
+                    temp2.add(x);
+                }
+            }
+
+            for (Documents x : ListDocuments.list) {
+                if (!temp2.contains(x) && str.deAccent(x.getName()).contains(key)) {
+                    temp2.add(x);
+                }
+            }
+
+            for (Documents x : ListDocuments.list) {
+                if (!temp2.contains(x) && str.deAccent(x.getCategory()).contains(key)) {
+                    temp2.add(x);
+                }
+            }
+
+            for (Documents x : ListDocuments.list) {
+                if (!temp2.contains(x) && str.deAccent(x.getDescription()).contains(key)) {
+                    temp2.add(x);
+                }
             }
         }
 
-        for (Documents x : ListDocuments.list) {
-            if (!temp2.contains(x) && str.deAccent(x.getName()).contains(key)) {
-                temp2.add(x);
-            }
-        }
-        
-        for (Documents x : ListDocuments.list) {
-            if (!temp2.contains(x) && str.deAccent(x.getCategory()).contains(key)) {
-                temp2.add(x);
-            }
-        }
-        
-        
-
-        for (Documents x : ListDocuments.list) {
-            if (!temp2.contains(x) && str.deAccent(x.getDescription()).contains(key)) {
-                temp2.add(x);
-            }
-        }
-        
         ListDocuments.clean();
         ListDocuments.list = temp2;
     }
-
-    
 
 }
