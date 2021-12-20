@@ -747,8 +747,8 @@ public class AdminForm extends javax.swing.JFrame {
             }
         ));
         DocumentsTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                DocumentsTable1MouseReleased(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DocumentsTable1MouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(DocumentsTable1);
@@ -792,6 +792,9 @@ public class AdminForm extends javax.swing.JFrame {
             }
         ));
         CategoryTable.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CategoryTableMouseClicked(evt);
+            }
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 CategoryTableMouseReleased(evt);
             }
@@ -2347,6 +2350,7 @@ public class AdminForm extends javax.swing.JFrame {
         if (FilePatch != null) {
             try {
                 AdminDocumentsControl.addDocfromFile(FilePatch);
+                Message.showMessage("Message", AdminDocumentsControl.rsfile);
                 updateDocumentTable();
             } catch (ParseException ex) {
                 Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
@@ -2393,6 +2397,7 @@ public class AdminForm extends javax.swing.JFrame {
         if (FilePatch != null) {
             try {
                 AdminDocumentsControl.addfromFile(FilePatch);
+                Message.showMessage("Message", AdminDocumentsControl.rsfile);
                 FilePatch = null;
             } catch (ParseException ex) {
                 Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
@@ -2405,7 +2410,6 @@ public class AdminForm extends javax.swing.JFrame {
         } catch (ParseException ex) {
             Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Message.showMessage("Message", AdminDocumentsControl.rsfile);
     }//GEN-LAST:event_DocumentsAddFromFileBtnActionPerformed
 
     private void DocumentsDeleteFromFileBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DocumentsDeleteFromFileBtnActionPerformed
@@ -2927,10 +2931,6 @@ public class AdminForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_CategoryTableMouseReleased
 
-    private void DocumentsTable1MouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DocumentsTable1MouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_DocumentsTable1MouseReleased
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         if (!txtOldPassword.getText().isEmpty() && !txtNewPassword.getText().isEmpty() && !txtNewPassword2.getText().isEmpty()) {
@@ -3018,6 +3018,17 @@ public class AdminForm extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_txtSearchbtnActionPerformed
+
+    private void DocumentsTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DocumentsTable1MouseClicked
+        // TODO add your handling code here:
+        txtDocumentsID.setText(DocumentsTable1.getValueAt(DocumentsTable1.getSelectedRow(), 0).toString());
+    }//GEN-LAST:event_DocumentsTable1MouseClicked
+
+    private void CategoryTableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CategoryTableMouseClicked
+        // TODO add your handling code here:
+        txtCategoryName.setText(CategoryTable.getValueAt(CategoryTable.getSelectedRow(), 1).toString());
+        txtCategoryDes.setText(CategoryTable.getValueAt(CategoryTable.getSelectedRow(), 2).toString());
+    }//GEN-LAST:event_CategoryTableMouseClicked
 
     public void selectFile() {
         JFileChooser j = new JFileChooser("C:");

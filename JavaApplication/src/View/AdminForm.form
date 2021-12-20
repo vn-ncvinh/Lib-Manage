@@ -838,7 +838,7 @@
                         </Property>
                       </Properties>
                       <Events>
-                        <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="DocumentsTable1MouseReleased"/>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="DocumentsTable1MouseClicked"/>
                       </Events>
                     </Component>
                   </SubComponents>
@@ -906,6 +906,7 @@
                         </Property>
                       </Properties>
                       <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CategoryTableMouseClicked"/>
                         <EventHandler event="mouseReleased" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CategoryTableMouseReleased"/>
                       </Events>
                     </Component>

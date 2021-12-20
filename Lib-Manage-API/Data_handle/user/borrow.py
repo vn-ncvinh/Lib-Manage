@@ -29,6 +29,8 @@ def request(token, documentsID, BorrowingTime):
             cols = cursor.fetchall()
             output.log(token_handle.tokentoStudentID(token), str(rows[0][0]), "Borrow Document")
             return output.tabletojson(cols, rows,"Borrow registration successful!")
+        else:
+            return output.error("Not enough number!")
     return output.error(config.unknown)
 
 def cancel(token, borrowID):

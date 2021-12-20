@@ -81,7 +81,7 @@ def update(token, ID, Name, Author, Description, ListCategoryID):
                 rows = cursor.fetchall()
                 if(len(rows)<1):
                     return output.error("Incorrect Category ID")
-            query="Update documents set Name = '"+Name+"', Author = '"+Author+"', Description = '"+Description+"' where ID = '"+ID+"'"
+            query="Update documents set Name = '"+Name+"', Author = '"+Author+"', Description = '"+Description+"', Category = '"+ListCategoryID+"' where ID = '"+ID+"'"
             cursor.execute(query)
             connection.commit()
             query="Delete from category_documents where DocumentsID = '"+ID+"'"
