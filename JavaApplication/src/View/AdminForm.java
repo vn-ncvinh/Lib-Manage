@@ -141,15 +141,15 @@ public class AdminForm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jButton19 = new javax.swing.JButton();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jTabbedPane2 = new javax.swing.JTabbedPane();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
+        MainPanel = new javax.swing.JTabbedPane();
+        DocumentsManagePanel = new javax.swing.JTabbedPane();
+        DocumentsPanel = new javax.swing.JPanel();
+        DocumentsTablePanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         DocumentsTable = new javax.swing.JTable();
-        jPanel48 = new javax.swing.JPanel();
+        DocumentsInputPanel = new javax.swing.JPanel();
         jPanel50 = new javax.swing.JPanel();
-        jPanel51 = new javax.swing.JPanel();
+        DocumentsButtonPanel = new javax.swing.JPanel();
         DocumentsAddbtn = new javax.swing.JButton();
         DocumentUpdateBtn = new javax.swing.JButton();
         DocumentDeleteBtn = new javax.swing.JButton();
@@ -175,7 +175,7 @@ public class AdminForm extends javax.swing.JFrame {
         jPanel53 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jPanel3 = new javax.swing.JPanel();
+        DocPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         DocumentsTable1 = new javax.swing.JTable();
         jPanel58 = new javax.swing.JPanel();
@@ -202,7 +202,7 @@ public class AdminForm extends javax.swing.JFrame {
         jPanel65 = new javax.swing.JPanel();
         jLabel30 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jPanel4 = new javax.swing.JPanel();
+        CategoryPanel = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         CategoryTable = new javax.swing.JTable();
         jPanel67 = new javax.swing.JPanel();
@@ -225,7 +225,7 @@ public class AdminForm extends javax.swing.JFrame {
         txtCategoryName = new javax.swing.JTextField();
         jPanel73 = new javax.swing.JPanel();
         CatetoryUpdateTableBtn = new javax.swing.JButton();
-        jTabbedPane5 = new javax.swing.JTabbedPane();
+        BorrowManagePanel = new javax.swing.JTabbedPane();
         jPanel16 = new javax.swing.JPanel();
         Panel111111 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
@@ -243,8 +243,8 @@ public class AdminForm extends javax.swing.JFrame {
         jPanel30 = new javax.swing.JPanel();
         txtStudentIDBorrow = new javax.swing.JTextField();
         BorrowSearchBtn = new javax.swing.JButton();
-        jTabbedPane3 = new javax.swing.JTabbedPane();
-        jPanel18 = new javax.swing.JPanel();
+        AccountManagePanel = new javax.swing.JTabbedPane();
+        AccountsPanel = new javax.swing.JPanel();
         jPanel21 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         AccountTable = new javax.swing.JTable();
@@ -280,7 +280,7 @@ public class AdminForm extends javax.swing.JFrame {
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jLabel38 = new javax.swing.JLabel();
-        jPanel22 = new javax.swing.JPanel();
+        DisablePanel = new javax.swing.JPanel();
         jPanel23 = new javax.swing.JPanel();
         jLabel29 = new javax.swing.JLabel();
         txtAccountIDDisable = new javax.swing.JTextField();
@@ -297,7 +297,7 @@ public class AdminForm extends javax.swing.JFrame {
         DocumentUpdateTableBtn4 = new javax.swing.JButton();
         jScrollPane6 = new javax.swing.JScrollPane();
         AccountTable2 = new javax.swing.JTable();
-        jPanel25 = new javax.swing.JPanel();
+        ExtendPanel = new javax.swing.JPanel();
         jScrollPane7 = new javax.swing.JScrollPane();
         AccountTable3 = new javax.swing.JTable();
         jPanel28 = new javax.swing.JPanel();
@@ -314,7 +314,7 @@ public class AdminForm extends javax.swing.JFrame {
         txtSearchStudentID2 = new javax.swing.JTextField();
         AccountSearchbtn2 = new javax.swing.JButton();
         CatetoryUpdateTableBtn1 = new javax.swing.JButton();
-        jPanel8 = new javax.swing.JPanel();
+        AccountInfoPanel = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
         jPanel32 = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
@@ -375,12 +375,12 @@ public class AdminForm extends javax.swing.JFrame {
             .addComponent(jButton19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        jTabbedPane1.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        jTabbedPane1.setToolTipText("");
-        jTabbedPane1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        MainPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        MainPanel.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        MainPanel.setToolTipText("");
+        MainPanel.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
 
-        jTabbedPane2.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        DocumentsManagePanel.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
 
         DocumentsTable.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         DocumentsTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -398,14 +398,14 @@ public class AdminForm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(DocumentsTable);
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        javax.swing.GroupLayout DocumentsTablePanelLayout = new javax.swing.GroupLayout(DocumentsTablePanel);
+        DocumentsTablePanel.setLayout(DocumentsTablePanelLayout);
+        DocumentsTablePanelLayout.setHorizontalGroup(
+            DocumentsTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1)
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+        DocumentsTablePanelLayout.setVerticalGroup(
+            DocumentsTablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE)
         );
 
@@ -444,11 +444,11 @@ public class AdminForm extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel51Layout = new javax.swing.GroupLayout(jPanel51);
-        jPanel51.setLayout(jPanel51Layout);
-        jPanel51Layout.setHorizontalGroup(
-            jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel51Layout.createSequentialGroup()
+        javax.swing.GroupLayout DocumentsButtonPanelLayout = new javax.swing.GroupLayout(DocumentsButtonPanel);
+        DocumentsButtonPanel.setLayout(DocumentsButtonPanelLayout);
+        DocumentsButtonPanelLayout.setHorizontalGroup(
+            DocumentsButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DocumentsButtonPanelLayout.createSequentialGroup()
                 .addGap(298, 298, 298)
                 .addComponent(DocumentsAddbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
@@ -457,11 +457,11 @@ public class AdminForm extends javax.swing.JFrame {
                 .addComponent(DocumentDeleteBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-        jPanel51Layout.setVerticalGroup(
-            jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel51Layout.createSequentialGroup()
+        DocumentsButtonPanelLayout.setVerticalGroup(
+            DocumentsButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DocumentsButtonPanelLayout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addGroup(jPanel51Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(DocumentsButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(DocumentsAddbtn)
                     .addComponent(DocumentUpdateBtn)
                     .addComponent(DocumentDeleteBtn))
@@ -631,11 +631,11 @@ public class AdminForm extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                 .addGap(0, 43, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DocumentUpdateTableBtn1)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtSearchBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtSearchbtn))))
+                        .addComponent(txtSearchbtn))
+                    .addComponent(DocumentUpdateTableBtn1)))
         );
 
         txtDocumentDes.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -690,18 +690,18 @@ public class AdminForm extends javax.swing.JFrame {
                 .addContainerGap(40, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel48Layout = new javax.swing.GroupLayout(jPanel48);
-        jPanel48.setLayout(jPanel48Layout);
-        jPanel48Layout.setHorizontalGroup(
-            jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel48Layout.createSequentialGroup()
+        javax.swing.GroupLayout DocumentsInputPanelLayout = new javax.swing.GroupLayout(DocumentsInputPanel);
+        DocumentsInputPanel.setLayout(DocumentsInputPanelLayout);
+        DocumentsInputPanelLayout.setHorizontalGroup(
+            DocumentsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DocumentsInputPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel50, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel48Layout.createSequentialGroup()
-                        .addGroup(jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel48Layout.createSequentialGroup()
+                .addGroup(DocumentsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(DocumentsInputPanelLayout.createSequentialGroup()
+                        .addGroup(DocumentsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(DocumentsInputPanelLayout.createSequentialGroup()
                                 .addComponent(jPanel52, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel56, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -709,58 +709,58 @@ public class AdminForm extends javax.swing.JFrame {
                                 .addComponent(jPanel53, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jPanel57, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jPanel51, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(DocumentsButtonPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addComponent(jPanel54, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel48Layout.setVerticalGroup(
-            jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel48Layout.createSequentialGroup()
+        DocumentsInputPanelLayout.setVerticalGroup(
+            DocumentsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DocumentsInputPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(DocumentsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel50, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel48Layout.createSequentialGroup()
-                        .addGroup(jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel48Layout.createSequentialGroup()
-                                .addGroup(jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addGroup(DocumentsInputPanelLayout.createSequentialGroup()
+                        .addGroup(DocumentsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(DocumentsInputPanelLayout.createSequentialGroup()
+                                .addGroup(DocumentsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(DocumentsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(jPanel56, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jPanel52, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGroup(jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(DocumentsInputPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(jPanel57, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jPanel53, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel51, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(DocumentsButtonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel54, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout DocumentsPanelLayout = new javax.swing.GroupLayout(DocumentsPanel);
+        DocumentsPanel.setLayout(DocumentsPanelLayout);
+        DocumentsPanelLayout.setHorizontalGroup(
+            DocumentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DocumentsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel48, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(DocumentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(DocumentsTablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(DocumentsInputPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        DocumentsPanelLayout.setVerticalGroup(
+            DocumentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DocumentsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel48, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(DocumentsInputPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(DocumentsTablePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        jTabbedPane2.addTab("Quản lý Đầu sách", jPanel2);
+        DocumentsManagePanel.addTab("Quản lý Đầu sách", DocumentsPanel);
 
         DocumentsTable1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         DocumentsTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -958,11 +958,11 @@ public class AdminForm extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
                 .addGap(0, 43, Short.MAX_VALUE)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DocumentUpdateTableBtn3)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtSearchBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtSearchbtn1))))
+                        .addComponent(txtSearchbtn1))
+                    .addComponent(DocumentUpdateTableBtn3)))
         );
 
         txtReprint.setFont(new java.awt.Font("Times New Roman", 0, 18)); // NOI18N
@@ -1067,20 +1067,20 @@ public class AdminForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout DocPanelLayout = new javax.swing.GroupLayout(DocPanel);
+        DocPanel.setLayout(DocPanelLayout);
+        DocPanelLayout.setHorizontalGroup(
+            DocPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(DocPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(DocPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel58, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane2))
                 .addContainerGap())
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+        DocPanelLayout.setVerticalGroup(
+            DocPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DocPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel58, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1088,7 +1088,7 @@ public class AdminForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane2.addTab("Quản lý sách", jPanel3);
+        DocumentsManagePanel.addTab("Quản lý sách", DocPanel);
 
         CategoryTable.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         CategoryTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -1366,20 +1366,20 @@ public class AdminForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout CategoryPanelLayout = new javax.swing.GroupLayout(CategoryPanel);
+        CategoryPanel.setLayout(CategoryPanelLayout);
+        CategoryPanelLayout.setHorizontalGroup(
+            CategoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CategoryPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(CategoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1464, Short.MAX_VALUE)
                     .addComponent(jPanel67, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        CategoryPanelLayout.setVerticalGroup(
+            CategoryPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(CategoryPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel67, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -1387,11 +1387,11 @@ public class AdminForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane2.addTab("Quản lý Thể loại", jPanel4);
+        DocumentsManagePanel.addTab("Quản lý Thể loại", CategoryPanel);
 
-        jTabbedPane1.addTab("Quản lý tài liệu", jTabbedPane2);
+        MainPanel.addTab("Quản lý tài liệu", DocumentsManagePanel);
 
-        jTabbedPane5.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        BorrowManagePanel.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
 
         BorrowTable.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         BorrowTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -1624,12 +1624,12 @@ public class AdminForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane5.addTab("Mượn trả tài liệu", jPanel16);
+        BorrowManagePanel.addTab("Mượn trả tài liệu", jPanel16);
 
-        jTabbedPane1.addTab("Quản lý mượn", jTabbedPane5);
-        jTabbedPane5.getAccessibleContext().setAccessibleName("Quản lý mượn");
+        MainPanel.addTab("Quản lý mượn", BorrowManagePanel);
+        BorrowManagePanel.getAccessibleContext().setAccessibleName("Quản lý mượn");
 
-        jTabbedPane3.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
+        AccountManagePanel.setFont(new java.awt.Font("Times New Roman", 0, 24)); // NOI18N
 
         AccountTable.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         AccountTable.setModel(new javax.swing.table.DefaultTableModel(
@@ -2011,20 +2011,20 @@ public class AdminForm extends javax.swing.JFrame {
                         .addGap(13, 13, 13))))
         );
 
-        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
-        jPanel18.setLayout(jPanel18Layout);
-        jPanel18Layout.setHorizontalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
+        javax.swing.GroupLayout AccountsPanelLayout = new javax.swing.GroupLayout(AccountsPanel);
+        AccountsPanel.setLayout(AccountsPanelLayout);
+        AccountsPanelLayout.setHorizontalGroup(
+            AccountsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AccountsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(AccountsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel49, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel18Layout.setVerticalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel18Layout.createSequentialGroup()
+        AccountsPanelLayout.setVerticalGroup(
+            AccountsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AccountsPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel49, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -2032,7 +2032,7 @@ public class AdminForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane3.addTab("Quản lý tài khoản", jPanel18);
+        AccountManagePanel.addTab("Quản lý tài khoản", AccountsPanel);
 
         jPanel23.setPreferredSize(new java.awt.Dimension(1452, 330));
 
@@ -2153,11 +2153,11 @@ public class AdminForm extends javax.swing.JFrame {
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
                 .addGap(0, 22, Short.MAX_VALUE)
-                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DocumentUpdateTableBtn4)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtSearchStudentID1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(AccountSearchbtn1))))
+                        .addComponent(AccountSearchbtn1))
+                    .addComponent(DocumentUpdateTableBtn4)))
         );
 
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
@@ -2225,34 +2225,34 @@ public class AdminForm extends javax.swing.JFrame {
         });
         jScrollPane6.setViewportView(AccountTable2);
 
-        javax.swing.GroupLayout jPanel22Layout = new javax.swing.GroupLayout(jPanel22);
-        jPanel22.setLayout(jPanel22Layout);
-        jPanel22Layout.setHorizontalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
+        javax.swing.GroupLayout DisablePanelLayout = new javax.swing.GroupLayout(DisablePanel);
+        DisablePanel.setLayout(DisablePanelLayout);
+        DisablePanelLayout.setHorizontalGroup(
+            DisablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DisablePanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1464, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel22Layout.createSequentialGroup()
+            .addGroup(DisablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(DisablePanelLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jPanel23, javax.swing.GroupLayout.DEFAULT_SIZE, 1464, Short.MAX_VALUE)
                     .addContainerGap()))
         );
-        jPanel22Layout.setVerticalGroup(
-            jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel22Layout.createSequentialGroup()
+        DisablePanelLayout.setVerticalGroup(
+            DisablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DisablePanelLayout.createSequentialGroup()
                 .addContainerGap(356, Short.MAX_VALUE)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
-            .addGroup(jPanel22Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel22Layout.createSequentialGroup()
+            .addGroup(DisablePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(DisablePanelLayout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jPanel23, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(648, Short.MAX_VALUE)))
         );
 
-        jTabbedPane3.addTab("Vô hiệu hoá", jPanel22);
+        AccountManagePanel.addTab("Vô hiệu hoá", DisablePanel);
 
         AccountTable3.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         AccountTable3.setModel(new javax.swing.table.DefaultTableModel(
@@ -2435,20 +2435,20 @@ public class AdminForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
-        jPanel25.setLayout(jPanel25Layout);
-        jPanel25Layout.setHorizontalGroup(
-            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel25Layout.createSequentialGroup()
+        javax.swing.GroupLayout ExtendPanelLayout = new javax.swing.GroupLayout(ExtendPanel);
+        ExtendPanel.setLayout(ExtendPanelLayout);
+        ExtendPanelLayout.setHorizontalGroup(
+            ExtendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ExtendPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(ExtendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 1464, Short.MAX_VALUE)
                     .addComponent(jPanel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel25Layout.setVerticalGroup(
-            jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel25Layout.createSequentialGroup()
+        ExtendPanelLayout.setVerticalGroup(
+            ExtendPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(ExtendPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel28, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -2456,9 +2456,9 @@ public class AdminForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane3.addTab("Gia hạn tài khoản", jPanel25);
+        AccountManagePanel.addTab("Gia hạn tài khoản", ExtendPanel);
 
-        jTabbedPane1.addTab("Quản lý tài khoản", jTabbedPane3);
+        MainPanel.addTab("Quản lý tài khoản", AccountManagePanel);
 
         jPanel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -2706,30 +2706,30 @@ public class AdminForm extends javax.swing.JFrame {
                 .addGap(24, 24, 24))
         );
 
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        javax.swing.GroupLayout AccountInfoPanelLayout = new javax.swing.GroupLayout(AccountInfoPanel);
+        AccountInfoPanel.setLayout(AccountInfoPanelLayout);
+        AccountInfoPanelLayout.setHorizontalGroup(
+            AccountInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AccountInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(471, Short.MAX_VALUE))
         );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
+        AccountInfoPanelLayout.setVerticalGroup(
+            AccountInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(AccountInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(AccountInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel8Layout.createSequentialGroup()
+                    .addGroup(AccountInfoPanelLayout.createSequentialGroup()
                         .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 691, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Tài khoản", jPanel8);
+        MainPanel.addTab("Tài khoản", AccountInfoPanel);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -2738,7 +2738,7 @@ public class AdminForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTabbedPane1)
+                    .addComponent(MainPanel)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -2748,7 +2748,7 @@ public class AdminForm extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1040, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(MainPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 1040, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -3672,6 +3672,8 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JButton AccountDisableBtn;
     private javax.swing.JButton AccountDisableFromFileBtn;
     private javax.swing.JButton AccountFileLabel;
+    private javax.swing.JPanel AccountInfoPanel;
+    private javax.swing.JTabbedPane AccountManagePanel;
     private javax.swing.JButton AccountSearchbtn;
     private javax.swing.JButton AccountSearchbtn1;
     private javax.swing.JButton AccountSearchbtn2;
@@ -3681,17 +3683,22 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JButton AccountUpdateBtn;
     private javax.swing.JButton AccountUpdateFromFilebtn1;
     private javax.swing.JButton AccountUpdateTable;
+    private javax.swing.JPanel AccountsPanel;
+    private javax.swing.JTabbedPane BorrowManagePanel;
     private javax.swing.JButton BorrowSearchBtn;
     private javax.swing.JTable BorrowTable;
     private javax.swing.JButton BorrowTableUpdatebtn;
     private javax.swing.JButton CategoryFileLabel;
+    private javax.swing.JPanel CategoryPanel;
     private javax.swing.JTable CategoryTable;
     private javax.swing.JButton CatetoryUpdateTableBtn;
     private javax.swing.JButton CatetoryUpdateTableBtn1;
     private javax.swing.JButton ConfirmBtn;
     private javax.swing.JButton DeleteFromFilebtn3;
     private javax.swing.JButton DisableAccountFileLabel;
+    private javax.swing.JPanel DisablePanel;
     private javax.swing.JButton DocFileLabel;
+    private javax.swing.JPanel DocPanel;
     private javax.swing.JButton DocumentDeleteBtn;
     private javax.swing.JButton DocumentUpdateBtn;
     private javax.swing.JButton DocumentUpdateBtn1;
@@ -3700,15 +3707,22 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JButton DocumentUpdateTableBtn4;
     private javax.swing.JButton DocumentsAddFromFileBtn;
     private javax.swing.JButton DocumentsAddbtn;
+    private javax.swing.JPanel DocumentsButtonPanel;
     private javax.swing.JButton DocumentsDeleteFromFileBtn;
     private javax.swing.JButton DocumentsFileLabel;
+    private javax.swing.JPanel DocumentsInputPanel;
+    private javax.swing.JTabbedPane DocumentsManagePanel;
+    private javax.swing.JPanel DocumentsPanel;
     private javax.swing.JTable DocumentsTable;
     private javax.swing.JTable DocumentsTable1;
+    private javax.swing.JPanel DocumentsTablePanel;
     private javax.swing.JButton DocumentsUpdateFromFilebtn;
     private javax.swing.JButton ExtendAcountFileLabel;
     private javax.swing.JButton ExtendBtn;
     private javax.swing.JButton ExtendFromFileBtn;
+    private javax.swing.JPanel ExtendPanel;
     private javax.swing.JButton LostBtn;
+    private javax.swing.JTabbedPane MainPanel;
     private javax.swing.JPanel Panel111111;
     private javax.swing.JButton ReturnBtn;
     private javax.swing.JButton UpdateFromFilebtn3;
@@ -3763,30 +3777,22 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel14;
     private javax.swing.JPanel jPanel15;
     private javax.swing.JPanel jPanel16;
-    private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel19;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel20;
     private javax.swing.JPanel jPanel21;
-    private javax.swing.JPanel jPanel22;
     private javax.swing.JPanel jPanel23;
     private javax.swing.JPanel jPanel24;
-    private javax.swing.JPanel jPanel25;
     private javax.swing.JPanel jPanel26;
     private javax.swing.JPanel jPanel27;
     private javax.swing.JPanel jPanel28;
     private javax.swing.JPanel jPanel29;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel30;
     private javax.swing.JPanel jPanel31;
     private javax.swing.JPanel jPanel32;
     private javax.swing.JPanel jPanel33;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel48;
     private javax.swing.JPanel jPanel49;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel50;
-    private javax.swing.JPanel jPanel51;
     private javax.swing.JPanel jPanel52;
     private javax.swing.JPanel jPanel53;
     private javax.swing.JPanel jPanel54;
@@ -3795,7 +3801,6 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel57;
     private javax.swing.JPanel jPanel58;
     private javax.swing.JPanel jPanel59;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel60;
     private javax.swing.JPanel jPanel61;
     private javax.swing.JPanel jPanel62;
@@ -3816,7 +3821,6 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel76;
     private javax.swing.JPanel jPanel77;
     private javax.swing.JPanel jPanel78;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
@@ -3825,10 +3829,6 @@ public class AdminForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTabbedPane jTabbedPane3;
-    private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JLabel mess;
     private javax.swing.JTextField txtAccountClass;
     private javax.swing.JTextField txtAccountID;
