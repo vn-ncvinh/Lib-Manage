@@ -1,3 +1,7 @@
+#App config
+host='0.0.0.0'
+port = 8080
+
 # database config
 db_host = 'localhost'
 db_user = 'ncvinh'

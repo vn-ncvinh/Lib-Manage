@@ -1,4 +1,5 @@
 import sys
+import config
 sys.dont_write_bytecode = True
 
 from flask import Flask
@@ -14,4 +15,4 @@ from route.home import *
 
 if __name__ == '__main__':
     # print app.url_map
-    app.run(port=8080, host='0.0.0.0')
+    app.run(port=config.port, host=config.host)
