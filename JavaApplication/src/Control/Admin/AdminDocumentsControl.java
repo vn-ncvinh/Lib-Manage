@@ -85,6 +85,7 @@ public class AdminDocumentsControl {
         String line = "";
         try {
             BufferedReader br = new BufferedReader(new FileReader(Filepatch));
+            br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] Documents = line.split(",");
 //                System.out.print(Account[0]);
@@ -93,6 +94,7 @@ public class AdminDocumentsControl {
                     ok++;
                 } else error++;
             }
+            br.close();
             rsfile = "OK: " + ok + " - ERROR: " + error;
         } catch (IOException e) {
             e.printStackTrace();
@@ -105,6 +107,7 @@ public class AdminDocumentsControl {
         int error = 0;
         try {
             BufferedReader br = new BufferedReader(new FileReader(Filepatch));
+            br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] Documents = line.split(",");
 //                System.out.print(Account[0]);
@@ -113,6 +116,7 @@ public class AdminDocumentsControl {
                     ok++;
                 } else error++;
             }
+            br.close();
             rsfile = "OK: " + ok + " - ERROR: " + error;
         } catch (IOException e) {
             e.printStackTrace();
@@ -125,6 +129,7 @@ public class AdminDocumentsControl {
         int error = 0;
         try {
             BufferedReader br = new BufferedReader(new FileReader(Filepatch));
+            br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] Documents = line.split(",");
 //                System.out.print(Account[0]);
@@ -134,6 +139,7 @@ public class AdminDocumentsControl {
                 } else error++;
 //                System.out.println(" - " + result.getstatus());
             }
+            br.close();
             rsfile = "OK: " + ok + " - ERROR: " + error;
         } catch (IOException e) {
             e.printStackTrace();
@@ -146,6 +152,7 @@ public class AdminDocumentsControl {
         int error = 0;
         try {
             BufferedReader br = new BufferedReader(new FileReader(Filepatch));
+            br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] Documents = line.split(",");
 //                System.out.print(Account[0]);
@@ -155,6 +162,7 @@ public class AdminDocumentsControl {
                 } else error++;
 //                System.out.println(" - " + result.getstatus());
             }
+            br.close();
             rsfile = "OK: " + ok + " - ERROR: " + error;
         } catch (IOException e) {
             e.printStackTrace();
