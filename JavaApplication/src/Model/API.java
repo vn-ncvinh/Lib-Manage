@@ -20,6 +20,7 @@ public class API {
 
     public String send() throws ProtocolException, IOException, ParseException {
         String request = u.getUrl();
+        System.out.println(request);
         URL url = new URL(request);
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
         conn.setDoOutput(true);
