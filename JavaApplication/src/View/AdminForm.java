@@ -3006,7 +3006,6 @@ public class AdminForm extends javax.swing.JFrame {
         try {
             // TODO add your handling code here:
             AdminAccountControl.delete(txtAccountID.getText());
-
             Message.showMessage(AdminAccountControl.result.getstatus(), AdminAccountControl.result.getmessage());
             updateAccountTable();
         } catch (ParseException ex) {
@@ -3024,7 +3023,8 @@ public class AdminForm extends javax.swing.JFrame {
                 Message.showMessage("Message", AdminAccountControl.rsfile);
                 FilePatch = null;
                 updateFile();
-            } catch (ParseException ex) {
+                updateAccountTable();
+            } catch (Exception ex) {
                 Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -3043,7 +3043,11 @@ public class AdminForm extends javax.swing.JFrame {
                 Message.showMessage("Message", AdminAccountControl.rsfile);
                 FilePatch = null;
                 updateFile();
+                updateAccountTable();
+                
             } catch (ParseException ex) {
+                Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedEncodingException ex) {
                 Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -3062,7 +3066,8 @@ public class AdminForm extends javax.swing.JFrame {
                 Message.showMessage("Message", AdminAccountControl.rsfile);
                 FilePatch = null;
                 updateFile();
-            } catch (ParseException ex) {
+                updateAccountTable();
+            } catch (Exception ex) {
                 Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -3381,6 +3386,7 @@ public class AdminForm extends javax.swing.JFrame {
 
     private void DocFileLabelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DocFileLabelActionPerformed
         // TODO add your handling code here:
+        selectFile();
     }//GEN-LAST:event_DocFileLabelActionPerformed
 
     private void UpdateFromFilebtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateFromFilebtn3ActionPerformed

@@ -157,7 +157,7 @@ public class AdminAccountControl {
             while ((line = br.readLine()) != null) {
                 String[] Account = line.split(",");
 //                System.out.print(Account[0]);
-                create(Account[0], Account[1], Account[2], Account[3], Account[4], Account[5], Account[6]);
+                create(Account[0], Account[1], Account[2], Account[3], Account[4], Account[5], "0");
                 if(result.getstatus().equals("OK")) ok++;
                 else error++;
 //                System.out.println(" - " + result.getstatus());
@@ -178,7 +178,7 @@ public class AdminAccountControl {
             while ((line = br.readLine()) != null) {
                 String[] Account = line.split(",");
 //                System.out.print(Account[0]);
-                update(Account[0], Account[1], Account[2], Account[3], Account[4], Account[5], Account[6]);
+                update(Account[0], Account[1], Account[2], Account[3], Account[4], Account[5], "0");
                 if(result.getstatus().equals("OK")) ok++;
                 else error++;
 //                System.out.println(" - " + result.getstatus());
