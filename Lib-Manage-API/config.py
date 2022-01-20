@@ -10,7 +10,8 @@ db_dbname = 'thuvien'
 
 #Borrow Config
 Limited_Borrows = 10
-Limited_Day_Borrows = 90
+Min_Day_Borrow = 1
+Max_Day_Borrow = 90
 Late_payment_penalty_per_day = 5000
 
 #Message Config

@@ -13,6 +13,8 @@ import Model.User;
 import Model.jsonobj;
 import Model.url;
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -150,7 +152,7 @@ public class AdminAccountControl {
         int ok =0, error =0;
         String line = "";
         try {
-            BufferedReader br = new BufferedReader(new FileReader(Filepatch));
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(Filepatch), "UTF-8"));
             br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] Account = line.split(",");
@@ -171,7 +173,7 @@ public class AdminAccountControl {
         String line = "";
         int ok =0, error =0;
         try {
-            BufferedReader br = new BufferedReader(new FileReader(Filepatch));
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(Filepatch), "UTF-8"));
             br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] Account = line.split(",");
@@ -192,7 +194,7 @@ public class AdminAccountControl {
         String line = "";
         int ok =0, error =0;
         try {
-            BufferedReader br = new BufferedReader(new FileReader(Filepatch));
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(Filepatch), "UTF-8"));
             br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] Account = line.split(",");
@@ -213,7 +215,7 @@ public class AdminAccountControl {
         String line = "";
         int ok =0, error =0;
         try {
-            BufferedReader br = new BufferedReader(new FileReader(Filepatch));
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(Filepatch), "UTF-8"));
             br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] Account = line.split(",");
@@ -234,7 +236,7 @@ public class AdminAccountControl {
         String line = "";
         int ok =0, error =0;
         try {
-            BufferedReader br = new BufferedReader(new FileReader(Filepatch));
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(Filepatch), "UTF-8"));
             br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] Account = line.split(",");
@@ -255,7 +257,7 @@ public class AdminAccountControl {
         String line = "";
         int ok =0, error =0;
         try {
-            BufferedReader br = new BufferedReader(new FileReader(Filepatch));
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(Filepatch), "UTF-8"));
             br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] Account = line.split(",");

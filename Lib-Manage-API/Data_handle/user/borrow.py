@@ -4,12 +4,15 @@ import config
 
 def request(token, documentsID, BorrowingTime):
     StudentID = token_handle.tokentoStudentID(token)
+    
+    if(int(BorrowingTime)<config.Min_Day_Borrow):
+        return output.error("Borrowing time must be greater than "+str(config.Min_Day_Borrow)+" days")
+    if(int(BorrowingTime)>config.Max_Day_Borrow):
+        return output.error("Borrowing time is only allowed for a limit of "+str(config.Max_Day_Borrow)+" days")
     cursor.execute('select * from borrow where StudentID = "'+StudentID+'" and (status = "borrowed" or status = "wait")')
     rows = cursor.fetchall()
-    if(int(BorrowingTime)>config.Limited_Day_Borrows):
-        return output.error("Borrowing is only allowed for a limit of "+str(config.Limited_Day_Borrows)+" days")
     if(len(rows)>config.Limited_Borrows):
-        return output.error("Borrowing is limited to "+str(config.Limited_Borrows)+" documents only")
+        return output.error("The maximum number can be borrowed is "+str(config.Limited_Borrows))
     cursor.execute('select * from documents_quantity where ID = "'+documentsID+'"')
     rows = cursor.fetchall()
     if(len(rows)>0):

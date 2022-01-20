@@ -12,6 +12,8 @@ import Model.url;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import org.json.simple.parser.ParseException;
@@ -69,7 +71,7 @@ public class AdminCategoryManage {
         int ok = 0;
         int error = 0;
         try {
-            BufferedReader br = new BufferedReader(new FileReader(Filepatch));
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(Filepatch), "UTF-8"));
             br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] Category = line.split(",");
@@ -94,7 +96,7 @@ public class AdminCategoryManage {
         int ok = 0;
         int error = 0;
         try {
-            BufferedReader br = new BufferedReader(new FileReader(Filepatch));
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(Filepatch), "UTF-8"));
             br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] Category = line.split(",");
@@ -119,7 +121,7 @@ public class AdminCategoryManage {
         int ok = 0;
         int error = 0;
         try {
-            BufferedReader br = new BufferedReader(new FileReader(Filepatch));
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(Filepatch), "UTF-8"));
             br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] Category = line.split(",");

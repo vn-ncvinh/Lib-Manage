@@ -10,6 +10,8 @@ import Model.User;
 import Model.jsonobj;
 import Model.url;
 import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -111,9 +113,10 @@ public class AdminDocumentsControl {
         int error = 0;
         String line = "";
         try {
-            BufferedReader br = new BufferedReader(new FileReader(Filepatch));
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(Filepatch), "UTF-8"));
             br.readLine();
             while ((line = br.readLine()) != null) {
+                System.out.println(line);
                 String[] Documents = line.split(",");
                 String Name = Documents[0];
                 String Author = Documents[1];
@@ -142,7 +145,7 @@ public class AdminDocumentsControl {
         int ok = 0;
         int error = 0;
         try {
-            BufferedReader br = new BufferedReader(new FileReader(Filepatch));
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(Filepatch), "UTF-8"));
             br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] Documents = line.split(",");
@@ -166,7 +169,7 @@ public class AdminDocumentsControl {
         int ok = 0;
         int error = 0;
         try {
-            BufferedReader br = new BufferedReader(new FileReader(Filepatch));
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(Filepatch), "UTF-8"));
             br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] Documents = line.split(",");
@@ -200,7 +203,7 @@ public class AdminDocumentsControl {
         int ok = 0;
         int error = 0;
         try {
-            BufferedReader br = new BufferedReader(new FileReader(Filepatch));
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(Filepatch), "UTF-8"));
             br.readLine();
             while ((line = br.readLine()) != null) {
                 String[] Documents = line.split(",");

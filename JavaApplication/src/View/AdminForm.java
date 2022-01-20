@@ -3402,6 +3402,12 @@ public class AdminForm extends javax.swing.JFrame {
 
     private void DocumentUpdateTableBtn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DocumentUpdateTableBtn3ActionPerformed
         // TODO add your handling code here:
+        try {
+            // TODO add your handling code here:
+            updateDocumentTable();
+        } catch (ParseException ex) {
+            Logger.getLogger(AdminForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_DocumentUpdateTableBtn3ActionPerformed
 
     private void txtSearchbtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchbtn1ActionPerformed
