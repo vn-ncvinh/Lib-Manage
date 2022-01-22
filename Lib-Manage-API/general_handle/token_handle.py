@@ -1,12 +1,16 @@
 from general_handle.dbc import cursor
+from datetime import date, datetime
 import random
 import string
 
 def newtoken():
-    return ''.join(random.choices(string.ascii_letters + string.digits, k=30))
+    return str(date.today()) + ''.join(random.choices(string.ascii_letters + string.digits, k=20))
 
 def checktoken(token):
     if(token.upper() == 'TOKEN'):
+        return False
+    tokendate = datetime.strptime(token[:10], "%Y-%m-%d").date()
+    if(tokendate!=date.today()):
         return False
     query="select * from users where token='"+token+"' and status = 'active'"
     cursor.execute(query)

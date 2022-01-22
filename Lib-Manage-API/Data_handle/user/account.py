@@ -5,10 +5,14 @@ import config
 def login(user, passwd):
     user = user.upper()
     passwdmd5 = string_handle.toMD5(user+passwd)
-    cursor.execute("select * from users where StudentID='" + user +"' and password = '"+passwdmd5+"' and status = 'active'")
+    cursor.execute("select *, (users.Expiry < current_date()) from users where StudentID='" + user +"' and password = '"+passwdmd5+"'")
     # print(passwdmd5)
     rows = cursor.fetchall()
     if(len(rows)>0):
+        if(rows[0][9]=='disable'):
+            return output.error("Account has been disabled!")
+        if(rows[0][10]==1):
+            return output.error("Account has expired!")
         token = token_handle.newtoken()
         query = "update users set token = '"+token+"' where StudentID = '"+user+"'"
         cursor.execute(query)
@@ -19,9 +23,8 @@ def login(user, passwd):
         cols = cursor.fetchall()
         # output.log(user, "App", "Logged in successfully!")
         return output.tabletojson(cols, rows, "Logged in successfully!")
-            
     else:
-        return output.error("Student ID or Password incorrect or Account has been disabled!")
+        return output.error("Student ID or Password incorrect")
 
 def logout(token):
     StudentID = token_handle.tokentoStudentID(token)

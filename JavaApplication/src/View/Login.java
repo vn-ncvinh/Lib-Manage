@@ -29,6 +29,7 @@ public class Login extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setTitle("Quản lý thư viện");
+        setIconImage(Config.iconLogo.getImage());
         LogoLabel.setIcon(Config.iconLogo);
     }
 
