@@ -22,7 +22,7 @@ def createuser(token, StudentID, Password, Fullname, PhoneNumber, Specialization
             return output.error("Student ID already exist!")
         Password = string_handle.toMD5(StudentID+Password)
         token = "TOKEN"
-        Expiry = '(select current_date() + interval 4 year)'
+        Expiry = '(select current_date() + interval '+str(config.default_Expiry)+' year)'
         query = "INSERT INTO users ( StudentID, Password, Fullname, PhoneNumber, Specialization, Class, Admin, token, Expiry) VALUES ('"+StudentID+"', '"+Password+"', '"+Fullname+"', '"+PhoneNumber+"', '"+Specialization+"', '"+Class+"', '"+Admin+"', '"+token+"', "+Expiry+")"
         print(query)
         cursor.execute(query)
